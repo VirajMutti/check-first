@@ -5,6 +5,8 @@ Paste a message or upload a screenshot. Check First tells you, in your own langu
 
 Congressional App Challenge 2026 entry (CA-14) by Viraj Mutti.
 
+**Live app: https://check-first-sepia.vercel.app**
+
 ## The problem
 
 Families in Fremont, Union City and Hayward get scam texts, WhatsApp forwards and phone calls every week:

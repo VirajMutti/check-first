@@ -17,7 +17,10 @@ import { Hero, SAMPLES } from "./Hero";
 import { ResultCard } from "./ResultCard";
 import { UploadIcon } from "./Icons";
 
-const AI_TIMEOUT_MS = 8000;
+// The server gives the AI 8 seconds (lib/ai/prompt.ts). The browser waits a
+// little longer, so a slow AI comes back as a clean "didn't finish" answer
+// instead of being cut off mid-reply. Then we fall back to the rules result.
+const BROWSER_TIMEOUT_MS = 10_000;
 
 /** Calls the AI layer. Never throws: failures come back as a reason string. */
 async function askAi(
@@ -28,7 +31,7 @@ async function askAi(
   if (typeof navigator !== "undefined" && !navigator.onLine) return { reason: "offline" };
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), AI_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), BROWSER_TIMEOUT_MS);
   try {
     const res = await fetch("/api/analyze", {
       method: "POST",

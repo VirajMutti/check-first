@@ -117,7 +117,7 @@ Safety nets: every language must have every key and placeholder, and every offic
 
 | File | What it shows |
 |---|---|
-| `Checker.tsx` | Hero + form. `runCheck()` runs your rules, calls the API with an 8-second timeout (`AbortController`), re-runs rules on screenshot text, and shows the result. |
+| `Checker.tsx` | Hero + form. `runCheck()` runs your rules, calls the API (the server gives the AI 8 seconds; the browser waits up to 10 with `AbortController` as a backstop), re-runs rules on screenshot text, and shows the result. |
 | `Hero.tsx` | The teal pitch box, "Try an example" (loads the Punjabi sample and checks it in one click), and more sample buttons. |
 | `ResultCard.tsx` | Risk banner (icon + label + color), fallback notice, "How we decided" (both layers side by side), red flags grouped by layer, next steps, official links, WhatsApp share and copy. Moves keyboard focus to the result when it appears. |
 | `ReadAloud.tsx` | Uses the browser's `speechSynthesis`. It only shows if the device has a voice for the language, so it never reads Punjabi with an English voice. |
