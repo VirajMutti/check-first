@@ -113,6 +113,17 @@ Viraj chose Gemini so the AI layer can run on a free tier.
 
 The payment-method steps follow the FTC's "What To Do if You Were Scammed" page. Phone numbers were read from uscis.gov, ssa.gov, irs.gov and ftc.gov on 2026-10-26.
 
+### Mobile app (installable PWA)
+| File | What it does |
+|---|---|
+| `app/manifest.ts`, `public/icons/*` | Web app manifest and app icons (made with `sharp` from `icon.svg`) |
+| `components/BottomNav.tsx` | Phone tab bar; `Header.tsx` top menu now shows on computers only |
+| `components/InstallApp.tsx` | Install button (Android/Chrome) or iPhone steps |
+| `app/layout.tsx` | iPhone home-screen settings, safe-area padding for the tab bar |
+| `locales/*.json` | Tab labels and install text in 6 languages. **Needs proofreading.** |
+
+Viraj chose an installable web app over a separate App Store app so one codebase serves web and mobile tonight.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:

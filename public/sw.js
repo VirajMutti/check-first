@@ -5,7 +5,7 @@
 //   cached copy is always right (cache first).
 // - /api is never cached — we never store users' messages.
 
-const CACHE = "checkfirst-v2";
+const CACHE = "checkfirst-v3";
 const PAGES = ["/", "/learn", "/verify", "/help"];
 
 self.addEventListener("install", (event) => {

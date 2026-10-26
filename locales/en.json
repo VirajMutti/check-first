@@ -8,7 +8,14 @@
     "check": "Check a message",
     "verify": "Verify someone",
     "learn": "Learn the scams",
-    "help": "Get help"
+    "help": "Get help",
+    "short": {
+      "check": "Check",
+      "verify": "Verify",
+      "learn": "Learn",
+      "help": "Help"
+    },
+    "label": "Main menu"
   },
   "form": {
     "language": "Language",
@@ -427,5 +434,11 @@
       "I will call the agency myself, using the number on its official website.",
       "Please don't contact me again."
     ]
+  },
+  "install": {
+    "title": "Get the app",
+    "body": "Add Check First to your home screen. It opens like an app, and the Learn and Help pages work without internet.",
+    "button": "Install app",
+    "ios": "On iPhone: tap the Share button (square with an arrow), then “Add to Home Screen”."
   }
 }

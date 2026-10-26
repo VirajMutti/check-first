@@ -129,7 +129,12 @@ Safety nets: every language must have every key and placeholder, and every offic
 | `LearnCards.tsx` | Six scam cards: example, warning signs, what to do, read aloud. |
 | `OfficialLinks.tsx` | A list of official links with translated labels. |
 | `Icons.tsx` | Hand-made SVG icons: shield logo, and the octagon, triangle and check-circle risk icons. |
+| `BottomNav.tsx` | Phone-only tab bar fixed at the bottom (Check, Verify, Learn, Help), like a native app. Hidden on computers (`md:hidden`), where the top menu shows instead. The active tab gets a bold icon *and* an underline, not just a color. |
+| `InstallApp.tsx` | "Get the app" card. On Android/Chrome it saves the browser's `beforeinstallprompt` event and shows an Install button; on iPhone (which has no install prompt) it shows the Share → Add to Home Screen steps; once installed it hides. |
 | `ServiceWorker.tsx` | Registers `public/sw.js` (production only). |
+
+## `app/manifest.ts` + `public/icons/`: the mobile app
+The **web app manifest** tells phones the app's name, icon, colors and to open `standalone` (full screen, no browser bar). Together with the service worker, this makes Check First a **Progressive Web App**: one codebase that's a website on computers and an installable app on phones, without needing the App Store ($99/year and days of review). The icons were made from `icon.svg` with the `sharp` image library.
 
 ## `public/sw.js`: offline support
 A **service worker** is a small script the browser keeps running for your site. Ours saves pages and their files the first time you visit, then serves the saved copy when there's no internet. It never touches `/api`, so messages are never cached.

@@ -1,6 +1,7 @@
 "use client";
 
 // Top bar: logo, app name, language picker and display settings.
+// The page menu shows here on bigger screens; phones use <BottomNav> instead.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -48,7 +49,7 @@ export function Header() {
             ))}
           </select>
         </label>
-        <nav aria-label="Main" className="w-full">
+        <nav aria-label={t("nav.label")} className="hidden w-full md:block">
           <ul className="flex flex-wrap gap-1">
             {navItems.map((item) => (
               <li key={item.href}>

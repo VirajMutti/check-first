@@ -8,7 +8,14 @@
     "check": "Revisar un mensaje",
     "verify": "Verificar a alguien",
     "learn": "Conozca las estafas",
-    "help": "Pedir ayuda"
+    "help": "Pedir ayuda",
+    "short": {
+      "check": "Revisar",
+      "verify": "Verificar",
+      "learn": "Aprender",
+      "help": "Ayuda"
+    },
+    "label": "Menú principal"
   },
   "form": {
     "language": "Idioma",
@@ -427,5 +434,11 @@
       "Llamaré a la agencia por mi cuenta, usando el número de su sitio web oficial.",
       "Por favor, no me vuelva a contactar."
     ]
+  },
+  "install": {
+    "title": "Instale la app",
+    "body": "Agregue Check First a su pantalla de inicio. Se abre como una app, y las páginas de aprender y de ayuda funcionan sin internet.",
+    "button": "Instalar app",
+    "ios": "En iPhone: toque el botón Compartir (cuadro con una flecha) y luego “Agregar a pantalla de inicio”."
   }
 }

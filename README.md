@@ -36,6 +36,7 @@ CA-14 is one of the most diverse districts in the country, with large Punjabi, H
 - **/learn**: six common scam cards in every language. Works offline.
 - **Report it in English**: after a risky result, one tap copies a factual English report (written by the AI, or a template when offline) to paste into ReportFraud.ftc.gov, so families who don't read English can still report.
 - **/help**: for people who already paid. Pick how you paid (Zelle, payment app, Western Union, gift card, crypto, cash, card, or shared your SSN or passport) and get what to do *right now*, based on the FTC's official advice. Also has tap-to-call official numbers (USCIS, SSA, IRS, FTC, Postal Inspection, 911), each checked on the agency's own website, and "what to say to a scammer" in your language, with read-aloud.
+- **Installable mobile app**: on phones, Check First installs to the home screen with its own icon and opens full screen like a native app (Android: "Install app" button; iPhone: Share → Add to Home Screen). Phones get an app-style bottom tab bar; computers get a top menu. Learn and Help work offline once opened.
 - **Privacy**: no database, no accounts, and messages are never stored or logged by Check First. The AI check sends the text to the AI provider to read it, and the app says so. Note: on Gemini's *free* tier, Google's terms allow it to use submitted content to improve its products, so a real launch should use a paid tier.
 
 ## Architecture
