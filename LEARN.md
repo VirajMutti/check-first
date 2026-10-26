@@ -12,7 +12,7 @@ Check First is a **Next.js** app. Next.js lets one project hold both:
 
 When someone checks a message:
 
-1. The page runs **your rules engine** right away, in the browser.
+1. The page runs the **rules engine** right away, in the browser.
 2. At the same time it asks the **server route**, which asks **Claude**.
 3. The two answers are **combined**: the higher risk wins.
 4. The **result card** shows everything in the chosen language.
@@ -55,12 +55,20 @@ All the styling rules:
 
 ## `lib/`: the logic (no visuals)
 
-### `lib/redFlags.ts`: your rules engine (layer 1)
-**You write the logic here.** The AI only wrote:
+### `lib/redFlags.ts`: the rules engine (layer 1)
+You wrote the first line (the lowercase `clean` copy); the AI wrote the rest at your request (see AI_USAGE.md). How it works:
+1. **Clean the text:** lowercase it, normalize look-alike characters (NFKC), remove invisible characters (zero-width spaces, which Dari uses and scammers abuse), and straighten curly apostrophes.
+2. **`RULES` list:** one entry per category, each with a **weight** (points) and **patterns** (regular expressions) in all 6 languages. `\b` word boundaries are used only for English, because JavaScript's `\b` doesn't understand Gurmukhi, Devanagari, Chinese or Arabic script. The `\u0A3C?` / `\u093C?` bits make the nukta dot optional, since people type ਫ਼/फ़ both ways.
+3. **Score:** each category adds its weight **once**, however many patterns match (so long messages can't pile up points). Every matching phrase is still saved as evidence and shown to the user.
+4. **Cut-offs:** score capped at 100; **20+ is Medium, 45+ is High**. One strong sign alone (e.g. a suspicious link) is Medium; two or three together are High. "Government" is worth only 15, below Medium, because just mentioning the police isn't suspicious; it only counts alongside threats or payment demands.
+
+Weights, from strongest to weakest: payment, guarantee and notario 30; secrecy and prize 25; urgency, upfront fee and link 20; government 15.
+
+The parts that existed before:
 - `RedFlagCategory`: the nine kinds of red flag.
 - `RuleMatch`: one rule that fired (`category`, `matchedText`, `weight`).
 - `RulesResult`: what the function returns (`score` 0–100, `risk`, `matches`).
-- A stub `analyzeWithRules` that returns Low.
+- (The original stub returned Low; it has been replaced by the logic above.)
 
 See `RULES_GUIDE.md` for the approach.
 
@@ -103,7 +111,7 @@ The list of 6 languages: code, native name, English name (for the AI prompt), an
 Shrinks a screenshot in the browser to at most 1600px and converts it to JPEG before upload. Phone screenshots can be 5+ MB; this makes them ~200 KB, which is faster on mobile data and stays under the server limit.
 
 ### `lib/report.ts`
-Builds the "Report it in English" text. If the AI wrote `reportEnglish`, it uses that. Otherwise it fills a template: the English names of the warning signs your rules engine found, plus the message quoted, cut to 600 characters. So reporting works even offline. Tested in `lib/report.test.ts`.
+Builds the "Report it in English" text. If the AI wrote `reportEnglish`, it uses that. Otherwise it fills a template: the English names of the warning signs the rules engine found, plus the message quoted, cut to 600 characters. So reporting works even offline. Tested in `lib/report.test.ts`.
 
 ### `lib/rateLimit.ts`
 Keeps a list of recent request times per IP address in memory, and allows 10 per minute. It's simple on purpose; a real launch would use a shared database.
@@ -117,7 +125,7 @@ Safety nets: every language must have every key and placeholder, and every offic
 
 | File | What it shows |
 |---|---|
-| `Checker.tsx` | Hero + form. `runCheck()` runs your rules, calls the API (the server gives the AI 8 seconds; the browser waits up to 10 with `AbortController` as a backstop), re-runs rules on screenshot text, and shows the result. |
+| `Checker.tsx` | Hero + form. `runCheck()` runs the rules engine, calls the API (the server gives the AI 8 seconds; the browser waits up to 10 with `AbortController` as a backstop), re-runs rules on screenshot text, and shows the result. |
 | `Hero.tsx` | The teal pitch box, "Try an example" (loads the Punjabi sample and checks it in one click), and more sample buttons. |
 | `ResultCard.tsx` | Risk banner (icon + label + color), fallback notice, "How we decided" (both layers side by side), red flags grouped by layer, next steps, official links, WhatsApp share and copy. Moves keyboard focus to the result when it appears. |
 | `ReadAloud.tsx` | Uses the browser's `speechSynthesis`. It only shows if the device has a voice for the language, so it never reads Punjabi with an English voice. |

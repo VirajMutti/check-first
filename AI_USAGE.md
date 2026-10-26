@@ -14,7 +14,8 @@ product, separate from how the code was written.
 
 | File / part | Notes |
 |---|---|
-| `lib/redFlags.ts` → the logic inside `analyzeWithRules` | The rules engine: keyword/regex patterns, weights, scoring and risk thresholds. The AI did **not** write this logic (it only made the types and an empty stub). |
+| `lib/redFlags.ts` → first line of `analyzeWithRules` | The `clean` line (lowercase + NFKC normalize), typed during a guided step-by-step session. |
+| The 9 red-flag categories | Chosen by Viraj in the project brief (urgency, payment, government, guarantee, upfront fee, secrecy, notario, prize, links). |
 | Product idea, target users, scam categories | The problem, who it helps in CA-14, and which scam types to cover. |
 | Proofreading of non-English text | Punjabi, Hindi, Spanish, Chinese and Dari strings and samples (see the checklist below). |
 
@@ -23,7 +24,8 @@ product, separate from how the code was written.
 ### Phase 1: core check flow
 | File | What it does |
 |---|---|
-| `lib/redFlags.ts` (types + stub only) | `RedFlagCategory`, `RuleMatch`, `RulesResult` types and a stub that returns Low |
+| `lib/redFlags.ts` (types) | `RedFlagCategory`, `RuleMatch`, `RulesResult` types |
+| `lib/redFlags.ts` (rules + scoring) | **Written by the AI at Viraj's request** near the deadline (2026-10-26), after Viraj started it himself. The plan was for Viraj to write this; he asked the AI to finish it so the app would be ready to demo. Includes the multilingual pattern list, weights, cut-offs (Medium at 20, High at 45) and once-per-category scoring. |
 | `lib/redFlags.test.ts` | 18 multilingual test cases + 4 sanity tests, written before the logic |
 | `lib/risk.ts` | `RiskLevel` type and `higherRisk()` |
 | `lib/analysis.ts` | zod schemas for the API request and the AI's JSON answer |

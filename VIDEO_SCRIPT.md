@@ -23,7 +23,7 @@ and a sample screenshot saved in your photos before you start.
 
 **[Result appears: High risk, red stop-sign icon.]**
 
-> "High risk, shown with an icon and a label, not just color. It lists the red flags: guaranteed visa, fee up front, secrecy. Each comes with one simple sentence. And here's 'How we decided': my rules engine and the AI both flagged it."
+> "High risk, shown with an icon and a label, not just color. It lists the red flags: guaranteed visa, fee up front, secrecy. Each comes with one simple sentence. And here's 'How we decided': the offline rules engine and the AI both flagged it."
 
 **[Scroll: What to do now, then Verify it yourself links.]**
 
@@ -52,12 +52,12 @@ and a sample screenshot saved in your photos before you start.
 ### 1:40 – 2:10 · How it works
 **[Show the architecture diagram from the README.]**
 
-> "Check First uses two layers. A rules engine I wrote runs on the phone, works offline, and scores warning signs in six languages. A server route asks an AI model, which must answer in strict JSON that I validate with zod. The app shows the higher risk, because a false 'safe' is the worst mistake a scam checker can make."
+> "Check First uses two layers. A rules engine runs on the phone, works offline, and scores warning signs in six languages. A server route asks an AI model, which must answer in strict JSON that I validate with zod. The app shows the higher risk, because a false 'safe' is the worst mistake a scam checker can make."
 
 ### 2:10 – 2:30 · The hard part
 **[Show the "AI check didn't finish" notice, then the test results in the terminal.]**
 
-> "The hardest part was making it never fail when a scared person needs it. If the AI is slow, offline, or returns bad data, the app falls back to my rules result. There's never a blank screen. And normal word matching doesn't work for Punjabi or Dari, so I wrote tests in all six languages."
+> "The hardest part was making it never fail when a scared person needs it. If the AI is slow, offline, or returns bad data, the app falls back to the rules result. There's never a blank screen. And normal word matching doesn't work for Punjabi or Dari, so the rules engine is tested on scams in all six languages."
 
 ### 2:30 – 2:45 · Impact and next steps
 **[Back to the home page.]**

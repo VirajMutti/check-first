@@ -114,7 +114,7 @@ Next.js (App Router) · TypeScript · Tailwind CSS · Anthropic SDK and Google G
 
 ## AI disclosure
 
-This project used an AI coding assistant. [AI_USAGE.md](AI_USAGE.md) lists exactly what was AI-generated and what Viraj wrote. The rules engine logic in `lib/redFlags.ts` was written by Viraj. [LEARN.md](LEARN.md) walks through every file.
+This project used an AI coding assistant. [AI_USAGE.md](AI_USAGE.md) lists exactly what was AI-generated and what Viraj wrote. The rules engine logic in `lib/redFlags.ts` was written by the AI assistant at Viraj's request, building on his first line; Viraj chose its categories. [LEARN.md](LEARN.md) walks through every file.
 
 ## Not legal advice
 

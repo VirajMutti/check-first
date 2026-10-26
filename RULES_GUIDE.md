@@ -1,7 +1,7 @@
 # Rules Guide: building `analyzeWithRules`
 
 This explains the *approach* for the offline rules engine in `lib/redFlags.ts`.
-It deliberately does not include finished code — you write that part.
+It deliberately does not include finished code. (Update: near the deadline, Viraj asked the AI to finish the engine; see AI_USAGE.md. This guide still explains the approach.)
 
 ## What the function must do
 
