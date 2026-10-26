@@ -137,17 +137,25 @@
     "none": "No scam detected"
   },
   "links": {
-    "uscis_scams": "USCIS: Avoid immigration scams",
+    "uscis_scams": "USCIS: Avoid scams",
+    "uscis_common_scams": "USCIS: Common immigration scams",
     "uscis_legal_help": "USCIS: Find real legal help",
-    "eoir_roster": "DOJ: Accredited representatives list",
+    "eoir_roster": "DOJ: Accredited representatives and recognized organizations",
     "calbar_search": "State Bar of California: Check a lawyer",
+    "sos_consultant_search": "CA Secretary of State: Immigration consultant search",
+    "sos_consultant_rules": "CA Secretary of State: What immigration consultants may do",
     "ftc_report": "FTC: Report fraud",
+    "ftc_immigrants": "FTC: Scams against immigrants",
+    "ftc_older_adults": "FTC: Scams against older adults",
+    "ftc_imposters": "FTC: How to avoid imposter scams",
+    "ftc_jobs": "FTC: Job scams",
+    "ftc_gift_cards": "FTC: Gift card scams",
+    "ftc_texts": "FTC: Unwanted texts and emails",
     "ca_ag_complaint": "California Attorney General: File a complaint",
-    "irs_scams": "IRS: Tax scam alerts",
+    "irs_scams": "IRS: Recognize tax scams",
     "tigta_report": "TIGTA: Report IRS impersonation",
-    "ssa_scams": "Social Security: Scam information",
-    "state_visa_fraud": "U.S. State Department: Visa fraud",
-    "uspis_smishing": "U.S. Postal Inspection Service: Text scams",
+    "ssa_scams": "Social Security: Protect yourself from scams",
+    "uspis_smishing": "U.S. Postal Inspection Service: Package text scams",
     "ic3": "FBI: Report internet crime",
     "cslb_check": "CSLB: Check a contractor's license"
   },
@@ -160,5 +168,130 @@
     "largeText": "Large text",
     "highContrast": "High contrast",
     "skip": "Skip to main content"
+  },
+  "verify": {
+    "title": "Who are you dealing with?",
+    "intro": "Pick the kind of person or business. We'll show you how to check them with official sources before you pay or share documents.",
+    "stepsHeading": "3 steps to check",
+    "linksHeading": "Official websites",
+    "types": {
+      "consultant": {
+        "label": "Immigration consultant or notario",
+        "steps": [
+          "Search their name in the California Secretary of State's immigration consultant list. Consultants must be registered and bonded.",
+          "A consultant may only fill in forms you choose and translate. They cannot give legal advice or pick forms for you. A \"notario\" is not a lawyer in the U.S.",
+          "For legal advice, use a licensed lawyer or a DOJ-accredited representative. Get a written contract and receipt, and keep your original documents."
+        ]
+      },
+      "lawyer": {
+        "label": "Lawyer",
+        "steps": [
+          "Look up their name or bar number on the State Bar of California website. Their status should say \"Active\".",
+          "Check for any discipline listed on their State Bar profile. For immigration cases, DOJ-accredited representatives are also allowed.",
+          "Ask for a written fee agreement before paying, and always get a receipt."
+        ]
+      },
+      "travel_agent": {
+        "label": "Travel, visa or job-abroad agent",
+        "steps": [
+          "Only U.S. embassies, consulates and USCIS decide visas. No agent can guarantee one.",
+          "Real employers don't charge you to get a job. Be careful of anyone asking for fees for a job or visa abroad.",
+          "Never pay with cash, gift cards, wire transfer or crypto. Ask a trusted family member before paying anything."
+        ]
+      },
+      "government": {
+        "label": "Someone who says they're from the government",
+        "steps": [
+          "Hang up or don't reply. USCIS, IRS, SSA, ICE and police do not demand gift cards, crypto or wire transfers, or threaten instant arrest.",
+          "Call the agency yourself using the number on its official .gov website. Never use the number the caller gave you.",
+          "Report it: IRS impersonation to TIGTA, Social Security impersonation to SSA, and everything else to the FTC."
+        ]
+      },
+      "contractor": {
+        "label": "Contractor or home repair",
+        "steps": [
+          "Check their license number on the CSLB website. Make sure the name and status match.",
+          "In California, the down payment for home improvement can't be more than $1,000 or 10% of the price, whichever is less.",
+          "Get a written contract. Don't pay in cash and don't pay in full before the work is done."
+        ]
+      },
+      "seller": {
+        "label": "Online seller",
+        "steps": [
+          "Search the seller's name with the word \"scam\" and read reviews. Be careful if the price is much lower than everywhere else.",
+          "Pay with a credit card, which lets you dispute a charge. Never pay strangers with gift cards, wire, crypto or Zelle.",
+          "If you paid and nothing arrived, call your bank right away, then report it to the FTC."
+        ]
+      }
+    }
+  },
+  "learn": {
+    "title": "Learn the common scams",
+    "intro": "These are scams families in our area really receive. This page also works without internet once you've opened it.",
+    "exampleLabel": "What it sounds like",
+    "signsHeading": "Warning signs",
+    "actionHeading": "What to do",
+    "cards": {
+      "uscis_call": {
+        "title": "Fake USCIS call",
+        "example": "\"This is USCIS. There's a problem with your file. Pay a fine today or you will be deported.\"",
+        "signs": [
+          "Threatens deportation or arrest",
+          "Wants payment by phone, gift card or wire",
+          "The caller ID can be faked to look like USCIS"
+        ],
+        "action": "Hang up. USCIS never asks for payment by phone. Log in to your USCIS account or call 800-375-5283 yourself."
+      },
+      "notario": {
+        "title": "Notario fraud",
+        "example": "\"I'm a notario. I can get your papers fast, no lawyer needed.\"",
+        "signs": [
+          "Calls themselves a notario or immigration expert",
+          "Promises results or special connections",
+          "Keeps your original documents or asks you to sign blank forms"
+        ],
+        "action": "Only a licensed lawyer or DOJ-accredited representative can give immigration legal advice. Check them first."
+      },
+      "visa_agent": {
+        "title": "Fake visa or job-abroad agent",
+        "example": "\"Canada or USA visa 100% guaranteed! Send the fee first. Seats are limited.\"",
+        "signs": [
+          "\"Guaranteed\" visa, green card or job",
+          "Fee before anything is done",
+          "Pressure to decide quickly"
+        ],
+        "action": "No one can guarantee a visa. Don't pay. Ask a trusted family member and check with official sources."
+      },
+      "irs_ssa": {
+        "title": "IRS or Social Security threat",
+        "example": "\"Your Social Security number is suspended. A warrant will be issued unless you pay now.\"",
+        "signs": [
+          "Says your number is \"suspended\"",
+          "Threatens arrest or a lawsuit",
+          "Asks for gift cards, crypto or wire"
+        ],
+        "action": "Hang up. The IRS and SSA contact you by mail first and never demand gift cards. Call them yourself from the official website."
+      },
+      "grandparent": {
+        "title": "Grandchild or family emergency call",
+        "example": "\"Grandma, it's me. I'm in jail. Please send money and don't tell Mom and Dad.\"",
+        "signs": [
+          "A crying or rushed voice saying it's a relative",
+          "Asks you to keep it secret",
+          "Needs money right now by gift card, cash or wire"
+        ],
+        "action": "Hang up and call your family member on the number you already have. Ask a question only they would know."
+      },
+      "toll_package": {
+        "title": "Fake toll or package text",
+        "example": "\"FasTrak: you have an unpaid toll of $4.15. Pay now to avoid a penalty: (link)\"",
+        "signs": [
+          "Small amount with a strange link",
+          "Threat of a late fee or penalty",
+          "You weren't expecting a package or toll bill"
+        ],
+        "action": "Don't click the link. Check your account on the official website or app you already use, then delete the text."
+      }
+    }
   }
 }

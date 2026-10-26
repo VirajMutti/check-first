@@ -50,6 +50,25 @@ Scaffolding (`create-next-app`) generated the standard Next.js config files.
 | `components/ReadAloud.tsx` | Read-aloud button, shown only if the device has a voice for that language |
 | `app/globals.css` (additions) | High-contrast colors, large-text size, a script font per language, RTL line height |
 
+### Phase 3: verify + learn
+| File | What it does |
+|---|---|
+| `data/resources.json` | 21 official links (all `.gov`), which links go with each scam type and each "who are you dealing with" type |
+| `lib/resources.test.ts` | Fails if a link isn't `https` + `.gov`, or is missing a label |
+| `components/VerifyPicker.tsx`, `app/verify/page.tsx` | "Who are you dealing with?" picker with 3 steps + official links |
+| `components/LearnCards.tsx`, `app/learn/page.tsx` | 6 common scam cards, all 6 languages, read-aloud per card |
+| `components/OfficialLinks.tsx` | Shared list of official links |
+| `public/sw.js`, `components/ServiceWorker.tsx` | Service worker so pages work offline after one visit (never caches `/api`) |
+| `next.config.ts` (headers) | Security headers; `sw.js` is never cached |
+| `locales/*.json` (verify, learn, links) | AI-written content and translations. **Needs proofreading.** |
+
+**Link check (2026-10-26):** every URL in `data/resources.json` was opened in a
+real browser and loaded. Fixes made along the way:
+- The DOJ roster URL had moved, so it was updated.
+- The CA Secretary of State immigration consultant search was found under "Special Filings".
+- Four links were updated to the address they redirect to.
+- `travel.state.gov/.../fraud.html` sits behind a bot-check page and couldn't be verified, so it was replaced with FTC and USCIS pages.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:

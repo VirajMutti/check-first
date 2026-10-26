@@ -8,7 +8,8 @@ import { linksForScamType, type CheckResult } from "@/lib/combine";
 import { useI18n } from "@/lib/i18n";
 import type { RedFlagCategory } from "@/lib/redFlags";
 import type { RiskLevel } from "@/lib/risk";
-import { CopyIcon, ExternalIcon, RiskIcon, WhatsAppIcon } from "./Icons";
+import { CopyIcon, RiskIcon, WhatsAppIcon } from "./Icons";
+import { OfficialLinks } from "./OfficialLinks";
 import { ReadAloud } from "./ReadAloud";
 
 // Tailwind classes for each risk level. Color is always paired with an icon + label.
@@ -172,16 +173,7 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
       <div className="card">
         <h3 className="card-title">{t("result.verify")}</h3>
         <p className="mb-3 text-ink-muted">{t("result.verifyHint")}</p>
-        <ul className="space-y-2">
-          {links.map((l) => (
-            <li key={l.id}>
-              <a href={l.url} target="_blank" rel="noopener noreferrer" className="link-row">
-                <span>{t(`links.${l.id}`)}</span>
-                <ExternalIcon className="h-4 w-4 shrink-0" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <OfficialLinks ids={links} />
       </div>
 
       {/* 6. Share with family — only when there's something to warn about */}

@@ -53,8 +53,6 @@ export function combineResults(
 }
 
 /** Official link ids to show for a scam type (see data/resources.json). */
-export function linksForScamType(scamType: ScamType): { id: string; url: string }[] {
-  const ids: string[] = resources.scamTypeLinks[scamType] ?? resources.scamTypeLinks.other;
-  const urls = resources.links as Record<string, string>;
-  return ids.map((id) => ({ id, url: urls[id] }));
+export function linksForScamType(scamType: ScamType): string[] {
+  return resources.scamTypeLinks[scamType] ?? resources.scamTypeLinks.other;
 }

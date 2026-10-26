@@ -1,28 +1,45 @@
 {
   "links": {
     "uscis_scams": "https://www.uscis.gov/avoid-scams",
-    "uscis_legal_help": "https://www.uscis.gov/avoid-scams/find-legal-services",
-    "eoir_roster": "https://www.justice.gov/eoir/recognized-organizations-and-accredited-representatives-roster-state-and-city",
+    "uscis_common_scams": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams/common-scams",
+    "uscis_legal_help": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams/legal-services",
+    "eoir_roster": "https://www.justice.gov/eoir/recognition-accreditation-roster-reports",
     "calbar_search": "https://apps.calbar.ca.gov/attorney/LicenseeSearch/QuickSearch",
+    "sos_consultant_search": "https://specialfilings.sos.ca.gov/icbs",
+    "sos_consultant_rules": "https://www.sos.ca.gov/business-programs/special-filings/immigration-consultant-qualifications",
     "ftc_report": "https://reportfraud.ftc.gov/",
+    "ftc_immigrants": "https://consumer.ftc.gov/all-scams/scams-against-immigrants",
+    "ftc_older_adults": "https://consumer.ftc.gov/all-scams/scams-against-older-adults",
+    "ftc_imposters": "https://consumer.ftc.gov/features/how-avoid-imposter-scams",
+    "ftc_jobs": "https://consumer.ftc.gov/jobs-and-making-money/jobs",
+    "ftc_gift_cards": "https://consumer.ftc.gov/gift-card-scams",
+    "ftc_texts": "https://consumer.ftc.gov/unwanted-calls-emails-and-texts/unwanted-emails-texts-and-mail",
     "ca_ag_complaint": "https://oag.ca.gov/contact/consumer-complaint-against-business-or-company",
-    "irs_scams": "https://www.irs.gov/newsroom/tax-scams-consumer-alerts",
+    "irs_scams": "https://www.irs.gov/help/tax-scams/recognize-tax-scams-and-fraud",
     "tigta_report": "https://www.tigta.gov/reportcrime-misconduct",
     "ssa_scams": "https://www.ssa.gov/scam/",
-    "state_visa_fraud": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fraud.html",
-    "uspis_smishing": "https://www.uspis.gov/news/scam-article/smishing",
+    "uspis_smishing": "https://www.uspis.gov/news/scam-article/smishing-package-tracking-text-scams",
     "ic3": "https://www.ic3.gov/",
     "cslb_check": "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx"
   },
   "scamTypeLinks": {
-    "immigration": ["uscis_scams", "uscis_legal_help", "eoir_roster", "calbar_search"],
-    "government_impersonation": ["irs_scams", "ssa_scams", "uscis_scams", "ftc_report"],
-    "visa_job_abroad": ["state_visa_fraud", "uscis_scams", "ftc_report"],
-    "prize_lottery": ["ftc_report", "ca_ag_complaint"],
-    "family_emergency": ["ftc_report", "ic3"],
-    "delivery_toll": ["uspis_smishing", "ftc_report"],
+    "immigration": ["uscis_common_scams", "sos_consultant_search", "uscis_legal_help", "eoir_roster"],
+    "government_impersonation": ["ftc_imposters", "irs_scams", "ssa_scams", "uscis_common_scams"],
+    "visa_job_abroad": ["ftc_jobs", "ftc_immigrants", "uscis_common_scams", "ftc_report"],
+    "prize_lottery": ["ftc_gift_cards", "ftc_report", "ca_ag_complaint"],
+    "family_emergency": ["ftc_older_adults", "ftc_report"],
+    "delivery_toll": ["uspis_smishing", "ftc_texts", "ftc_report"],
     "online_shopping": ["ftc_report", "ca_ag_complaint", "ic3"],
-    "other": ["ftc_report", "ca_ag_complaint"],
+    "other": ["ftc_imposters", "ftc_report", "ca_ag_complaint"],
     "none": ["ftc_report"]
-  }
+  },
+  "verifyTypes": {
+    "consultant": ["sos_consultant_search", "sos_consultant_rules", "uscis_legal_help", "eoir_roster"],
+    "lawyer": ["calbar_search", "eoir_roster", "uscis_legal_help"],
+    "travel_agent": ["ftc_jobs", "ftc_immigrants", "uscis_common_scams", "ftc_report"],
+    "government": ["ftc_imposters", "uscis_common_scams", "ssa_scams", "irs_scams", "tigta_report"],
+    "contractor": ["cslb_check", "ca_ag_complaint"],
+    "seller": ["ftc_report", "ic3", "ca_ag_complaint"]
+  },
+  "verifiedOn": "2026-10-26"
 }

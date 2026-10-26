@@ -3,6 +3,7 @@
 // Top bar: logo, app name, language picker and display settings.
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/lib/i18n";
 import { LANGUAGES, type LangCode } from "@/lib/languages";
 import { DisplayToggles } from "./DisplayToggles";
@@ -10,6 +11,12 @@ import { ShieldLogo } from "./Icons";
 
 export function Header() {
   const { t, lang, setLang } = useI18n();
+  const pathname = usePathname();
+  const navItems = [
+    { href: "/", label: t("nav.check") },
+    { href: "/verify", label: t("nav.verify") },
+    { href: "/learn", label: t("nav.learn") },
+  ];
 
   return (
     <header className="border-b border-line bg-surface">
@@ -40,6 +47,21 @@ export function Header() {
             ))}
           </select>
         </label>
+        <nav aria-label="Main" className="w-full">
+          <ul className="flex flex-wrap gap-1">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className="inline-flex min-h-11 items-center rounded-lg px-3 font-semibold whitespace-nowrap text-ink-muted hover:text-brand aria-[current=page]:bg-surface-muted aria-[current=page]:text-brand"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <div className="w-full">
           <DisplayToggles />
         </div>

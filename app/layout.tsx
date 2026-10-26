@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import { I18nProvider } from "@/lib/i18n";
 import "./globals.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
+          <ServiceWorker />
         </I18nProvider>
       </body>
     </html>

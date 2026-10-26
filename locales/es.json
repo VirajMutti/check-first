@@ -4,7 +4,11 @@
     "tagline": "¿Recibió un mensaje que le pide dinero o documentos? Revíselo aquí antes de pagarle a nadie.",
     "privacy": "Nunca guardamos sus mensajes."
   },
-  "nav": { "check": "Revisar un mensaje", "verify": "Verificar a alguien", "learn": "Conozca las estafas" },
+  "nav": {
+    "check": "Revisar un mensaje",
+    "verify": "Verificar a alguien",
+    "learn": "Conozca las estafas"
+  },
   "form": {
     "language": "Idioma",
     "messageLabel": "Pegue el mensaje",
@@ -65,15 +69,42 @@
     "imageOnly": "No pudimos leer la captura sin la revisión con IA. Por favor, pegue también el texto del mensaje."
   },
   "categories": {
-    "urgency": { "title": "Amenazas o prisa", "explanation": "Los estafadores amenazan con arresto, deportación o cerrar su cuenta para que actúe sin pensar." },
-    "payment": { "title": "Forma de pago extraña", "explanation": "Las agencias reales nunca piden tarjetas de regalo, criptomonedas, giros, Zelle ni Western Union." },
-    "government": { "title": "Dice ser del gobierno", "explanation": "USCIS, el IRS, el Seguro Social, ICE y la policía no llaman ni envían mensajes para exigir dinero." },
-    "guarantee": { "title": "Visa o trabajo \"garantizado\"", "explanation": "Nadie puede garantizar una visa, una green card o un trabajo en el extranjero; solo el gobierno decide." },
-    "upfront_fee": { "title": "Pagar primero", "explanation": "Pedir un pago antes de recibir algo es un truco clásico de estafa." },
-    "secrecy": { "title": "Mantenerlo en secreto", "explanation": "Si le dicen que no le cuente a nadie, alguien quiere impedir que usted pida ayuda." },
-    "notario": { "title": "Notario o consultor", "explanation": "En Estados Unidos, un notario no puede dar consejos legales ni presentar casos de inmigración por usted." },
-    "prize": { "title": "Premio o lotería", "explanation": "No puede ganar un concurso en el que nunca participó, y los premios reales no cuestan dinero." },
-    "link": { "title": "Enlace sospechoso", "explanation": "Los enlaces en mensajes inesperados a menudo llevan a sitios falsos que roban dinero o contraseñas." }
+    "urgency": {
+      "title": "Amenazas o prisa",
+      "explanation": "Los estafadores amenazan con arresto, deportación o cerrar su cuenta para que actúe sin pensar."
+    },
+    "payment": {
+      "title": "Forma de pago extraña",
+      "explanation": "Las agencias reales nunca piden tarjetas de regalo, criptomonedas, giros, Zelle ni Western Union."
+    },
+    "government": {
+      "title": "Dice ser del gobierno",
+      "explanation": "USCIS, el IRS, el Seguro Social, ICE y la policía no llaman ni envían mensajes para exigir dinero."
+    },
+    "guarantee": {
+      "title": "Visa o trabajo \"garantizado\"",
+      "explanation": "Nadie puede garantizar una visa, una green card o un trabajo en el extranjero; solo el gobierno decide."
+    },
+    "upfront_fee": {
+      "title": "Pagar primero",
+      "explanation": "Pedir un pago antes de recibir algo es un truco clásico de estafa."
+    },
+    "secrecy": {
+      "title": "Mantenerlo en secreto",
+      "explanation": "Si le dicen que no le cuente a nadie, alguien quiere impedir que usted pida ayuda."
+    },
+    "notario": {
+      "title": "Notario o consultor",
+      "explanation": "En Estados Unidos, un notario no puede dar consejos legales ni presentar casos de inmigración por usted."
+    },
+    "prize": {
+      "title": "Premio o lotería",
+      "explanation": "No puede ganar un concurso en el que nunca participó, y los premios reales no cuestan dinero."
+    },
+    "link": {
+      "title": "Enlace sospechoso",
+      "explanation": "Los enlaces en mensajes inesperados a menudo llevan a sitios falsos que roban dinero o contraseñas."
+    }
   },
   "defaultSteps": {
     "low": [
@@ -106,17 +137,25 @@
     "none": "No se detectó estafa"
   },
   "links": {
-    "uscis_scams": "USCIS: Evite estafas de inmigración",
+    "uscis_scams": "USCIS: Evite estafas",
+    "uscis_common_scams": "USCIS: Estafas comunes de inmigración",
     "uscis_legal_help": "USCIS: Encuentre ayuda legal real",
-    "eoir_roster": "Departamento de Justicia: Lista de representantes acreditados",
+    "eoir_roster": "Departamento de Justicia: Representantes acreditados y organizaciones reconocidas",
     "calbar_search": "Colegio de Abogados de California: Verifique a un abogado",
+    "sos_consultant_search": "Secretaría de Estado de CA: Búsqueda de consultores de inmigración",
+    "sos_consultant_rules": "Secretaría de Estado de CA: Lo que puede hacer un consultor de inmigración",
     "ftc_report": "FTC: Reporte un fraude",
+    "ftc_immigrants": "FTC: Estafas contra inmigrantes",
+    "ftc_older_adults": "FTC: Estafas contra personas mayores",
+    "ftc_imposters": "FTC: Cómo evitar estafas de impostores",
+    "ftc_jobs": "FTC: Estafas de empleo",
+    "ftc_gift_cards": "FTC: Estafas con tarjetas de regalo",
+    "ftc_texts": "FTC: Mensajes de texto y correos no deseados",
     "ca_ag_complaint": "Fiscal General de California: Presente una queja",
-    "irs_scams": "IRS: Alertas de estafas de impuestos",
+    "irs_scams": "IRS: Cómo reconocer estafas de impuestos",
     "tigta_report": "TIGTA: Reporte a quien se haga pasar por el IRS",
-    "ssa_scams": "Seguro Social: Información sobre estafas",
-    "state_visa_fraud": "Departamento de Estado: Fraude de visas",
-    "uspis_smishing": "Servicio de Inspección Postal: Estafas por mensaje de texto",
+    "ssa_scams": "Seguro Social: Protéjase de las estafas",
+    "uspis_smishing": "Servicio de Inspección Postal: Estafas por texto sobre paquetes",
     "ic3": "FBI: Reporte delitos por internet",
     "cslb_check": "CSLB: Verifique la licencia de un contratista"
   },
@@ -129,5 +168,130 @@
     "largeText": "Letra grande",
     "highContrast": "Alto contraste",
     "skip": "Ir al contenido principal"
+  },
+  "verify": {
+    "title": "¿Con quién está tratando?",
+    "intro": "Elija el tipo de persona o negocio. Le mostraremos cómo verificarlo con fuentes oficiales antes de pagar o entregar documentos.",
+    "stepsHeading": "3 pasos para verificar",
+    "linksHeading": "Sitios web oficiales",
+    "types": {
+      "consultant": {
+        "label": "Consultor de inmigración o notario",
+        "steps": [
+          "Busque su nombre en la lista de consultores de inmigración de la Secretaría de Estado de California. Deben estar registrados y tener fianza.",
+          "Un consultor solo puede llenar los formularios que usted elija y traducir. No puede dar consejos legales ni escoger formularios por usted. Un \"notario\" no es abogado en EE. UU.",
+          "Para consejos legales, acuda a un abogado con licencia o a un representante acreditado por el Departamento de Justicia. Pida un contrato por escrito y un recibo, y quédese con sus documentos originales."
+        ]
+      },
+      "lawyer": {
+        "label": "Abogado",
+        "steps": [
+          "Busque su nombre o número de licencia en el sitio del Colegio de Abogados de California. Su estado debe decir \"Active\".",
+          "Revise si aparece alguna sanción en su perfil. Para casos de inmigración, también se permiten representantes acreditados por el Departamento de Justicia.",
+          "Pida un acuerdo de honorarios por escrito antes de pagar y siempre pida un recibo."
+        ]
+      },
+      "travel_agent": {
+        "label": "Agente de viajes, visas o trabajo en el extranjero",
+        "steps": [
+          "Solo las embajadas, los consulados de EE. UU. y USCIS deciden las visas. Ningún agente puede garantizar una.",
+          "Los empleadores reales no le cobran por darle trabajo. Tenga cuidado con quien le pida pagos por un trabajo o una visa en el extranjero.",
+          "Nunca pague en efectivo, con tarjetas de regalo, giros o criptomonedas. Consulte con un familiar de confianza antes de pagar."
+        ]
+      },
+      "government": {
+        "label": "Alguien que dice ser del gobierno",
+        "steps": [
+          "Cuelgue o no responda. USCIS, el IRS, el Seguro Social, ICE y la policía no exigen tarjetas de regalo, criptomonedas ni giros, ni amenazan con arrestarlo de inmediato.",
+          "Llame usted mismo a la agencia usando el número de su sitio oficial .gov. Nunca use el número que le dio la persona que llamó.",
+          "Repórtelo: si se hacen pasar por el IRS, a TIGTA; por el Seguro Social, al Seguro Social; y todo lo demás, a la FTC."
+        ]
+      },
+      "contractor": {
+        "label": "Contratista o reparaciones del hogar",
+        "steps": [
+          "Verifique su número de licencia en el sitio de la CSLB. Asegúrese de que el nombre y el estado coincidan.",
+          "En California, el anticipo para mejoras del hogar no puede ser mayor de $1,000 o del 10% del precio, lo que sea menor.",
+          "Pida un contrato por escrito. No pague en efectivo ni pague todo antes de que terminen el trabajo."
+        ]
+      },
+      "seller": {
+        "label": "Vendedor en línea",
+        "steps": [
+          "Busque el nombre del vendedor con la palabra \"estafa\" y lea opiniones. Tenga cuidado si el precio es mucho más bajo que en otros lugares.",
+          "Pague con tarjeta de crédito, que le permite disputar un cargo. Nunca pague a desconocidos con tarjetas de regalo, giros, criptomonedas o Zelle.",
+          "Si pagó y no llegó nada, llame a su banco de inmediato y luego repórtelo a la FTC."
+        ]
+      }
+    }
+  },
+  "learn": {
+    "title": "Conozca las estafas comunes",
+    "intro": "Estas son estafas que reciben de verdad las familias de nuestra zona. Esta página también funciona sin internet después de abrirla una vez.",
+    "exampleLabel": "Cómo suena",
+    "signsHeading": "Señales de alerta",
+    "actionHeading": "Qué hacer",
+    "cards": {
+      "uscis_call": {
+        "title": "Llamada falsa de USCIS",
+        "example": "\"Le llamamos de USCIS. Hay un problema con su expediente. Pague una multa hoy o será deportado.\"",
+        "signs": [
+          "Amenaza con deportación o arresto",
+          "Pide pago por teléfono, tarjeta de regalo o giro",
+          "El número en pantalla puede falsificarse para parecer de USCIS"
+        ],
+        "action": "Cuelgue. USCIS nunca pide pagos por teléfono. Entre a su cuenta de USCIS o llame usted mismo al 800-375-5283."
+      },
+      "notario": {
+        "title": "Fraude de notarios",
+        "example": "\"Soy notario. Le saco sus papeles rápido, no necesita abogado.\"",
+        "signs": [
+          "Dice ser notario o experto en inmigración",
+          "Promete resultados o contactos especiales",
+          "Se queda con sus documentos originales o le pide firmar formularios en blanco"
+        ],
+        "action": "Solo un abogado con licencia o un representante acreditado por el Departamento de Justicia puede dar consejos legales de inmigración. Verifíquelo primero."
+      },
+      "visa_agent": {
+        "title": "Agente falso de visas o trabajo en el extranjero",
+        "example": "\"¡Visa para Canadá o EE. UU. 100% garantizada! Envíe la cuota primero. Hay pocos lugares.\"",
+        "signs": [
+          "Visa, green card o trabajo \"garantizado\"",
+          "Cobra antes de hacer cualquier trámite",
+          "Le presiona para decidir rápido"
+        ],
+        "action": "Nadie puede garantizar una visa. No pague. Consulte con un familiar de confianza y verifique con fuentes oficiales."
+      },
+      "irs_ssa": {
+        "title": "Amenaza del IRS o del Seguro Social",
+        "example": "\"Su número de Seguro Social está suspendido. Se emitirá una orden de arresto si no paga ahora.\"",
+        "signs": [
+          "Dice que su número está \"suspendido\"",
+          "Amenaza con arresto o demanda",
+          "Pide tarjetas de regalo, criptomonedas o giros"
+        ],
+        "action": "Cuelgue. El IRS y el Seguro Social primero le escriben por correo y nunca exigen tarjetas de regalo. Llámelos usted mismo usando el sitio oficial."
+      },
+      "grandparent": {
+        "title": "Llamada de un nieto o emergencia familiar",
+        "example": "\"Abuela, soy yo. Estoy en la cárcel. Mándame dinero y no les digas a mis papás.\"",
+        "signs": [
+          "Una voz llorando o con prisa que dice ser un familiar",
+          "Le pide que lo mantenga en secreto",
+          "Necesita dinero ya, en tarjeta de regalo, efectivo o giro"
+        ],
+        "action": "Cuelgue y llame a su familiar al número que usted ya tiene. Hágale una pregunta que solo esa persona sabría."
+      },
+      "toll_package": {
+        "title": "Mensaje falso de peaje o paquete",
+        "example": "\"FasTrak: tiene un peaje sin pagar de $4.15. Pague ahora para evitar una multa: (enlace)\"",
+        "signs": [
+          "Cantidad pequeña con un enlace extraño",
+          "Amenaza de recargo o multa",
+          "Usted no esperaba un paquete ni una cuenta de peaje"
+        ],
+        "action": "No haga clic en el enlace. Revise su cuenta en el sitio o la app oficial que ya usa y luego borre el mensaje."
+      }
+    }
   }
 }
