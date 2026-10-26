@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Check First
 
-## Getting Started
+**A multilingual scam checker for immigrant families and seniors in California's 14th district.**
+Paste a message or upload a screenshot. Check First tells you, in your own language, how risky it is, which red flags it found, and exactly how to verify it with official sources before you pay anyone.
 
-First, run the development server:
+Congressional App Challenge 2026 entry (CA-14) by Viraj Mutti.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## The problem
+
+Families in Fremont, Union City and Hayward get scam texts, WhatsApp forwards and phone calls every week:
+
+- fake USCIS, IRS, Social Security and police calls threatening arrest or deportation
+- *notarios* and "immigration consultants" who give illegal legal advice and take fees
+- fake travel and visa agents promising a "guaranteed" visa or job abroad
+- grandparent emergency calls, fake toll and package texts, prize scams
+
+The people targeted most are often the least able to check. They may not read English well, may not know which government websites are real, and may be pressured to pay *right now*. Most scam-checking tools are English-only.
+
+## Who it helps in CA-14
+
+CA-14 is one of the most diverse districts in the country, with large Punjabi, Hindi-speaking, Spanish-speaking, Chinese and Afghan (Dari-speaking) communities, many of them seniors or recent immigrants. Check First works in all six of those languages, on a phone, with no account and no data saved.
+
+## Features
+
+- **Check a message**: paste text or upload a screenshot (PNG/JPG).
+- **Risk level** (Low / Medium / High) shown with color, an icon and a text label, never color alone.
+- **Red flags**, each explained in one plain sentence.
+- **What to do now**: 3 to 5 concrete steps.
+- **Verify it yourself**: official `.gov` links matched to the scam type (21 links, each opened in a browser to confirm it loads).
+- **Share with family**: one-tap WhatsApp warning in the chosen language, plus a copy button.
+- **6 languages**: English, ਪੰਜਾਬੀ, हिन्दी, Español, 中文, دری (with full right-to-left layout for Dari).
+- **Accessibility**: large text, high contrast, 44px tap targets, full keyboard use, read-aloud (when the device has a voice for that language). Lighthouse accessibility score: 100.
+- **/verify**: "Who are you dealing with?" Three steps and official links for consultants, lawyers, travel/visa agents, people claiming to be government, contractors and online sellers.
+- **/learn**: six common scam cards in every language. Works offline.
+- **Privacy**: no database, no accounts, messages are never stored or logged.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    U[User on phone] -->|paste text or screenshot| UI[Next.js page<br/>components/Checker.tsx]
+    UI -->|Layer 1: instant, offline| R[Rules engine<br/>lib/redFlags.ts]
+    UI -->|Layer 2: POST /api/analyze<br/>8 second timeout| API[Server route<br/>app/api/analyze/route.ts]
+    API -->|rate limit + zod input check| API
+    API -->|text and/or image| C[Claude API<br/>structured JSON output]
+    C --> API
+    API -->|zod-validated JSON| UI
+    R --> M[combineResults<br/>lib/combine.ts]
+    UI --> M
+    M -->|final risk = higher of the two| RC[Result card<br/>red flags, steps, official links, share]
+    L[locales/*.json<br/>6 languages] --> UI
+    D[data/resources.json<br/>official .gov links] --> RC
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How two-layer detection works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Rules engine (layer 1).** `lib/redFlags.ts` runs in the browser. It scores the message 0–100 using weighted keyword and pattern rules across nine categories (threats, unusual payments, government impersonation, guarantees, upfront fees, secrecy, notarios, prizes, suspicious links) in all six languages. It needs no internet and no API key, and every result is explainable: the screen shows the exact words that matched.
+2. **AI analysis (layer 2).** `app/api/analyze/route.ts` sends the message (and screenshot, if any) to Claude on the server. Claude must answer in strict JSON: `{risk, scamType, redFlags[{flag, explanation}], nextSteps[], summary}`, written in the user's language. The server checks that JSON again with **zod** before trusting it.
+3. **Combine.** The final risk is the **higher** of the two layers, and the result shows each layer's verdict side by side, so it's clear which layer flagged what.
+4. **Never a blank screen.** If the AI is slow (over 8 seconds), fails, refuses, is rate limited, or the device is offline, the app shows the rules result with a small notice explaining why.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The hardest technical challenge
 
-## Learn More
+**Getting a reliable answer in six languages from an AI that can fail, without ever leaving a scared user staring at a spinner or an error.**
 
-To learn more about Next.js, take a look at the following resources:
+AI output can be slow, cut off, or shaped wrong, and a user checking a scam call is often under pressure. The solution has four parts:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Strict shape.** Claude is asked for structured JSON output, then the server validates it a second time with zod (`AiAnalysisSchema`). Anything that doesn't match is treated as a failure.
+- **Hard time limit.** Both the browser (`AbortController`) and the server SDK stop after 8 seconds.
+- **Offline first layer.** The rules engine always runs first, in the browser, so there is always a result to fall back to.
+- **Screenshots feed both layers.** When only a screenshot is sent, Claude also returns the text it read (`extractedText`), and the rules engine re-runs on that text. A screenshot gets two independent checks too.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A second challenge was **multilingual text handling**. JavaScript's `\b` word boundary only understands English letters, so Punjabi, Hindi, Chinese and Dari keywords need different matching. Dari also needs right-to-left layout, the invisible joiner character (ZWNJ) in words like پیام‌ها, and its own font. A test (`lib/locales.test.ts`) guarantees every language has every string.
 
-## Deploy on Vercel
+## Run it yourself
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Requirements: Node.js 20+.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git clone <this repo>
+cd check-first
+npm install
+cp .env.example .env.local   # then put your Anthropic API key in .env.local
+npm run dev                  # http://localhost:3000
+```
+
+Without an API key the app still works: it uses the rules engine only and says so.
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Development server |
+| `npm test` | Unit tests (rules engine, translations, official links) |
+| `npm run typecheck` | TypeScript check |
+| `npm run lint` | ESLint |
+| `npm run build` | Production build |
+
+Environment variables (server only, never sent to the browser):
+
+| Name | Required | Default |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | for the AI layer | none |
+| `ANTHROPIC_MODEL` | no | `claude-sonnet-5-5` |
+
+## Tech stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS · Anthropic SDK (server only) · zod · Vitest · Vercel.
+
+## AI disclosure
+
+This project used an AI coding assistant. [AI_USAGE.md](AI_USAGE.md) lists exactly what was AI-generated and what Viraj wrote. The rules engine logic in `lib/redFlags.ts` was written by Viraj. [LEARN.md](LEARN.md) walks through every file.
+
+## Not legal advice
+
+Check First gives general safety information and links to official sources. It is not legal advice. In an emergency, call 911.

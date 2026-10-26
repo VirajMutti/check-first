@@ -78,6 +78,16 @@ real browser and loaded. Fixes made along the way:
 
 Lighthouse accessibility (mobile, 2026-10-26): Home 100, Verify 100, Learn 100.
 
+### Phase 5: docs
+| File | What it does |
+|---|---|
+| `README.md` | Problem, features, architecture diagram, how detection works, setup |
+| `LEARN.md` | Walkthrough of every file in plain English |
+| `VIDEO_SCRIPT.md` | 2:45 demo video script |
+| `AI_USAGE.md` | This file |
+
+Viraj should review and edit the docs in his own words before submitting.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:
