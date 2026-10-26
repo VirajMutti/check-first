@@ -101,7 +101,7 @@ Environment variables (server only, never sent to the browser):
 | `ANTHROPIC_API_KEY` | one of the two keys, for the AI layer | none |
 | `ANTHROPIC_MODEL` | no | `claude-sonnet-5-5` |
 | `GEMINI_API_KEY` | used only if there's no Anthropic key (free tier at aistudio.google.com) | none |
-| `GEMINI_MODEL` | no | `gemini-3.8-flash` |
+| `GEMINI_MODEL` | no | `gemini-3.5-flash-lite` |
 
 ## Tech stack
 

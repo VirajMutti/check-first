@@ -7,7 +7,7 @@ It's updated as the project goes.
 
 The app itself also *uses* AI at runtime: the server route calls Claude
 (`claude-sonnet-5-5` by default) or, if only a Gemini key is set, Google Gemini
-(`gemini-3.8-flash`) to analyze messages. That is part of the
+(`gemini-3.5-flash-lite`) to analyze messages. That is part of the
 product, separate from how the code was written.
 
 ## Written by Viraj

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { AiOutputSchema, type AiOutput } from "@/lib/analysis";
 import { AI_TIMEOUT_MS, buildUserText, SYSTEM_PROMPT, type AiInput } from "./prompt";
 
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
 
 // The same zod schema Claude uses, turned into JSON Schema for Gemini.
 const OUTPUT_JSON_SCHEMA = z.toJSONSchema(AiOutputSchema);
