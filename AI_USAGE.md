@@ -124,6 +124,15 @@ The payment-method steps follow the FTC's "What To Do if You Were Scammed" page.
 
 Viraj chose an installable web app over a separate App Store app so one codebase serves web and mobile tonight.
 
+### Polish round (link preview, AI safety, testing)
+| File | What it does |
+|---|---|
+| `app/opengraph-image.png`, `app/opengraph-image.alt.txt`, `app/layout.tsx` | Preview card when the link is shared on WhatsApp/Messages |
+| `lib/ai/prompt.ts` | AI may only name official `.gov` (or canada.ca) sites and the verified phone numbers |
+| `VIDEO_SCRIPT.md` | Demo now shows "Report it in English", the Help tab and the installed app; trimmed to ~2:32 of speech |
+
+Tested on the live site (2026-10-26): screenshot upload with no text read a fake USPS text correctly (High, "Fake toll or package text"), and the Gemini AI check, English report and offline service worker all work.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:

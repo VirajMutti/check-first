@@ -25,12 +25,21 @@ const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-ara
 // A self-hosted Chinese font is ~200 files and made builds fail on slow networks.
 
 export const metadata: Metadata = {
+  // Full web address, so link previews (WhatsApp, Messages) can load the share image.
+  metadataBase: new URL("https://check-first-sepia.vercel.app"),
   title: "Check First — scam checker for CA-14 families",
   description:
     "Paste a suspicious message or screenshot. Check First tells you in your language how risky it is and how to verify it with official sources.",
   icons: {
     icon: [{ url: "/icons/icon.svg", type: "image/svg+xml" }],
     apple: "/icons/apple-touch-icon.png",
+  },
+  // The preview card when someone shares the link (image: app/opengraph-image.png).
+  openGraph: {
+    title: "Check First: free scam checker",
+    description: "Got a message asking for money or papers? Check it in your language before you pay anyone.",
+    siteName: "Check First",
+    type: "website",
   },
   // iPhone: when added to the home screen, open full screen like an app.
   appleWebApp: { capable: true, title: "Check First", statusBarStyle: "default" },

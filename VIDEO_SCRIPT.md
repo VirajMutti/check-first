@@ -1,6 +1,6 @@
 # Video Script: Check First (2:45 max)
 
-About 360 spoken words, which is comfortable at a normal pace. **[Brackets]** are what's on screen.
+About 380 spoken words (about 2:32), which is comfortable at a normal pace. **[Brackets]** are what's on screen.
 Record the screen on a phone-sized browser window. Have the app open, the API key working,
 and a sample screenshot saved in your photos before you start.
 
@@ -14,7 +14,7 @@ and a sample screenshot saved in your photos before you start.
 ### 0:15 – 0:35 · Problem
 **[Quick cuts: fake USCIS voicemail text, a notario ad in Spanish, a fake toll text.]**
 
-> "In CA-14, immigrant families and seniors get fake USCIS and IRS calls, notarios giving illegal legal advice, and fake visa agents. Most scam tools are English-only. So I built Check First: a free scam checker that answers in Punjabi, Hindi, Spanish, Chinese, Dari and English."
+> "In CA-14, families get fake USCIS and IRS calls, illegal notarios and fake visa agents, and most scam tools are English-only. So I built Check First: a free scam checker in Punjabi, Hindi, Spanish, Chinese, Dari and English."
 
 ### 0:35 – 1:40 · Live demo
 **[Home page. Tap "Try an example".]**
@@ -41,24 +41,30 @@ and a sample screenshot saved in your photos before you start.
 
 > "One tap warns the family group on WhatsApp, in their language."
 
-**[Open "Verify someone", pick "Immigration consultant or notario".]**
+**[Scroll to "Report it in English". Tap "Copy report".]**
 
-> "And before you pay anyone, the Verify page shows exactly how to check a consultant, lawyer or agent, with official California and federal lookups."
+> "Many of our elders can't report a scam in English, so Check First writes the report for them, ready to paste into the FTC's fraud form."
+
+**[Tap the "Help" tab at the bottom. Pick "Gift cards".]**
+
+> "And if someone already paid, the Help page says exactly what to do right now, with tap-to-call numbers for the real USCIS, IRS and Social Security."
 
 ### 1:40 – 2:10 · How it works
 **[Show the architecture diagram from the README.]**
 
-> "Check First uses two layers. First, a rules engine I wrote in TypeScript. It runs on the phone, works offline, and scores warning signs in all six languages. Second, a server route sends the message to an AI model, Gemini or Claude depending on which key is set, and it must answer in strict JSON that I validate with zod. The app shows the higher of the two risks, because a false 'safe' is the worst mistake a scam checker can make."
+> "Check First uses two layers. A rules engine I wrote runs on the phone, works offline, and scores warning signs in six languages. A server route asks an AI model, which must answer in strict JSON that I validate with zod. The app shows the higher risk, because a false 'safe' is the worst mistake a scam checker can make."
 
 ### 2:10 – 2:30 · The hard part
 **[Show the "AI check didn't finish" notice, then the test results in the terminal.]**
 
-> "The hardest part was making it never fail when a scared person needs it. If the AI is slow, offline, or returns bad data, the app falls back to my rules result after eight seconds. There's never a blank screen. Multilingual text was hard too: normal word matching doesn't work for Punjabi or Dari, so I wrote tests in all six languages."
+> "The hardest part was making it never fail when a scared person needs it. If the AI is slow, offline, or returns bad data, the app falls back to my rules result. There's never a blank screen. And normal word matching doesn't work for Punjabi or Dari, so I wrote tests in all six languages."
 
 ### 2:30 – 2:45 · Impact and next steps
 **[Back to the home page.]**
 
-> "Check First saves nothing and needs no account. Next, I want to partner with gurdwaras, mosques, temples and senior centers in CA-14, and add more languages like Tagalog and Vietnamese. Check first. Then pay."
+**[Phone home screen: tap the Check First app icon.]**
+
+> "It installs on any phone like an app, works offline for the guides, saves nothing, and needs no account. Next, I want to partner with gurdwaras, mosques, temples and senior centers in CA-14, and add more languages like Tagalog and Vietnamese. Check first. Then pay."
 
 ---
 
@@ -68,4 +74,5 @@ and a sample screenshot saved in your photos before you start.
 - [ ] A screenshot of a scam text saved in your photos.
 - [ ] WhatsApp installed (or WhatsApp Web open) for the share step.
 - [ ] Large text off and high contrast off at the start.
+- [ ] Check First installed on your phone (Android: "Install app" button; iPhone: Share → Add to Home Screen) for the last shot.
 - [ ] Time the full run: it must be under 2:45.
