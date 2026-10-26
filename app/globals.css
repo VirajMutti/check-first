@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens: calm, civic, trustworthy ---------- */
+:root {
+  --brand: #0d4f5c; /* deep teal */
+  --brand-strong: #083843;
+  --bg: #f6f4ef; /* warm paper */
+  --surface: #ffffff;
+  --surface-muted: #eeebe4;
+  --ink: #1b2429;
+  --ink-muted: #4a565d;
+  --line: #d6d1c7;
+  --focus: #1d6fd6;
+
+  /* Risk colors: always shown together with an icon and a text label */
+  --risk-high: #a4161a;
+  --risk-high-bg: #fdecec;
+  --risk-medium: #8a4b00;
+  --risk-medium-bg: #fff4e0;
+  --risk-low: #1e6b3a;
+  --risk-low-bg: #e8f5ec;
+  --whatsapp: #0f7a3d;
+
+  --base-size: 18px;
+}
+
+/* High contrast mode: pure black on white, heavier borders */
+:root[data-contrast="high"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #ffffff;
+  --ink: #000000;
+  --ink-muted: #000000;
+  --line: #000000;
+  --brand: #002f3a;
+  --risk-high: #7a0000;
+  --risk-medium: #5a3000;
+  --risk-low: #00461f;
+}
+
+/* Large text mode */
+:root[data-text="large"] {
+  --base-size: 22px;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-risk-high: var(--risk-high);
+  --color-risk-high-bg: var(--risk-high-bg);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-medium-bg: var(--risk-medium-bg);
+  --color-risk-low: var(--risk-low);
+  --color-risk-low-bg: var(--risk-low-bg);
+  --color-whatsapp: var(--whatsapp);
+  /* Latin first, then each script's Noto font as a fallback */
+  --font-sans: var(--font-latin), var(--font-gurmukhi), var(--font-devanagari), var(--font-arabic), "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+html {
+  font-size: var(--base-size);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+/* Arabic script reads better a little larger and with more line height */
+:root[dir="rtl"] body {
+  line-height: 1.8;
+}
+
+/* Clear, consistent keyboard focus ring everywhere */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Reusable pieces ---------- */
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-surface p-5 shadow-sm;
+  }
+  .card-title {
+    @apply mb-3 text-xl font-bold;
+  }
+  .layer-label {
+    @apply mt-4 mb-2 text-sm font-semibold uppercase tracking-wide text-ink-muted first:mt-0;
+  }
+  .flag-item {
+    @apply border-s-4 border-line ps-3;
+  }
+  .input {
+    @apply rounded-xl border-2 border-line bg-surface p-3 text-lg text-ink placeholder:text-ink-muted;
+  }
+  .input:focus {
+    border-color: var(--brand);
+  }
+  /* Every button is at least 44px tall for easy tapping */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-semibold transition-colors disabled:opacity-70;
+  }
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-strong;
+  }
+  .btn-secondary {
+    @apply border-2 border-line bg-surface text-ink hover:border-brand;
+  }
+  .link-row {
+    @apply flex min-h-11 items-center justify-between gap-3 rounded-xl border border-line px-4 py-2 font-semibold text-brand underline-offset-4 hover:underline;
+  }
+}
+
+/* Result slides up gently; turned off for people who prefer less motion */
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.result-enter > * {
+  animation: result-in 0.45s ease-out both;
+}
+.result-enter > *:nth-child(2) { animation-delay: 0.06s; }
+.result-enter > *:nth-child(3) { animation-delay: 0.12s; }
+.result-enter > *:nth-child(4) { animation-delay: 0.18s; }
+.result-enter > *:nth-child(5) { animation-delay: 0.24s; }
+.result-enter > *:nth-child(n + 6) { animation-delay: 0.3s; }
+
+.spinner {
+  width: 1.1em;
+  height: 1.1em;
+  border: 3px solid rgb(255 255 255 / 0.4);
+  border-top-color: #fff;
+  border-radius: 999px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-enter > *,
+  .spinner {
+    animation: none;
+  }
+}

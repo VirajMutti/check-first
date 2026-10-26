@@ -1,0 +1,28 @@
+{
+  "links": {
+    "uscis_scams": "https://www.uscis.gov/avoid-scams",
+    "uscis_legal_help": "https://www.uscis.gov/avoid-scams/find-legal-services",
+    "eoir_roster": "https://www.justice.gov/eoir/recognized-organizations-and-accredited-representatives-roster-state-and-city",
+    "calbar_search": "https://apps.calbar.ca.gov/attorney/LicenseeSearch/QuickSearch",
+    "ftc_report": "https://reportfraud.ftc.gov/",
+    "ca_ag_complaint": "https://oag.ca.gov/contact/consumer-complaint-against-business-or-company",
+    "irs_scams": "https://www.irs.gov/newsroom/tax-scams-consumer-alerts",
+    "tigta_report": "https://www.tigta.gov/reportcrime-misconduct",
+    "ssa_scams": "https://www.ssa.gov/scam/",
+    "state_visa_fraud": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fraud.html",
+    "uspis_smishing": "https://www.uspis.gov/news/scam-article/smishing",
+    "ic3": "https://www.ic3.gov/",
+    "cslb_check": "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx"
+  },
+  "scamTypeLinks": {
+    "immigration": ["uscis_scams", "uscis_legal_help", "eoir_roster", "calbar_search"],
+    "government_impersonation": ["irs_scams", "ssa_scams", "uscis_scams", "ftc_report"],
+    "visa_job_abroad": ["state_visa_fraud", "uscis_scams", "ftc_report"],
+    "prize_lottery": ["ftc_report", "ca_ag_complaint"],
+    "family_emergency": ["ftc_report", "ic3"],
+    "delivery_toll": ["uspis_smishing", "ftc_report"],
+    "online_shopping": ["ftc_report", "ca_ag_complaint", "ic3"],
+    "other": ["ftc_report", "ca_ag_complaint"],
+    "none": ["ftc_report"]
+  }
+}

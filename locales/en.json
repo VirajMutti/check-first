@@ -1,0 +1,133 @@
+{
+  "app": {
+    "name": "Check First",
+    "tagline": "Got a message asking for money or papers? Check it here before you pay anyone.",
+    "privacy": "We never save your messages."
+  },
+  "nav": { "check": "Check a message", "verify": "Verify someone", "learn": "Learn the scams" },
+  "form": {
+    "language": "Language",
+    "messageLabel": "Paste the message",
+    "messagePlaceholder": "Paste a text, WhatsApp message, or write what the caller said…",
+    "screenshotLabel": "Or add a screenshot",
+    "screenshotButton": "Choose screenshot",
+    "screenshotHint": "PNG or JPG",
+    "removeScreenshot": "Remove screenshot",
+    "screenshotAlt": "Screenshot you added",
+    "submit": "Check it",
+    "checking": "Checking…",
+    "tryExample": "Try an example",
+    "empty": "Paste a message or add a screenshot first.",
+    "badImage": "That file isn't a PNG or JPG picture.",
+    "tooLong": "That message is very long. Only the first {max} characters will be checked."
+  },
+  "risk": {
+    "low": "Low risk",
+    "medium": "Medium risk",
+    "high": "High risk",
+    "summary": {
+      "low": "We didn't find common scam signs. Still, never pay or share documents until you're sure who you're dealing with.",
+      "medium": "This message has some warning signs. Don't pay or share personal information until you verify it.",
+      "high": "This looks like a scam. Do not pay, do not reply, and do not share any personal information."
+    }
+  },
+  "result": {
+    "heading": "Result",
+    "howDecided": "How we decided",
+    "rulesLayer": "Rules check",
+    "rulesLayerHint": "Runs on your phone. Works without internet.",
+    "aiLayer": "AI check",
+    "aiLayerHint": "Reads the whole message with Claude AI.",
+    "finalNote": "We show the higher of the two results to keep you safe.",
+    "flaggedBy": "Flagged by: {layers}",
+    "flaggedByNone": "Neither check found warning signs.",
+    "notRun": "Not available",
+    "redFlags": "Red flags found",
+    "noRedFlags": "No red flags found.",
+    "matched": "Matched",
+    "nextSteps": "What to do now",
+    "verify": "Verify it yourself",
+    "verifyHint": "Use these official websites. Never use a phone number or link from the message itself.",
+    "share": "Share with family",
+    "shareWhatsApp": "Share on WhatsApp",
+    "copy": "Copy warning",
+    "copied": "Copied!",
+    "readAloud": "Read aloud",
+    "stopReading": "Stop reading",
+    "checkAnother": "Check another message"
+  },
+  "fallback": {
+    "offline": "You're offline, so only the rules check ran.",
+    "ai_failed": "The AI check didn't finish in time, so this result uses the rules check only.",
+    "not_configured": "The AI check isn't set up on this server, so this result uses the rules check only.",
+    "rate_limited": "Too many checks in a minute. This result uses the rules check only.",
+    "bad_request": "The AI check couldn't read this input, so this result uses the rules check only.",
+    "imageOnly": "We couldn't read the screenshot without the AI check. Please paste the message text too."
+  },
+  "categories": {
+    "urgency": { "title": "Threats or a rush", "explanation": "Scammers threaten arrest, deportation or a closed account so you act before you think." },
+    "payment": { "title": "Strange way to pay", "explanation": "Real agencies never ask for gift cards, crypto, wire transfers, Zelle or Western Union." },
+    "government": { "title": "Says it's the government", "explanation": "USCIS, IRS, SSA, ICE and police do not call or text to demand money." },
+    "guarantee": { "title": "\"Guaranteed\" visa or job", "explanation": "No one can guarantee a visa, green card or job abroad — only the government decides." },
+    "upfront_fee": { "title": "Pay first", "explanation": "Asking for a fee before you receive anything is a classic scam trick." },
+    "secrecy": { "title": "Keep it secret", "explanation": "Being told not to tell anyone is a sign someone wants to stop you from getting help." },
+    "notario": { "title": "Notario or consultant", "explanation": "In the US, a notario cannot give legal advice or file immigration cases for you." },
+    "prize": { "title": "Prize or lottery", "explanation": "You can't win a contest you never entered, and real prizes don't cost money." },
+    "link": { "title": "Suspicious link", "explanation": "Links in surprise messages often lead to fake sites that steal money or passwords." }
+  },
+  "defaultSteps": {
+    "low": [
+      "If it asks for money or documents later, check again before acting.",
+      "Contact the person or company using a number you already know."
+    ],
+    "medium": [
+      "Don't pay and don't share personal information yet.",
+      "Contact the agency or company yourself using the official website below.",
+      "Talk to a family member you trust before doing anything."
+    ],
+    "high": [
+      "Do not pay — especially not with gift cards, crypto, wire or Zelle.",
+      "Do not reply, call back, or click any link in the message.",
+      "Contact the real agency using the official website below.",
+      "Report it at ReportFraud.ftc.gov.",
+      "Warn your family so they don't fall for it."
+    ]
+  },
+  "shareText": "⚠️ Scam warning from Check First: a message like this was rated {risk}. Don't pay or share personal information. Check messages yourself at {url}",
+  "scamTypes": {
+    "immigration": "Immigration scam",
+    "government_impersonation": "Fake government call",
+    "visa_job_abroad": "Fake visa or job-abroad offer",
+    "prize_lottery": "Prize or lottery scam",
+    "family_emergency": "Family emergency scam",
+    "delivery_toll": "Fake toll or package text",
+    "online_shopping": "Online shopping scam",
+    "other": "Possible scam",
+    "none": "No scam detected"
+  },
+  "links": {
+    "uscis_scams": "USCIS: Avoid immigration scams",
+    "uscis_legal_help": "USCIS: Find real legal help",
+    "eoir_roster": "DOJ: Accredited representatives list",
+    "calbar_search": "State Bar of California: Check a lawyer",
+    "ftc_report": "FTC: Report fraud",
+    "ca_ag_complaint": "California Attorney General: File a complaint",
+    "irs_scams": "IRS: Tax scam alerts",
+    "tigta_report": "TIGTA: Report IRS impersonation",
+    "ssa_scams": "Social Security: Scam information",
+    "state_visa_fraud": "U.S. State Department: Visa fraud",
+    "uspis_smishing": "U.S. Postal Inspection Service: Text scams",
+    "ic3": "FBI: Report internet crime",
+    "cslb_check": "CSLB: Check a contractor's license"
+  },
+  "footer": {
+    "notLegal": "Not legal advice. We never save your messages.",
+    "emergency": "In an emergency, call 911.",
+    "madeFor": "Made for families in Fremont, Union City, Hayward and all of CA-14."
+  },
+  "a11y": {
+    "largeText": "Large text",
+    "highContrast": "High contrast",
+    "skip": "Skip to main content"
+  }
+}
