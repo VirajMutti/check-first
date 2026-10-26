@@ -51,6 +51,8 @@ export const AiOutputSchema = z.object({
   summary: z.string(),
   /** Text the AI read from the screenshot, so the rules engine can check it too. */
   extractedText: z.string(),
+  /** A short, factual report in English, ready to paste into ReportFraud.ftc.gov. */
+  reportEnglish: z.string(),
 });
 export type AiOutput = z.infer<typeof AiOutputSchema>;
 

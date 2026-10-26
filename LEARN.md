@@ -102,6 +102,9 @@ The list of 6 languages: code, native name, English name (for the AI prompt), an
 ### `lib/image.ts`
 Shrinks a screenshot in the browser to at most 1600px and converts it to JPEG before upload. Phone screenshots can be 5+ MB; this makes them ~200 KB, which is faster on mobile data and stays under the server limit.
 
+### `lib/report.ts`
+Builds the "Report it in English" text. If the AI wrote `reportEnglish`, it uses that. Otherwise it fills a template: the English names of the warning signs your rules engine found, plus the message quoted, cut to 600 characters. So reporting works even offline. Tested in `lib/report.test.ts`.
+
 ### `lib/rateLimit.ts`
 Keeps a list of recent request times per IP address in memory, and allows 10 per minute. It's simple on purpose; a real launch would use a shared database.
 
@@ -121,6 +124,8 @@ Safety nets: every language must have every key and placeholder, and every offic
 | `DisplayToggles.tsx` | Large text and high contrast buttons (`aria-pressed` tells screen readers whether they're on). |
 | `Header.tsx` / `Footer.tsx` | Logo, language picker, navigation (`aria-current` marks the current page), and the "Not legal advice / call 911" footer. |
 | `VerifyPicker.tsx` | Native radio buttons, so arrow keys and screen readers work, then 3 steps + official links. Scrolls to the steps after a tap, but not for keyboard users. |
+| `StepsPicker.tsx` | Shared "pick an option, see 3 steps + official links" component used by /verify and /help. |
+| `HelpPage.tsx` | /help: "How did you pay?" picker, tap-to-call official numbers (`tel:` links, `dir="ltr"` so numbers don't flip in Dari), and "what to say" lines with read-aloud. |
 | `LearnCards.tsx` | Six scam cards: example, warning signs, what to do, read aloud. |
 | `OfficialLinks.tsx` | A list of official links with translated labels. |
 | `Icons.tsx` | Hand-made SVG icons: shield logo, and the octagon, triangle and check-circle risk icons. |
@@ -134,7 +139,7 @@ A **service worker** is a small script the browser keeps running for your site. 
 | File | What's inside |
 |---|---|
 | `locales/*.json` | Every piece of UI text, in 6 languages. |
-| `data/resources.json` | 21 official `.gov` links, which ones go with each scam type, and which go with each "Who are you dealing with?" option. |
+| `data/resources.json` | 27 official `.gov` links; which go with each scam type, "Who are you dealing with?" option and payment method; and the official phone numbers (each with the page it was checked on). |
 | `data/samples.json` | 5 made-up demo messages modeled on real scams (fake 555 phone numbers). |
 
 ## Config files
@@ -151,5 +156,5 @@ A **service worker** is a small script the browser keeps running for your site. 
 - **Why not just use the AI?** It can be slow, cost money, need internet, or make mistakes. The rules engine is instant, free, private, offline and explainable, and it catches the AI if the AI under-rates a message.
 - **Why "higher of the two"?** For a scam checker, a false "safe" is far worse than a false "be careful".
 - **How do you protect privacy?** No database, no accounts, no logging of messages, and the API keys stay on the server. The app tells users the text goes to an AI service. On Gemini's free tier Google may use submitted content to improve its products, so a real launch would use a paid tier or Claude.
-- **How do you know the links are real?** Every link is a `.gov` site, a test enforces that, and each one was opened in a browser on 2026-10-26.
+- **How do you know the links and numbers are real?** Every link is a `.gov` site (a test enforces that), each one was opened in a browser on 2026-10-26, and each phone number was read off the agency's own website, which the page links as its source.
 - **What did AI write?** See `AI_USAGE.md`.

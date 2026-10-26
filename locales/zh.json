@@ -7,7 +7,8 @@
   "nav": {
     "check": "检查信息",
     "verify": "核实对方身份",
-    "learn": "了解常见骗局"
+    "learn": "了解常见骗局",
+    "help": "获取帮助"
   },
   "form": {
     "language": "语言",
@@ -57,7 +58,13 @@
     "copied": "已复制！",
     "readAloud": "朗读",
     "stopReading": "停止朗读",
-    "checkAnother": "检查另一条信息"
+    "checkAnother": "检查另一条信息",
+    "reportTitle": "用英文举报",
+    "reportIntro": "举报能帮助阻止骗子。复制这份英文报告，粘贴到 ReportFraud.ftc.gov，或拿给律师看。",
+    "reportCopy": "复制报告",
+    "reportOpen": "打开 ReportFraud.ftc.gov",
+    "alreadyPaid": "已经付钱或提供了个人信息？",
+    "alreadyPaidHint": "看看现在该做什么，以及真正的官方电话。"
   },
   "fallback": {
     "offline": "您目前没有网络，所以只进行了规则检查。",
@@ -156,7 +163,13 @@
     "ssa_scams": "社会安全局：保护自己免受诈骗",
     "uspis_smishing": "美国邮政检查局：包裹短信诈骗",
     "ic3": "FBI：举报网络犯罪",
-    "cslb_check": "CSLB：查询承包商执照"
+    "cslb_check": "CSLB：查询承包商执照",
+    "ftc_scammed": "FTC：被骗后该怎么办",
+    "identitytheft": "IdentityTheft.gov：举报和恢复",
+    "uscis_contact": "USCIS 客服中心",
+    "ssa_phone": "社会安全局：电话联系",
+    "irs_phone": "IRS：电话帮助",
+    "ftc_contact": "FTC：联系 FTC"
   },
   "footer": {
     "notLegal": "本网站不提供法律建议。我们从不保存您的信息。",
@@ -239,7 +252,7 @@
           "要求通过电话、礼品卡或电汇付款",
           "来电显示可以被伪造成 USCIS 的号码"
         ],
-        "action": "挂断电话。USCIS 从不通过电话收款。请登录您的 USCIS 账户，或自己拨打 800-375-5283。"
+        "action": "挂断电话。USCIS 从不通过电话收款。请登录您的 USCIS 账户，或自己拨打 800‑375‑5283。"
       },
       "notario": {
         "title": "公证人（notario）诈骗",
@@ -304,5 +317,115 @@
     "en_uscis_call": "假冒 USCIS 来电",
     "fa_deportation": "达里语驱逐威胁",
     "en_safe": "一条安全的信息"
+  },
+  "help": {
+    "title": "已经付钱或提供了个人信息？",
+    "intro": "不要觉得丢脸。骗子每天都会骗到很小心的人。尽快行动，最有机会把钱要回来。",
+    "paidTitle": "您是怎么付的钱，或提供了什么信息？",
+    "doNow": "现在就这样做",
+    "methods": {
+      "bank": {
+        "label": "Zelle 或银行转账",
+        "steps": [
+          "马上打电话给您的银行或信用合作社。用银行卡背面或银行 App 里的电话，绝不要用骗子给的号码。",
+          "告诉他们您被骗了，请他们停止或撤回这笔付款。",
+          "记下日期、金额和骗子的名字或号码，然后到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "app": {
+        "label": "Venmo、Cash App 或 PayPal",
+        "steps": [
+          "马上在 App 里举报这笔付款：打开这笔付款，选择举报（report）或争议（dispute）。",
+          "请 App 撤回付款并退款给您。",
+          "保存付款记录和聊天信息的截图，然后到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "wire": {
+        "label": "西联汇款或速汇金（MoneyGram）",
+        "steps": [
+          "马上用汇款公司官方网站上的电话打给他们。",
+          "告诉他们骗子骗您汇了钱，请他们停止汇款并退款给您。",
+          "保留收据和汇款追踪号码，然后到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "gift_card": {
+        "label": "礼品卡",
+        "steps": [
+          "马上用卡背面的电话打给发行礼品卡的公司。",
+          "告诉他们骗子拿到了卡号和密码（PIN），请求退款。",
+          "保留礼品卡和购买收据，然后到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "crypto": {
+        "label": "比特币或加密货币 ATM",
+        "steps": [
+          "马上联系加密货币交易平台或 ATM 公司，告诉他们这是诈骗。",
+          "请他们撤回交易。加密货币很难追回，所以绝不要付钱给声称可以收费帮您\"追回\"的人。",
+          "向 FTC 举报，也到 ic3.gov 向 FBI 举报。"
+        ]
+      },
+      "cash": {
+        "label": "邮寄或快递现金",
+        "steps": [
+          "如果您邮寄了现金，马上打电话给美国邮政检查局：1‑877‑876‑2455。他们也许能拦截包裹。",
+          "如果您用的是 FedEx 或 UPS，尽快打电话给他们。",
+          "到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "card": {
+        "label": "信用卡或借记卡",
+        "steps": [
+          "马上用卡背面的电话打给发卡公司。",
+          "告诉他们被骗的情况，请他们取消这笔扣款并补发新卡。",
+          "联邦法律保护您免受很多未经授权的扣款。也请到 ReportFraud.ftc.gov 举报。"
+        ]
+      },
+      "personal_info": {
+        "label": "我给了社安号、护照、A 号码或密码",
+        "steps": [
+          "如果您给了社会安全号码，请到 IdentityTheft.gov 获取免费的恢复计划。",
+          "更改您告诉过别人的密码，并开启两步验证登录。",
+          "留意银行和信用卡账单。绝不要把 A 号码或证件交给主动联系您的人。"
+        ]
+      }
+    },
+    "phonesTitle": "打给真正的政府机构",
+    "phonesIntro": "骗子可以伪造来电显示。请挂断电话，再自己拨打这些官方号码。",
+    "phones": {
+      "emergency": {
+        "name": "紧急情况",
+        "note": "如果您现在有危险，请找警察、消防或救护车。"
+      },
+      "uscis": {
+        "name": "USCIS 客服中心",
+        "note": "移民案件和预约。TTY：800‑767‑1833。"
+      },
+      "ssa": {
+        "name": "社会安全局",
+        "note": "福利和社会安全号码。"
+      },
+      "irs": {
+        "name": "IRS（税务局）",
+        "note": "个人服务，提供口译。"
+      },
+      "ftc": {
+        "name": "FTC：举报诈骗",
+        "note": "如果不能用网站，可以打电话举报。"
+      },
+      "uspis": {
+        "name": "美国邮政检查局",
+        "note": "如果您把现金或支票寄给了骗子。"
+      }
+    },
+    "source": "来源：官方网站",
+    "call": "拨打",
+    "checkedOn": "这些号码于 {date} 在官方网站上核实。",
+    "sayTitle": "怎么回应骗子",
+    "sayIntro": "您不需要客气。说这几句话，然后挂断电话或不再回复。",
+    "sayLines": [
+      "我不在电话里提供个人信息，也不付钱。",
+      "我会自己用官方网站上的电话打给这个机构。",
+      "请不要再联系我。"
+    ]
   }
 }

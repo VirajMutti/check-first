@@ -7,7 +7,8 @@
   "nav": {
     "check": "Check a message",
     "verify": "Verify someone",
-    "learn": "Learn the scams"
+    "learn": "Learn the scams",
+    "help": "Get help"
   },
   "form": {
     "language": "Language",
@@ -57,7 +58,13 @@
     "copied": "Copied!",
     "readAloud": "Read aloud",
     "stopReading": "Stop reading",
-    "checkAnother": "Check another message"
+    "checkAnother": "Check another message",
+    "reportTitle": "Report it in English",
+    "reportIntro": "Reporting helps stop scammers. Copy this English report and paste it into ReportFraud.ftc.gov, or show it to a lawyer.",
+    "reportCopy": "Copy report",
+    "reportOpen": "Open ReportFraud.ftc.gov",
+    "alreadyPaid": "Already paid or shared information?",
+    "alreadyPaidHint": "See what to do right now, and the real phone numbers."
   },
   "fallback": {
     "offline": "You're offline, so only the rules check ran.",
@@ -156,7 +163,13 @@
     "ssa_scams": "Social Security: Protect yourself from scams",
     "uspis_smishing": "U.S. Postal Inspection Service: Package text scams",
     "ic3": "FBI: Report internet crime",
-    "cslb_check": "CSLB: Check a contractor's license"
+    "cslb_check": "CSLB: Check a contractor's license",
+    "ftc_scammed": "FTC: What to do if you were scammed",
+    "identitytheft": "IdentityTheft.gov: Report and recover",
+    "uscis_contact": "USCIS Contact Center",
+    "ssa_phone": "Social Security: Contact by phone",
+    "irs_phone": "IRS: Phone help",
+    "ftc_contact": "FTC: Contact the FTC"
   },
   "footer": {
     "notLegal": "Not legal advice. We never save your messages.",
@@ -239,7 +252,7 @@
           "Wants payment by phone, gift card or wire",
           "The caller ID can be faked to look like USCIS"
         ],
-        "action": "Hang up. USCIS never asks for payment by phone. Log in to your USCIS account or call 800-375-5283 yourself."
+        "action": "Hang up. USCIS never asks for payment by phone. Log in to your USCIS account or call 800‑375‑5283 yourself."
       },
       "notario": {
         "title": "Notario fraud",
@@ -304,5 +317,115 @@
     "en_uscis_call": "Fake USCIS call",
     "fa_deportation": "Dari deportation threat",
     "en_safe": "A safe message"
+  },
+  "help": {
+    "title": "Already paid or shared information?",
+    "intro": "Don't be embarrassed. Scammers fool careful people every day. Acting fast gives you the best chance to get your money back.",
+    "paidTitle": "How did you pay, or what did you share?",
+    "doNow": "do this now",
+    "methods": {
+      "bank": {
+        "label": "Zelle or bank transfer",
+        "steps": [
+          "Call your bank or credit union right away. Use the number on your card or in your bank's app, never one from the scammer.",
+          "Tell them a scammer tricked you, and ask them to stop or reverse the payment.",
+          "Write down the date, the amount and the scammer's name or number, then report it at ReportFraud.ftc.gov."
+        ]
+      },
+      "app": {
+        "label": "Venmo, Cash App or PayPal",
+        "steps": [
+          "Report the payment inside the app right away: open the payment and choose report or dispute.",
+          "Ask the app to reverse the payment and refund your money.",
+          "Save screenshots of the payment and the messages, then report it at ReportFraud.ftc.gov."
+        ]
+      },
+      "wire": {
+        "label": "Western Union or MoneyGram",
+        "steps": [
+          "Call the money transfer company right away, using the number on its official website.",
+          "Tell them a scammer tricked you into sending money, and ask them to stop the transfer and refund you.",
+          "Keep your receipt and tracking number, then report it at ReportFraud.ftc.gov."
+        ]
+      },
+      "gift_card": {
+        "label": "Gift cards",
+        "steps": [
+          "Call the company that issued the gift card right away, using the number on the back of the card.",
+          "Tell them a scammer has the card number and PIN, and ask for a refund.",
+          "Keep the card and the store receipt, then report it at ReportFraud.ftc.gov."
+        ]
+      },
+      "crypto": {
+        "label": "Bitcoin or a crypto ATM",
+        "steps": [
+          "Contact the crypto exchange or ATM company right away and tell them it was fraud.",
+          "Ask them to reverse the transaction. Crypto is very hard to get back, so never pay anyone who promises to \"recover\" it for a fee.",
+          "Report it to the FTC, and to the FBI at ic3.gov."
+        ]
+      },
+      "cash": {
+        "label": "Cash by mail or delivery",
+        "steps": [
+          "If you mailed cash, call the U.S. Postal Inspection Service right away at 1‑877‑876‑2455. They may be able to stop the package.",
+          "If you used FedEx or UPS, call them as soon as possible.",
+          "Report it at ReportFraud.ftc.gov."
+        ]
+      },
+      "card": {
+        "label": "Credit or debit card",
+        "steps": [
+          "Call your card company right away, using the number on the back of your card.",
+          "Tell them about the scam, and ask them to cancel the charge and send you a new card.",
+          "Federal law protects you from many unauthorized charges. Report it at ReportFraud.ftc.gov too."
+        ]
+      },
+      "personal_info": {
+        "label": "Shared my SSN, passport, A-number or passwords",
+        "steps": [
+          "If you shared your Social Security number, go to IdentityTheft.gov for a free recovery plan.",
+          "Change any password you shared, and turn on two-step login.",
+          "Watch your bank and credit card statements. Never give your A-number or documents to someone who contacted you first."
+        ]
+      }
+    },
+    "phonesTitle": "Call the real agency",
+    "phonesIntro": "Scammers can fake caller ID. Hang up, then call these official numbers yourself.",
+    "phones": {
+      "emergency": {
+        "name": "Emergency",
+        "note": "Police, fire or ambulance, if you are in danger right now."
+      },
+      "uscis": {
+        "name": "USCIS Contact Center",
+        "note": "Immigration cases and appointments. TTY: 800‑767‑1833."
+      },
+      "ssa": {
+        "name": "Social Security",
+        "note": "Benefits and Social Security numbers."
+      },
+      "irs": {
+        "name": "IRS (taxes)",
+        "note": "For individuals. Interpreters are available."
+      },
+      "ftc": {
+        "name": "FTC: report fraud",
+        "note": "Report a scam by phone if you can't use the website."
+      },
+      "uspis": {
+        "name": "U.S. Postal Inspection Service",
+        "note": "If you mailed cash or a check to a scammer."
+      }
+    },
+    "source": "Source: official website",
+    "call": "Call",
+    "checkedOn": "Numbers checked on the official websites on {date}.",
+    "sayTitle": "What to say to a scammer",
+    "sayIntro": "You don't have to be polite. Say this, then hang up or stop replying.",
+    "sayLines": [
+      "I don't give personal information or money over the phone.",
+      "I will call the agency myself, using the number on its official website.",
+      "Please don't contact me again."
+    ]
   }
 }

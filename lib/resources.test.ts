@@ -6,7 +6,12 @@ import resources from "@/data/resources.json";
 import en from "@/locales/en.json";
 
 const urls = resources.links as Record<string, string>;
-const usedIds = [...Object.values(resources.scamTypeLinks), ...Object.values(resources.verifyTypes)].flat();
+const usedIds = [
+  ...Object.values(resources.scamTypeLinks).flat(),
+  ...Object.values(resources.verifyTypes).flat(),
+  ...Object.values(resources.paidMethods).flat(),
+  ...resources.phones.flatMap((p) => (p.source ? [p.source] : [])),
+];
 
 describe("official resources", () => {
   it.each(Object.entries(urls))("%s is an official https .gov link", (_, url) => {
@@ -17,6 +22,10 @@ describe("official resources", () => {
 
   it("every link id used exists", () => {
     for (const id of usedIds) expect(urls[id], id).toBeDefined();
+  });
+
+  it("every phone number is 911 or a 10-digit US number", () => {
+    for (const { number } of resources.phones) expect(number).toMatch(/^(911|\d{3}-\d{3}-\d{4})$/);
   });
 
   it("every link has an English label", () => {

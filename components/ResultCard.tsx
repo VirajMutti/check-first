@@ -3,10 +3,12 @@
 // Shows the combined result: risk level, red flags from each layer,
 // next steps, official links and share buttons.
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { linksForScamType, type CheckResult } from "@/lib/combine";
 import { useI18n } from "@/lib/i18n";
 import type { RedFlagCategory } from "@/lib/redFlags";
+import { buildEnglishReport } from "@/lib/report";
 import type { RiskLevel } from "@/lib/risk";
 import { CopyIcon, RiskIcon, WhatsAppIcon } from "./Icons";
 import { OfficialLinks } from "./OfficialLinks";
@@ -80,9 +82,7 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
         <div className="flex items-center gap-4">
           <RiskIcon risk={finalRisk} className="h-12 w-12 shrink-0" />
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide opacity-80">
-              {t(`scamTypes.${scamType}`)}
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-wide opacity-80">{t(`scamTypes.${scamType}`)}</p>
             <h2 id="result-heading" ref={headingRef} tabIndex={-1} className="text-3xl font-bold outline-none">
               {t(`risk.${finalRisk}`)}
             </h2>
@@ -110,7 +110,12 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
       <div className="card">
         <h3 className="card-title">{t("result.howDecided")}</h3>
         <div className="grid gap-3 sm:grid-cols-2">
-          <LayerBox title={t("result.rulesLayer")} hint={t("result.rulesLayerHint")} risk={rules.risk} detail={`${rules.score}/100`} />
+          <LayerBox
+            title={t("result.rulesLayer")}
+            hint={t("result.rulesLayerHint")}
+            risk={rules.risk}
+            detail={`${rules.score}/100`}
+          />
           <LayerBox
             title={t("result.aiLayer")}
             hint={t("result.aiLayerHint")}
@@ -186,26 +191,42 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
 
       {/* 6. Share with family — only when there's something to warn about */}
       {finalRisk !== "low" && (
-      <div className="card">
-        <h3 className="card-title">{t("result.share")}</h3>
-        <p className="mb-3 rounded-lg bg-surface-muted p-3 text-ink-muted">{shareText}</p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={`https://wa.me/?text=${encodeURIComponent(shareText)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn bg-whatsapp text-white"
-          >
-            <WhatsAppIcon /> {t("result.shareWhatsApp")}
-          </a>
-          <button type="button" onClick={copyWarning} className="btn btn-secondary">
-            <CopyIcon /> {copied ? t("result.copied") : t("result.copy")}
-          </button>
-          <span aria-live="polite" className="sr-only">
-            {copied ? t("result.copied") : ""}
-          </span>
+        <div className="card">
+          <h3 className="card-title">{t("result.share")}</h3>
+          <p className="mb-3 rounded-lg bg-surface-muted p-3 text-ink-muted">{shareText}</p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(shareText)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn bg-whatsapp text-white"
+            >
+              <WhatsAppIcon /> {t("result.shareWhatsApp")}
+            </a>
+            <button type="button" onClick={copyWarning} className="btn btn-secondary">
+              <CopyIcon /> {copied ? t("result.copied") : t("result.copy")}
+            </button>
+            <span aria-live="polite" className="sr-only">
+              {copied ? t("result.copied") : ""}
+            </span>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* 7. Report it in English — so families can report even if they don't read English */}
+      {finalRisk !== "low" && <ReportBox report={buildEnglishReport(result)} />}
+
+      {/* 8. Already paid? Point to the help page */}
+      {finalRisk !== "low" && (
+        <Link href="/help" className="card flex min-h-11 items-center justify-between gap-3 border-2 border-brand">
+          <span>
+            <strong className="block text-lg text-brand">{t("result.alreadyPaid")}</strong>
+            <span className="text-ink-muted">{t("result.alreadyPaidHint")}</span>
+          </span>
+          <span aria-hidden="true" className="text-2xl text-brand rtl:rotate-180">
+            →
+          </span>
+        </Link>
       )}
 
       <button type="button" onClick={onReset} className="btn btn-secondary w-full">
@@ -215,14 +236,73 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
   );
 }
 
-function LayerBox({ title, hint, risk, detail }: { title: string; hint: string; risk: RiskLevel | null; detail?: string }) {
+/** The English report, with Copy and a link to the FTC's report form. */
+function ReportBox({ report }: { report: string }) {
+  const { t } = useI18n();
+  const [copied, setCopied] = useState(false);
+
+  async function copyReport() {
+    try {
+      await navigator.clipboard.writeText(report);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Clipboard blocked: the text is still selectable in the box.
+    }
+  }
+
+  return (
+    <div className="card">
+      <h3 className="card-title">{t("result.reportTitle")}</h3>
+      <p className="mb-3 text-ink-muted">{t("result.reportIntro")}</p>
+      <label htmlFor="english-report" className="sr-only">
+        {t("result.reportTitle")}
+      </label>
+      {/* lang="en" + dir="ltr": the report is always English, even on the Dari page */}
+      <textarea
+        id="english-report"
+        readOnly
+        value={report}
+        lang="en"
+        dir="ltr"
+        rows={5}
+        className="input w-full resize-y text-base"
+      />
+      <div className="mt-3 flex flex-wrap gap-3">
+        <button type="button" onClick={copyReport} className="btn btn-secondary">
+          <CopyIcon /> {copied ? t("result.copied") : t("result.reportCopy")}
+        </button>
+        <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          {t("result.reportOpen")}
+        </a>
+        <span aria-live="polite" className="sr-only">
+          {copied ? t("result.copied") : ""}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function LayerBox({
+  title,
+  hint,
+  risk,
+  detail,
+}: {
+  title: string;
+  hint: string;
+  risk: RiskLevel | null;
+  detail?: string;
+}) {
   const { t } = useI18n();
   return (
     <div className="rounded-xl border border-line p-3">
       <p className="font-semibold">{title}</p>
       <p className="text-sm text-ink-muted">{hint}</p>
       {risk ? (
-        <p className={`mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-semibold ${RISK_STYLE[risk]}`}>
+        <p
+          className={`mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-semibold ${RISK_STYLE[risk]}`}
+        >
           <RiskIcon risk={risk} className="h-5 w-5" />
           {t(`risk.${risk}`)}
           {detail && <span className="font-normal opacity-80">· {detail}</span>}

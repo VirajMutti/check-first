@@ -12,6 +12,7 @@ Rules:
 - Never tell the user to reply to, call back, or click anything in the suspicious message.
 - You are not giving legal advice; point to official sources.
 - extractedText: if an image was provided, copy the message text you can read from it (original language); otherwise "".
+- reportEnglish: ALWAYS in English, whatever language the user asks for. 3-5 short factual sentences for a fraud report (for example to ReportFraud.ftc.gov): who the sender claimed to be, what they asked for (amounts, payment method), any phone numbers, links, names or accounts the sender used, and the warning signs. Do not invent facts and do not include the recipient's own personal details. If risk is "low", reportEnglish is "".
 - Write flag, explanation, nextSteps and summary in the language the user asks for. Keep extractedText in its original language.`;
 
 /** The text part of the request: which language to answer in, and the message. */

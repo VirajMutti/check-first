@@ -9,6 +9,8 @@ import resources from "@/data/resources.json";
 export type AiSkipReason = Exclude<AnalyzeResponse, { ok: true }>["reason"] | "offline";
 
 export interface CheckResult {
+  /** The text that was checked (pasted, or read from the screenshot). */
+  message: string;
   rules: RulesResult;
   ai: AiAnalysis | null;
   /** Which AI answered, if one did. */
@@ -34,6 +36,7 @@ export function scamTypeFromRules(categories: RedFlagCategory[]): ScamType {
 }
 
 export function combineResults(
+  message: string,
   rules: RulesResult,
   ai: AiAnalysis | null,
   aiProvider: AiProvider | null,
@@ -52,7 +55,7 @@ export function combineResults(
   // If the rules say risky but the AI said "none", still show useful links.
   if (scamType === "none" && finalRisk !== "low") scamType = "other";
 
-  return { rules, ai, aiProvider, aiSkipReason, imageUnread, finalRisk, scamType, flaggedBy };
+  return { message, rules, ai, aiProvider, aiSkipReason, imageUnread, finalRisk, scamType, flaggedBy };
 }
 
 /** Official link ids to show for a scam type (see data/resources.json). */

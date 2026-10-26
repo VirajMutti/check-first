@@ -101,7 +101,8 @@ export function Checker() {
     }
     const imageUnread = !message.trim() && !analysis;
 
-    setResult(combineResults(rules, analysis, provider, "reason" in ai ? ai.reason : null, imageUnread));
+    const checkedText = message.trim() ? message : (analysis?.extractedText ?? "");
+    setResult(combineResults(checkedText, rules, analysis, provider, "reason" in ai ? ai.reason : null, imageUnread));
     setChecking(false);
   }
 

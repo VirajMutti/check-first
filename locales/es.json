@@ -7,7 +7,8 @@
   "nav": {
     "check": "Revisar un mensaje",
     "verify": "Verificar a alguien",
-    "learn": "Conozca las estafas"
+    "learn": "Conozca las estafas",
+    "help": "Pedir ayuda"
   },
   "form": {
     "language": "Idioma",
@@ -57,7 +58,13 @@
     "copied": "¡Copiado!",
     "readAloud": "Leer en voz alta",
     "stopReading": "Dejar de leer",
-    "checkAnother": "Revisar otro mensaje"
+    "checkAnother": "Revisar otro mensaje",
+    "reportTitle": "Repórtelo en inglés",
+    "reportIntro": "Reportar ayuda a detener a los estafadores. Copie este reporte en inglés y péguelo en ReportFraud.ftc.gov, o muéstreselo a un abogado.",
+    "reportCopy": "Copiar reporte",
+    "reportOpen": "Abrir ReportFraud.ftc.gov",
+    "alreadyPaid": "¿Ya pagó o compartió información?",
+    "alreadyPaidHint": "Vea qué hacer ahora mismo y los números de teléfono reales."
   },
   "fallback": {
     "offline": "No tiene conexión, así que solo se hizo la revisión por reglas.",
@@ -156,7 +163,13 @@
     "ssa_scams": "Seguro Social: Protéjase de las estafas",
     "uspis_smishing": "Servicio de Inspección Postal: Estafas por texto sobre paquetes",
     "ic3": "FBI: Reporte delitos por internet",
-    "cslb_check": "CSLB: Verifique la licencia de un contratista"
+    "cslb_check": "CSLB: Verifique la licencia de un contratista",
+    "ftc_scammed": "FTC: Qué hacer si lo estafaron",
+    "identitytheft": "IdentityTheft.gov: Reporte y recupérese",
+    "uscis_contact": "Centro de Contacto de USCIS",
+    "ssa_phone": "Seguro Social: Contacto por teléfono",
+    "irs_phone": "IRS: Ayuda por teléfono",
+    "ftc_contact": "FTC: Contacte a la FTC"
   },
   "footer": {
     "notLegal": "Esto no es asesoría legal. Nunca guardamos sus mensajes.",
@@ -239,7 +252,7 @@
           "Pide pago por teléfono, tarjeta de regalo o giro",
           "El número en pantalla puede falsificarse para parecer de USCIS"
         ],
-        "action": "Cuelgue. USCIS nunca pide pagos por teléfono. Entre a su cuenta de USCIS o llame usted mismo al 800-375-5283."
+        "action": "Cuelgue. USCIS nunca pide pagos por teléfono. Entre a su cuenta de USCIS o llame usted mismo al 800‑375‑5283."
       },
       "notario": {
         "title": "Fraude de notarios",
@@ -304,5 +317,115 @@
     "en_uscis_call": "Llamada falsa de USCIS",
     "fa_deportation": "Amenaza de deportación (dari)",
     "en_safe": "Un mensaje seguro"
+  },
+  "help": {
+    "title": "¿Ya pagó o compartió información?",
+    "intro": "No sienta vergüenza. Los estafadores engañan a personas cuidadosas todos los días. Actuar rápido le da la mejor oportunidad de recuperar su dinero.",
+    "paidTitle": "¿Cómo pagó o qué compartió?",
+    "doNow": "haga esto ahora",
+    "methods": {
+      "bank": {
+        "label": "Zelle o transferencia bancaria",
+        "steps": [
+          "Llame a su banco o cooperativa de crédito de inmediato. Use el número de su tarjeta o de la app del banco, nunca uno que le dio el estafador.",
+          "Dígales que un estafador lo engañó y pídales que detengan o reviertan el pago.",
+          "Anote la fecha, la cantidad y el nombre o número del estafador, y luego repórtelo en ReportFraud.ftc.gov."
+        ]
+      },
+      "app": {
+        "label": "Venmo, Cash App o PayPal",
+        "steps": [
+          "Reporte el pago dentro de la app de inmediato: abra el pago y elija reportar o disputar.",
+          "Pida a la app que revierta el pago y le devuelva su dinero.",
+          "Guarde capturas de pantalla del pago y de los mensajes, y luego repórtelo en ReportFraud.ftc.gov."
+        ]
+      },
+      "wire": {
+        "label": "Western Union o MoneyGram",
+        "steps": [
+          "Llame a la compañía de envío de dinero de inmediato, usando el número de su sitio web oficial.",
+          "Dígales que un estafador lo engañó para enviar dinero y pídales que detengan el envío y le devuelvan el dinero.",
+          "Guarde su recibo y el número de seguimiento, y luego repórtelo en ReportFraud.ftc.gov."
+        ]
+      },
+      "gift_card": {
+        "label": "Tarjetas de regalo",
+        "steps": [
+          "Llame de inmediato a la compañía que emitió la tarjeta, usando el número que aparece detrás de la tarjeta.",
+          "Dígales que un estafador tiene el número y el PIN de la tarjeta, y pida un reembolso.",
+          "Guarde la tarjeta y el recibo de la tienda, y luego repórtelo en ReportFraud.ftc.gov."
+        ]
+      },
+      "crypto": {
+        "label": "Bitcoin o cajero de criptomonedas",
+        "steps": [
+          "Comuníquese de inmediato con la plataforma o la compañía del cajero y dígales que fue un fraude.",
+          "Pídales que reviertan la transacción. Es muy difícil recuperar criptomonedas, así que nunca pague a nadie que prometa \"recuperarlas\" a cambio de una tarifa.",
+          "Repórtelo a la FTC y al FBI en ic3.gov."
+        ]
+      },
+      "cash": {
+        "label": "Efectivo por correo o mensajería",
+        "steps": [
+          "Si envió efectivo por correo, llame de inmediato al Servicio de Inspección Postal al 1‑877‑876‑2455. Quizás puedan detener el paquete.",
+          "Si usó FedEx o UPS, llámelos lo antes posible.",
+          "Repórtelo en ReportFraud.ftc.gov."
+        ]
+      },
+      "card": {
+        "label": "Tarjeta de crédito o débito",
+        "steps": [
+          "Llame a la compañía de su tarjeta de inmediato, usando el número que aparece detrás de la tarjeta.",
+          "Cuénteles sobre la estafa y pídales que cancelen el cargo y le envíen una tarjeta nueva.",
+          "La ley federal lo protege de muchos cargos no autorizados. Repórtelo también en ReportFraud.ftc.gov."
+        ]
+      },
+      "personal_info": {
+        "label": "Compartí mi número de Seguro Social, pasaporte, número A o contraseñas",
+        "steps": [
+          "Si compartió su número de Seguro Social, entre a IdentityTheft.gov para obtener un plan de recuperación gratis.",
+          "Cambie cualquier contraseña que haya compartido y active la verificación en dos pasos.",
+          "Revise sus estados de cuenta del banco y de la tarjeta. Nunca dé su número A ni sus documentos a alguien que lo contactó primero."
+        ]
+      }
+    },
+    "phonesTitle": "Llame a la agencia real",
+    "phonesIntro": "Los estafadores pueden falsificar el número que aparece en pantalla. Cuelgue y llame usted mismo a estos números oficiales.",
+    "phones": {
+      "emergency": {
+        "name": "Emergencias",
+        "note": "Policía, bomberos o ambulancia, si está en peligro ahora mismo."
+      },
+      "uscis": {
+        "name": "Centro de Contacto de USCIS",
+        "note": "Casos de inmigración y citas. TTY: 800‑767‑1833."
+      },
+      "ssa": {
+        "name": "Seguro Social",
+        "note": "Beneficios y números de Seguro Social."
+      },
+      "irs": {
+        "name": "IRS (impuestos)",
+        "note": "Para personas. Hay intérpretes disponibles."
+      },
+      "ftc": {
+        "name": "FTC: reportar fraude",
+        "note": "Reporte una estafa por teléfono si no puede usar el sitio web."
+      },
+      "uspis": {
+        "name": "Servicio de Inspección Postal",
+        "note": "Si envió efectivo o un cheque por correo a un estafador."
+      }
+    },
+    "source": "Fuente: sitio web oficial",
+    "call": "Llamar al",
+    "checkedOn": "Números verificados en los sitios web oficiales el {date}.",
+    "sayTitle": "Qué decirle a un estafador",
+    "sayIntro": "No tiene que ser amable. Diga esto y luego cuelgue o deje de responder.",
+    "sayLines": [
+      "No doy información personal ni dinero por teléfono.",
+      "Llamaré a la agencia por mi cuenta, usando el número de su sitio web oficial.",
+      "Por favor, no me vuelva a contactar."
+    ]
   }
 }

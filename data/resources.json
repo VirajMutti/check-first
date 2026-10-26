@@ -20,26 +20,163 @@
     "ssa_scams": "https://www.ssa.gov/scam/",
     "uspis_smishing": "https://www.uspis.gov/news/scam-article/smishing-package-tracking-text-scams",
     "ic3": "https://www.ic3.gov/",
-    "cslb_check": "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx"
+    "cslb_check": "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx",
+    "ftc_scammed": "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed",
+    "identitytheft": "https://www.identitytheft.gov/",
+    "uscis_contact": "https://www.uscis.gov/contactcenter",
+    "ssa_phone": "https://www.ssa.gov/agency/contact/phone.html",
+    "irs_phone": "https://www.irs.gov/help/let-us-help-you",
+    "ftc_contact": "https://www.ftc.gov/about-ftc/contact"
   },
   "scamTypeLinks": {
-    "immigration": ["uscis_common_scams", "sos_consultant_search", "uscis_legal_help", "eoir_roster"],
-    "government_impersonation": ["ftc_imposters", "irs_scams", "ssa_scams", "uscis_common_scams"],
-    "visa_job_abroad": ["ftc_jobs", "ftc_immigrants", "uscis_common_scams", "ftc_report"],
-    "prize_lottery": ["ftc_gift_cards", "ftc_report", "ca_ag_complaint"],
-    "family_emergency": ["ftc_older_adults", "ftc_report"],
-    "delivery_toll": ["uspis_smishing", "ftc_texts", "ftc_report"],
-    "online_shopping": ["ftc_report", "ca_ag_complaint", "ic3"],
-    "other": ["ftc_imposters", "ftc_report", "ca_ag_complaint"],
-    "none": ["ftc_report"]
+    "immigration": [
+      "uscis_common_scams",
+      "sos_consultant_search",
+      "uscis_legal_help",
+      "eoir_roster"
+    ],
+    "government_impersonation": [
+      "ftc_imposters",
+      "irs_scams",
+      "ssa_scams",
+      "uscis_common_scams"
+    ],
+    "visa_job_abroad": [
+      "ftc_jobs",
+      "ftc_immigrants",
+      "uscis_common_scams",
+      "ftc_report"
+    ],
+    "prize_lottery": [
+      "ftc_gift_cards",
+      "ftc_report",
+      "ca_ag_complaint"
+    ],
+    "family_emergency": [
+      "ftc_older_adults",
+      "ftc_report"
+    ],
+    "delivery_toll": [
+      "uspis_smishing",
+      "ftc_texts",
+      "ftc_report"
+    ],
+    "online_shopping": [
+      "ftc_report",
+      "ca_ag_complaint",
+      "ic3"
+    ],
+    "other": [
+      "ftc_imposters",
+      "ftc_report",
+      "ca_ag_complaint"
+    ],
+    "none": [
+      "ftc_report"
+    ]
   },
   "verifyTypes": {
-    "consultant": ["sos_consultant_search", "sos_consultant_rules", "uscis_legal_help", "eoir_roster"],
-    "lawyer": ["calbar_search", "eoir_roster", "uscis_legal_help"],
-    "travel_agent": ["ftc_jobs", "ftc_immigrants", "uscis_common_scams", "ftc_report"],
-    "government": ["ftc_imposters", "uscis_common_scams", "ssa_scams", "irs_scams", "tigta_report"],
-    "contractor": ["cslb_check", "ca_ag_complaint"],
-    "seller": ["ftc_report", "ic3", "ca_ag_complaint"]
+    "consultant": [
+      "sos_consultant_search",
+      "sos_consultant_rules",
+      "uscis_legal_help",
+      "eoir_roster"
+    ],
+    "lawyer": [
+      "calbar_search",
+      "eoir_roster",
+      "uscis_legal_help"
+    ],
+    "travel_agent": [
+      "ftc_jobs",
+      "ftc_immigrants",
+      "uscis_common_scams",
+      "ftc_report"
+    ],
+    "government": [
+      "ftc_imposters",
+      "uscis_common_scams",
+      "ssa_scams",
+      "irs_scams",
+      "tigta_report"
+    ],
+    "contractor": [
+      "cslb_check",
+      "ca_ag_complaint"
+    ],
+    "seller": [
+      "ftc_report",
+      "ic3",
+      "ca_ag_complaint"
+    ]
   },
+  "paidMethods": {
+    "bank": [
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "app": [
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "wire": [
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "gift_card": [
+      "ftc_gift_cards",
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "crypto": [
+      "ftc_scammed",
+      "ftc_report",
+      "ic3"
+    ],
+    "cash": [
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "card": [
+      "ftc_scammed",
+      "ftc_report"
+    ],
+    "personal_info": [
+      "identitytheft",
+      "ftc_scammed"
+    ]
+  },
+  "phones": [
+    {
+      "id": "emergency",
+      "number": "911",
+      "source": null
+    },
+    {
+      "id": "uscis",
+      "number": "800-375-5283",
+      "source": "uscis_contact"
+    },
+    {
+      "id": "ssa",
+      "number": "800-772-1213",
+      "source": "ssa_phone"
+    },
+    {
+      "id": "irs",
+      "number": "800-829-1040",
+      "source": "irs_phone"
+    },
+    {
+      "id": "ftc",
+      "number": "877-382-4357",
+      "source": "ftc_contact"
+    },
+    {
+      "id": "uspis",
+      "number": "877-876-2455",
+      "source": "ftc_scammed"
+    }
+  ],
   "verifiedOn": "2026-10-26"
 }

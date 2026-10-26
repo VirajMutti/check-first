@@ -100,6 +100,19 @@ Viraj should review and edit the docs in his own words before submitting.
 
 Viraj chose Gemini so the AI layer can run on a free tier.
 
+### Help features (added after Phase 5)
+| File | What it does |
+|---|---|
+| `components/HelpPage.tsx`, `app/help/page.tsx` | /help: "I already paid" guide, official phone numbers, what to say |
+| `components/StepsPicker.tsx` | Shared picker (refactored out of VerifyPicker) |
+| `lib/report.ts`, `lib/report.test.ts` | "Report it in English" text: AI's report or an offline template |
+| `lib/analysis.ts`, `lib/ai/prompt.ts` | New `reportEnglish` field in the AI's JSON |
+| `components/ResultCard.tsx` | Report box + "Already paid?" link |
+| `data/resources.json` | 6 more official links, payment methods, phone numbers |
+| `locales/*.json` | All new text in 6 languages. **Needs proofreading.** |
+
+The payment-method steps follow the FTC's "What To Do if You Were Scammed" page. Phone numbers were read from uscis.gov, ssa.gov, irs.gov and ftc.gov on 2026-10-26.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:

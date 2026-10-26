@@ -32,6 +32,8 @@ CA-14 is one of the most diverse districts in the country, with large Punjabi, H
 - **Accessibility**: large text, high contrast, 44px tap targets, full keyboard use, read-aloud (when the device has a voice for that language). Lighthouse accessibility score: 100.
 - **/verify**: "Who are you dealing with?" Three steps and official links for consultants, lawyers, travel/visa agents, people claiming to be government, contractors and online sellers.
 - **/learn**: six common scam cards in every language. Works offline.
+- **Report it in English**: after a risky result, one tap copies a factual English report (written by the AI, or a template when offline) to paste into ReportFraud.ftc.gov, so families who don't read English can still report.
+- **/help**: for people who already paid. Pick how you paid (Zelle, payment app, Western Union, gift card, crypto, cash, card, or shared your SSN or passport) and get what to do *right now*, based on the FTC's official advice. Also has tap-to-call official numbers (USCIS, SSA, IRS, FTC, Postal Inspection, 911), each checked on the agency's own website, and "what to say to a scammer" in your language, with read-aloud.
 - **Privacy**: no database, no accounts, and messages are never stored or logged by Check First. The AI check sends the text to the AI provider to read it, and the app says so. Note: on Gemini's *free* tier, Google's terms allow it to use submitted content to improve its products, so a real launch should use a paid tier.
 
 ## Architecture
