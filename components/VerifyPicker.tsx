@@ -12,7 +12,7 @@ export function VerifyPicker() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-brand sm:text-3xl">{t("verify.title")}</h1>
+        <h1 className="text-[1.75rem] leading-[1.15] font-extrabold tracking-tight sm:text-[2.5rem]">{t("verify.title")}</h1>
         <p className="mt-2 text-ink-muted">{t("verify.intro")}</p>
       </div>
       <StepsPicker

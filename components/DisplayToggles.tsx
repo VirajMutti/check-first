@@ -59,8 +59,8 @@ function ToggleButton({ pressed, onClick, children }: { pressed: boolean; onClic
       type="button"
       aria-pressed={pressed}
       onClick={onClick}
-      className={`inline-flex min-h-11 items-center gap-2 rounded-full border-2 px-3 text-sm font-semibold ${
-        pressed ? "border-brand bg-brand text-white" : "border-line bg-surface text-ink"
+      className={`inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] border-2 px-3 text-sm font-bold ${
+        pressed ? "border-ink bg-ink text-white" : "border-line bg-surface text-ink hover:border-ink"
       }`}
     >
       {children}

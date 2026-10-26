@@ -39,7 +39,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label={t("nav.label")}
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-ink bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
     >
       <ul className="mx-auto grid max-w-2xl grid-cols-4">
         {TABS.map((tab) => {
@@ -50,7 +50,7 @@ export function BottomNav() {
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
                 className={`flex min-h-16 flex-col items-center justify-center gap-0.5 px-1 text-sm font-semibold ${
-                  active ? "text-brand" : "text-ink-muted"
+                  active ? "text-ink" : "text-ink-muted"
                 }`}
               >
                 <svg
@@ -67,7 +67,7 @@ export function BottomNav() {
                 </svg>
                 {t(`nav.short.${tab.id}`)}
                 {/* A small bar under the active tab, so it's not shown by color alone */}
-                <span aria-hidden="true" className={`h-1 w-6 rounded-full ${active ? "bg-brand" : "bg-transparent"}`} />
+                <span aria-hidden="true" className={`h-[3px] w-7 ${active ? "bg-ink" : "bg-transparent"}`} />
               </Link>
             </li>
           );

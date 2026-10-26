@@ -77,31 +77,29 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
 
   return (
     <section aria-labelledby="result-heading" className="result-enter space-y-4">
-      {/* 1. Risk banner */}
-      <div className={`rounded-2xl border-2 p-5 ${RISK_STYLE[finalRisk]}`}>
-        <div className="flex items-center gap-4">
-          <RiskIcon risk={finalRisk} className="h-12 w-12 shrink-0" />
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide opacity-80">{t(`scamTypes.${scamType}`)}</p>
-            <h2 id="result-heading" ref={headingRef} tabIndex={-1} className="text-3xl font-bold outline-none">
-              {t(`risk.${finalRisk}`)}
-            </h2>
-          </div>
-        </div>
-        <p className="mt-3 text-lg text-ink">{summary}</p>
-        <div className="mt-3">
+      {/* 1. The verdict: a rubber-stamp style label inside a boxed notice */}
+      <div className="notice">
+        <p className="text-sm font-bold tracking-wide text-ink-muted uppercase">{t(`scamTypes.${scamType}`)}</p>
+        <h2 id="result-heading" ref={headingRef} tabIndex={-1} className="mt-3 outline-none">
+          <span className={`stamp ${RISK_STYLE[finalRisk]}`}>
+            <RiskIcon risk={finalRisk} className="h-7 w-7 shrink-0" />
+            {t(`risk.${finalRisk}`)}
+          </span>
+        </h2>
+        <p className="mt-4 text-lg">{summary}</p>
+        <div className="mt-4">
           <ReadAloud text={spokenText} />
         </div>
       </div>
 
       {/* Fallback notices: shown when the AI layer didn't run */}
       {result.aiSkipReason && (
-        <p role="status" className="rounded-xl border border-line bg-surface-muted px-4 py-3 text-ink-muted">
+        <p role="status" className="rounded-[var(--radius)] border border-line bg-surface-muted px-4 py-3 text-ink-muted">
           {t(`fallback.${result.aiSkipReason}`)}
         </p>
       )}
       {result.imageUnread && (
-        <p role="status" className="rounded-xl border border-risk-medium bg-risk-medium-bg px-4 py-3 text-ink">
+        <p role="status" className="rounded-[var(--radius)] border border-risk-medium bg-risk-medium-bg px-4 py-3 text-ink">
           {t("fallback.imageOnly")}
         </p>
       )}
@@ -160,7 +158,7 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
                   <span className="mt-1 flex flex-wrap gap-2">
                     <span className="sr-only">{t("result.matched")}:</span>
                     {phrasesFor(c).map((p) => (
-                      <q key={p} className="rounded-md bg-surface-muted px-2 py-0.5 text-sm">
+                      <q key={p} className="rounded-[var(--radius)] bg-surface-muted px-2 py-0.5 text-sm">
                         {p}
                       </q>
                     ))}
@@ -193,7 +191,7 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
       {finalRisk !== "low" && (
         <div className="card">
           <h3 className="card-title">{t("result.share")}</h3>
-          <p className="mb-3 rounded-lg bg-surface-muted p-3 text-ink-muted">{shareText}</p>
+          <p className="mb-3 rounded-[var(--radius)] bg-surface-muted p-3 text-ink-muted">{shareText}</p>
           <div className="flex flex-wrap gap-3">
             <a
               href={`https://wa.me/?text=${encodeURIComponent(shareText)}`}
@@ -296,12 +294,12 @@ function LayerBox({
 }) {
   const { t } = useI18n();
   return (
-    <div className="rounded-xl border border-line p-3">
+    <div className="rounded-[var(--radius)] border border-line p-3">
       <p className="font-semibold">{title}</p>
       <p className="text-sm text-ink-muted">{hint}</p>
       {risk ? (
         <p
-          className={`mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-semibold ${RISK_STYLE[risk]}`}
+          className={`mt-2 inline-flex items-center gap-2 rounded-[var(--radius)] border px-3 py-1 font-semibold ${RISK_STYLE[risk]}`}
         >
           <RiskIcon risk={risk} className="h-5 w-5" />
           {t(`risk.${risk}`)}

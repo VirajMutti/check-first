@@ -45,8 +45,8 @@ export function StepsPicker({ name, legend, prefix, options, stepsHeading, links
         {Object.keys(options).map((id) => (
           <label
             key={id}
-            className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 font-semibold has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--focus)] ${
-              selected === id ? "border-brand bg-brand text-white" : "border-line bg-surface"
+            className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-[var(--radius)] border-2 px-4 py-3 font-bold has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--focus)] ${
+              selected === id ? "border-ink bg-ink text-white" : "border-line bg-surface hover:border-ink"
             }`}
           >
             <input

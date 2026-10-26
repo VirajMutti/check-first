@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <!-- Check First app icon: white shield with a check on deep teal -->
-  <rect width="512" height="512" fill="#0d4f5c"/>
+  <rect width="512" height="512" fill="#0f3d4c"/>
   <path d="M256 96 140 142v86c0 76 50 136 116 158 66-22 116-82 116-158v-86L256 96Z" fill="#ffffff"/>
-  <path d="m200 252 38 38 74-80" fill="none" stroke="#0d4f5c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m200 252 38 38 74-80" fill="none" stroke="#0f3d4c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Noto_Sans,
+  Atkinson_Hyperlegible_Next,
   Noto_Sans_Arabic,
   Noto_Sans_Devanagari,
   Noto_Sans_Gurmukhi,
@@ -12,11 +12,12 @@ import { ServiceWorker } from "@/components/ServiceWorker";
 import { I18nProvider } from "@/lib/i18n";
 import "./globals.css";
 
-// One Noto family per script, so every language renders properly.
-// The browser only downloads a font file when that script appears on screen.
+// Latin letters use Atkinson Hyperlegible, a typeface the Braille Institute
+// designed for readers with low vision (good for seniors). Other scripts use
+// one Noto family each; the browser only downloads a font when it's needed.
 // adjustFontFallback: false stops Next adding an Arial fallback in front of the
 // script fonts (Arial has Arabic letters, so Dari would render in Arial).
-const notoLatin = Noto_Sans({ subsets: ["latin", "latin-ext"], variable: "--font-latin", adjustFontFallback: false });
+const notoLatin = Atkinson_Hyperlegible_Next({ subsets: ["latin", "latin-ext"], variable: "--font-latin", adjustFontFallback: false });
 const notoGurmukhi = Noto_Sans_Gurmukhi({ subsets: ["gurmukhi"], variable: "--font-gurmukhi", preload: false });
 const notoDevanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], variable: "--font-devanagari", preload: false });
 const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", preload: false });
@@ -50,7 +51,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   // Lets the app use the full screen on phones with a notch (safe areas are padded).
   viewportFit: "cover",
-  themeColor: "#0d4f5c",
+  themeColor: "#0f3d4c",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

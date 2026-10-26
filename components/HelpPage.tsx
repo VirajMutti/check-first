@@ -19,7 +19,7 @@ export function HelpPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-brand sm:text-3xl">{t("help.title")}</h1>
+        <h1 className="text-[1.75rem] leading-[1.15] font-extrabold tracking-tight sm:text-[2.5rem]">{t("help.title")}</h1>
         <p className="mt-2 text-lg">{t("help.intro")}</p>
       </div>
 
@@ -87,7 +87,7 @@ export function HelpPage() {
         <p className="text-ink-muted">{t("help.sayIntro")}</p>
         <ul className="space-y-2">
           {sayLines.map((line, i) => (
-            <li key={i} className="rounded-xl bg-surface-muted p-3 text-lg font-semibold">
+            <li key={i} className="rounded-[var(--radius)] bg-surface-muted p-3 text-lg font-semibold">
               “{line}”
             </li>
           ))}

@@ -14,7 +14,7 @@ export function LearnCards() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-brand sm:text-3xl">{t("learn.title")}</h1>
+        <h1 className="text-[1.75rem] leading-[1.15] font-extrabold tracking-tight sm:text-[2.5rem]">{t("learn.title")}</h1>
         <p className="mt-2 text-ink-muted">{t("learn.intro")}</p>
       </div>
 
@@ -27,7 +27,7 @@ export function LearnCards() {
             <h2 id={`card-${id}`} className="text-xl font-bold">
               {t(`${key}.title`)}
             </h2>
-            <figure className="rounded-xl bg-surface-muted p-3">
+            <figure className="rounded-[var(--radius)] bg-surface-muted p-3">
               <figcaption className="text-sm font-semibold text-ink-muted">{t("learn.exampleLabel")}</figcaption>
               <blockquote className="mt-1 text-lg font-medium">{t(`${key}.example`)}</blockquote>
             </figure>
@@ -39,7 +39,7 @@ export function LearnCards() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-xl border-s-4 border-risk-low bg-risk-low-bg p-3">
+            <div className="border-s-4 border-risk-low bg-risk-low-bg p-3">
               <h3 className="font-semibold">{t("learn.actionHeading")}</h3>
               <p>{t(`${key}.action`)}</p>
             </div>

@@ -21,50 +21,57 @@ export function Header() {
   ];
 
   return (
-    <header className="border-b border-line bg-surface">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:z-10 focus:rounded-lg focus:bg-surface focus:p-3">
+    <header>
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:z-10 focus:rounded-[var(--radius)] focus:bg-surface focus:p-3">
         {t("a11y.skip")}
       </a>
-      <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-        <Link href="/" className="flex min-h-11 items-center gap-2 text-2xl font-bold text-brand">
-          <ShieldLogo />
-          {t("app.name")}
-        </Link>
+      {/* Deep blue bar: name and language */}
+      <div className="bg-brand text-white">
+        <div className="mx-auto flex max-w-2xl items-center justify-between gap-3 px-4 py-2.5">
+          <Link href="/" className="flex min-h-11 items-center gap-2 text-xl font-extrabold tracking-tight">
+            <ShieldLogo inverted className="h-8 w-8" />
+            {t("app.name")}
+          </Link>
 
-        <label className="flex items-center gap-2">
-          <span className="sr-only">{t("form.language")}</span>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 text-ink-muted" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
-          </svg>
-          <select
-            value={lang}
-            onChange={(e) => setLang(e.target.value as LangCode)}
-            className="input min-h-11 py-1.5 text-base"
-          >
-            {LANGUAGES.map((l) => (
-              <option key={l.code} value={l.code} lang={l.code}>
-                {l.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <nav aria-label={t("nav.label")} className="hidden w-full md:block">
-          <ul className="flex flex-wrap gap-1">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={pathname === item.href ? "page" : undefined}
-                  className="inline-flex min-h-11 items-center rounded-lg px-3 font-semibold whitespace-nowrap text-ink-muted hover:text-brand aria-[current=page]:bg-surface-muted aria-[current=page]:text-brand"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="w-full">
+          <label className="flex items-center gap-2">
+            <span className="sr-only">{t("form.language")}</span>
+            <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+            </svg>
+            <select
+              value={lang}
+              onChange={(e) => setLang(e.target.value as LangCode)}
+              className="min-h-11 rounded-[var(--radius)] border-2 border-white/70 bg-brand px-2 py-1.5 text-base font-bold text-white"
+            >
+              {LANGUAGES.map((l) => (
+                <option key={l.code} value={l.code} lang={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </div>
+
+      {/* White strip: page menu (computers only) and display settings */}
+      <div className="border-b border-line">
+        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-2 px-4 py-2">
+          <nav aria-label={t("nav.label")} className="hidden md:block">
+            <ul className="flex flex-wrap">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    className="inline-flex min-h-11 items-center border-b-[3px] border-transparent px-3 font-bold whitespace-nowrap text-ink-muted hover:text-ink aria-[current=page]:border-ink aria-[current=page]:text-ink"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <DisplayToggles />
         </div>
       </div>

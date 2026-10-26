@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
-/* ---------- Design tokens: calm, civic, trustworthy ---------- */
+/* ---------- Design tokens: "public service notice" ----------
+   Plain white paper, near-black ink, one deep blue, and firm rules.
+   Looks like a printed notice from a library or community center:
+   clear, calm and very easy to read. */
 :root {
-  --brand: #0d4f5c; /* deep teal */
-  --brand-strong: #083843;
-  --bg: #f6f4ef; /* warm paper */
+  --brand: #0f3d4c; /* deep blue: header bar, links */
+  --brand-strong: #0a2c37;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-muted: #eeebe4;
-  --ink: #1b2429;
-  --ink-muted: #4a565d;
-  --line: #d6d1c7;
+  --surface-muted: #f3f2ee; /* light grey-beige for quotes and notes */
+  --ink: #141414; /* near-black text and heavy rules */
+  --ink-muted: #4b4b48;
+  --line: #d4d2cc; /* hairlines */
   --focus: #1d6fd6;
 
   /* Risk colors: always shown together with an icon and a text label */
-  --risk-high: #a4161a;
-  --risk-high-bg: #fdecec;
-  --risk-medium: #8a4b00;
-  --risk-medium-bg: #fff4e0;
-  --risk-low: #1e6b3a;
-  --risk-low-bg: #e8f5ec;
+  --risk-high: #b42318;
+  --risk-high-bg: #fdf0ee;
+  --risk-medium: #8f4d00;
+  --risk-medium-bg: #fdf4e3;
+  --risk-low: #18642e;
+  --risk-low-bg: #edf6ef;
   --whatsapp: #0f7a3d;
 
+  --radius: 6px;
   --base-size: 18px;
 }
 
@@ -32,7 +36,7 @@
   --ink: #000000;
   --ink-muted: #000000;
   --line: #000000;
-  --brand: #002f3a;
+  --brand: #002230;
   --risk-high: #7a0000;
   --risk-medium: #5a3000;
   --risk-low: #00461f;
@@ -59,7 +63,8 @@
   --color-risk-low: var(--risk-low);
   --color-risk-low-bg: var(--risk-low-bg);
   --color-whatsapp: var(--whatsapp);
-  /* Latin first, then each script's Noto font as a fallback */
+  /* Atkinson Hyperlegible (made for low-vision readers) for Latin letters,
+     then each script's Noto font as a fallback */
   --font-sans: var(--font-latin), var(--font-gurmukhi), var(--font-devanagari), var(--font-arabic), "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
 }
 
@@ -71,7 +76,13 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  line-height: 1.55;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.01em;
 }
 
 /* Put the current language's own script font first */
@@ -89,41 +100,53 @@ body {
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: var(--radius);
 }
 
 /* ---------- Reusable pieces ---------- */
 @layer components {
+  /* A plain section: hairline border, small corners, no shadow */
   .card {
-    @apply rounded-2xl border border-line bg-surface p-5 shadow-sm;
+    @apply rounded-[var(--radius)] border border-line bg-surface p-5;
+  }
+  /* The important boxes (the message form, the result) get a firm black border,
+     like the boxed part of a printed notice */
+  .notice {
+    @apply rounded-[var(--radius)] border-2 border-ink bg-surface p-5;
   }
   .card-title {
     @apply mb-3 text-xl font-bold;
   }
+  /* Small label above a group, e.g. "AI CHECK" */
   .layer-label {
-    @apply mt-4 mb-2 text-sm font-semibold uppercase tracking-wide text-ink-muted first:mt-0;
+    @apply mt-5 mb-2 text-sm font-bold tracking-wide text-ink-muted uppercase first:mt-0;
   }
   .flag-item {
-    @apply border-s-4 border-line ps-3;
+    @apply border-s-4 border-ink ps-3;
   }
   .input {
-    @apply rounded-xl border-2 border-line bg-surface p-3 text-lg text-ink placeholder:text-ink-muted;
+    @apply rounded-[var(--radius)] border-2 border-ink/60 bg-surface p-3 text-lg text-ink placeholder:text-ink-muted;
   }
   .input:focus {
-    border-color: var(--brand);
+    border-color: var(--ink);
   }
   /* Every button is at least 44px tall for easy tapping */
   .btn {
-    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-semibold transition-colors disabled:opacity-70;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius)] px-5 py-2.5 font-bold transition-colors disabled:opacity-70;
   }
   .btn-primary {
-    @apply bg-brand text-white hover:bg-brand-strong;
+    @apply bg-ink text-white hover:bg-brand;
   }
   .btn-secondary {
-    @apply border-2 border-line bg-surface text-ink hover:border-brand;
+    @apply border-2 border-ink bg-surface text-ink hover:bg-surface-muted;
   }
   .link-row {
-    @apply flex min-h-11 items-center justify-between gap-3 rounded-xl border border-line px-4 py-2 font-semibold text-brand underline-offset-4 hover:underline;
+    @apply flex min-h-11 items-center justify-between gap-3 border-b border-line py-2 font-bold text-brand underline decoration-1 underline-offset-4 hover:decoration-2;
+  }
+  /* The rubber-stamp style risk label on results */
+  .stamp {
+    @apply inline-flex items-center gap-2 rounded-[3px] border-[3px] px-3 py-1 text-2xl leading-tight font-extrabold tracking-wide uppercase;
+    transform: rotate(-2.5deg);
   }
 }
 

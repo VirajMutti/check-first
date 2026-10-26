@@ -134,9 +134,9 @@ export function Checker() {
   if (result) return <ResultCard result={result} onReset={reset} />;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <Hero onSample={onSample} disabled={checking} />
-      <form onSubmit={onSubmit} className="card space-y-5" noValidate aria-busy={checking}>
+      <form onSubmit={onSubmit} className="notice space-y-5" noValidate aria-busy={checking}>
         <div>
           <label htmlFor="message" className="mb-2 block text-xl font-semibold">
             {t("form.messageLabel")}
@@ -178,7 +178,7 @@ export function Checker() {
               <img
                 src={image.previewUrl}
                 alt={t("form.screenshotAlt")}
-                className="h-24 w-auto rounded-lg border border-line"
+                className="h-24 w-auto rounded-[var(--radius)] border border-line"
               />
               <button type="button" onClick={() => setImage(null)} className="btn btn-secondary">
                 {t("form.removeScreenshot")}

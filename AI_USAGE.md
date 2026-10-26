@@ -135,6 +135,9 @@ Viraj chose an installable web app over a separate App Store app so one codebase
 
 Tested on the live site (2026-10-26): screenshot upload with no text read a fake USPS text correctly (High, "Fake toll or package text"), and the Gemini AI check, English report and offline service worker all work.
 
+### Visual redesign ("public service notice" style)
+Viraj picked this style from three mockups. AI restyled `app/globals.css` (new design tokens, `.notice` and `.stamp` styles), `app/layout.tsx` (Atkinson Hyperlegible font), and the header, hero, result card, pickers, tab bar and page titles; icons and share card recolored. Lighthouse accessibility stayed 100 on all four pages.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:

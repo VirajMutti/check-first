@@ -5,11 +5,14 @@ import type { RiskLevel } from "@/lib/risk";
 
 type IconProps = { className?: string };
 
-export function ShieldLogo({ className = "h-9 w-9" }: IconProps) {
+/** The shield logo. `inverted` = white shield, for the dark blue header bar. */
+export function ShieldLogo({ className = "h-9 w-9", inverted = false }: IconProps & { inverted?: boolean }) {
+  const shield = inverted ? "#fff" : "var(--brand)";
+  const check = inverted ? "var(--brand)" : "#fff";
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <path d="M20 3 6 8.5v10.2C6 27.6 12 34.6 20 37c8-2.4 14-9.4 14-18.3V8.5L20 3Z" fill="var(--brand)" />
-      <path d="m13.5 20.2 4.6 4.6 8.6-9.4" fill="none" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M20 3 6 8.5v10.2C6 27.6 12 34.6 20 37c8-2.4 14-9.4 14-18.3V8.5L20 3Z" fill={shield} />
+      <path d="m13.5 20.2 4.6 4.6 8.6-9.4" fill="none" stroke={check} strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
