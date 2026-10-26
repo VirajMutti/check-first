@@ -1,6 +1,6 @@
 // Combines the two detection layers into the one result the user sees.
 
-import type { AiAnalysis, AnalyzeResponse, ScamType } from "./analysis";
+import type { AiAnalysis, AiProvider, AnalyzeResponse, ScamType } from "./analysis";
 import type { RedFlagCategory, RulesResult } from "./redFlags";
 import { higherRisk, type RiskLevel } from "./risk";
 import resources from "@/data/resources.json";
@@ -11,6 +11,8 @@ export type AiSkipReason = Exclude<AnalyzeResponse, { ok: true }>["reason"] | "o
 export interface CheckResult {
   rules: RulesResult;
   ai: AiAnalysis | null;
+  /** Which AI answered, if one did. */
+  aiProvider: AiProvider | null;
   aiSkipReason: AiSkipReason | null;
   /** True when only a screenshot was sent and the AI couldn't read it. */
   imageUnread: boolean;
@@ -34,6 +36,7 @@ export function scamTypeFromRules(categories: RedFlagCategory[]): ScamType {
 export function combineResults(
   rules: RulesResult,
   ai: AiAnalysis | null,
+  aiProvider: AiProvider | null,
   aiSkipReason: AiSkipReason | null,
   imageUnread: boolean,
 ): CheckResult {
@@ -49,7 +52,7 @@ export function combineResults(
   // If the rules say risky but the AI said "none", still show useful links.
   if (scamType === "none" && finalRisk !== "low") scamType = "other";
 
-  return { rules, ai, aiSkipReason, imageUnread, finalRisk, scamType, flaggedBy };
+  return { rules, ai, aiProvider, aiSkipReason, imageUnread, finalRisk, scamType, flaggedBy };
 }
 
 /** Official link ids to show for a scam type (see data/resources.json). */

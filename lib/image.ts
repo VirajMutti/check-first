@@ -1,7 +1,7 @@
 // Shrinks a screenshot in the browser before sending it, so uploads are fast
 // on phones and stay well under the server's size limit.
 
-const MAX_SIDE = 1600; // pixels — plenty for Claude to read text
+const MAX_SIDE = 1600; // pixels — plenty for the AI to read text
 
 export interface PreparedImage {
   mediaType: "image/jpeg";

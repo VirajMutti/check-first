@@ -40,7 +40,7 @@ export const AnalyzeRequestSchema = z
 export type AnalyzeRequest = z.infer<typeof AnalyzeRequestSchema>;
 
 /**
- * What we ask Claude to return. Kept simple (no min/max rules) because
+ * What we ask the AI (Claude or Gemini) to return. Kept simple (no min/max rules) because
  * structured outputs only support basic JSON Schema.
  */
 export const AiOutputSchema = z.object({
@@ -49,11 +49,12 @@ export const AiOutputSchema = z.object({
   redFlags: z.array(z.object({ flag: z.string(), explanation: z.string() })),
   nextSteps: z.array(z.string()),
   summary: z.string(),
-  /** Text Claude read from the screenshot, so the rules engine can check it too. */
+  /** Text the AI read from the screenshot, so the rules engine can check it too. */
   extractedText: z.string(),
 });
+export type AiOutput = z.infer<typeof AiOutputSchema>;
 
-/** The stricter shape the browser trusts, checked again after Claude replies. */
+/** The stricter shape the browser trusts, checked again after the AI replies. */
 export const AiAnalysisSchema = AiOutputSchema.extend({
   redFlags: z.array(z.object({ flag: z.string().min(1), explanation: z.string().min(1) })).max(8),
   nextSteps: z.array(z.string().min(1)).min(1).max(5),
@@ -61,7 +62,10 @@ export const AiAnalysisSchema = AiOutputSchema.extend({
 });
 export type AiAnalysis = z.infer<typeof AiAnalysisSchema>;
 
+/** Which AI answered. */
+export type AiProvider = "claude" | "gemini";
+
 /** /api/analyze always answers with one of these two shapes. */
 export type AnalyzeResponse =
-  | { ok: true; analysis: AiAnalysis }
+  | { ok: true; analysis: AiAnalysis; provider: AiProvider }
   | { ok: false; reason: "not_configured" | "rate_limited" | "bad_request" | "ai_failed" };

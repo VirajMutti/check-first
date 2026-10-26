@@ -32,7 +32,7 @@ CA-14 is one of the most diverse districts in the country, with large Punjabi, H
 - **Accessibility**: large text, high contrast, 44px tap targets, full keyboard use, read-aloud (when the device has a voice for that language). Lighthouse accessibility score: 100.
 - **/verify**: "Who are you dealing with?" Three steps and official links for consultants, lawyers, travel/visa agents, people claiming to be government, contractors and online sellers.
 - **/learn**: six common scam cards in every language. Works offline.
-- **Privacy**: no database, no accounts, messages are never stored or logged.
+- **Privacy**: no database, no accounts, and messages are never stored or logged by Check First. The AI check sends the text to the AI provider to read it, and the app says so. Note: on Gemini's *free* tier, Google's terms allow it to use submitted content to improve its products, so a real launch should use a paid tier.
 
 ## Architecture
 
@@ -42,7 +42,7 @@ flowchart TD
     UI -->|Layer 1: instant, offline| R[Rules engine<br/>lib/redFlags.ts]
     UI -->|Layer 2: POST /api/analyze<br/>8 second timeout| API[Server route<br/>app/api/analyze/route.ts]
     API -->|rate limit + zod input check| API
-    API -->|text and/or image| C[Claude API<br/>structured JSON output]
+    API -->|text and/or image| C[Claude or Gemini<br/>structured JSON output]
     C --> API
     API -->|zod-validated JSON| UI
     R --> M[combineResults<br/>lib/combine.ts]
@@ -55,7 +55,7 @@ flowchart TD
 ## How two-layer detection works
 
 1. **Rules engine (layer 1).** `lib/redFlags.ts` runs in the browser. It scores the message 0–100 using weighted keyword and pattern rules across nine categories (threats, unusual payments, government impersonation, guarantees, upfront fees, secrecy, notarios, prizes, suspicious links) in all six languages. It needs no internet and no API key, and every result is explainable: the screen shows the exact words that matched.
-2. **AI analysis (layer 2).** `app/api/analyze/route.ts` sends the message (and screenshot, if any) to Claude on the server. Claude must answer in strict JSON: `{risk, scamType, redFlags[{flag, explanation}], nextSteps[], summary}`, written in the user's language. The server checks that JSON again with **zod** before trusting it.
+2. **AI analysis (layer 2).** `app/api/analyze/route.ts` sends the message (and screenshot, if any) to an AI on the server: **Claude** if an Anthropic key is set, otherwise **Gemini** (which has a free tier). Each provider lives in its own small file (`lib/ai/claude.ts`, `lib/ai/gemini.ts`) and shares one prompt (`lib/ai/prompt.ts`). The AI must answer in strict JSON: `{risk, scamType, redFlags[{flag, explanation}], nextSteps[], summary}`, written in the user's language. The server checks that JSON again with **zod** before trusting it.
 3. **Combine.** The final risk is the **higher** of the two layers, and the result shows each layer's verdict side by side, so it's clear which layer flagged what.
 4. **Never a blank screen.** If the AI is slow (over 8 seconds), fails, refuses, is rate limited, or the device is offline, the app shows the rules result with a small notice explaining why.
 
@@ -65,10 +65,10 @@ flowchart TD
 
 AI output can be slow, cut off, or shaped wrong, and a user checking a scam call is often under pressure. The solution has four parts:
 
-- **Strict shape.** Claude is asked for structured JSON output, then the server validates it a second time with zod (`AiAnalysisSchema`). Anything that doesn't match is treated as a failure.
+- **Strict shape.** The AI (Claude or Gemini) is asked for structured JSON output generated from one zod schema, then the server validates it a second time with zod (`AiAnalysisSchema`). Anything that doesn't match is treated as a failure.
 - **Hard time limit.** Both the browser (`AbortController`) and the server SDK stop after 8 seconds.
 - **Offline first layer.** The rules engine always runs first, in the browser, so there is always a result to fall back to.
-- **Screenshots feed both layers.** When only a screenshot is sent, Claude also returns the text it read (`extractedText`), and the rules engine re-runs on that text. A screenshot gets two independent checks too.
+- **Screenshots feed both layers.** When only a screenshot is sent, the AI also returns the text it read (`extractedText`), and the rules engine re-runs on that text. A screenshot gets two independent checks too.
 
 A second challenge was **multilingual text handling**. JavaScript's `\b` word boundary only understands English letters, so Punjabi, Hindi, Chinese and Dari keywords need different matching. Dari also needs right-to-left layout, the invisible joiner character (ZWNJ) in words like پیام‌ها, and its own font. A test (`lib/locales.test.ts`) guarantees every language has every string.
 
@@ -80,7 +80,7 @@ Requirements: Node.js 20+.
 git clone <this repo>
 cd check-first
 npm install
-cp .env.example .env.local   # then put your Anthropic API key in .env.local
+cp .env.example .env.local   # then add an Anthropic or Gemini API key
 npm run dev                  # http://localhost:3000
 ```
 
@@ -98,12 +98,14 @@ Environment variables (server only, never sent to the browser):
 
 | Name | Required | Default |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | for the AI layer | none |
+| `ANTHROPIC_API_KEY` | one of the two keys, for the AI layer | none |
 | `ANTHROPIC_MODEL` | no | `claude-sonnet-5-5` |
+| `GEMINI_API_KEY` | used only if there's no Anthropic key (free tier at aistudio.google.com) | none |
+| `GEMINI_MODEL` | no | `gemini-3.8-flash` |
 
 ## Tech stack
 
-Next.js (App Router) · TypeScript · Tailwind CSS · Anthropic SDK (server only) · zod · Vitest · Vercel.
+Next.js (App Router) · TypeScript · Tailwind CSS · Anthropic SDK and Google GenAI SDK (server only) · zod · Vitest · Vercel.
 
 ## AI disclosure
 

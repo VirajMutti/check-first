@@ -2,7 +2,7 @@
   "app": {
     "name": "Check First",
     "tagline": "Got a message asking for money or papers? Check it here before you pay anyone.",
-    "privacy": "We never save your messages."
+    "privacy": "We never save your messages. To check them, the text is sent to an AI service."
   },
   "nav": {
     "check": "Check a message",
@@ -40,7 +40,7 @@
     "rulesLayer": "Rules check",
     "rulesLayerHint": "Runs on your phone. Works without internet.",
     "aiLayer": "AI check",
-    "aiLayerHint": "Reads the whole message with Claude AI.",
+    "aiLayerHint": "Reads the whole message with AI.",
     "finalNote": "We show the higher of the two results to keep you safe.",
     "flaggedBy": "Flagged by: {layers}.",
     "flaggedByNone": "Neither check found warning signs.",

@@ -34,13 +34,12 @@ The home page. It just shows `<Checker />`.
 Tiny files that set the page title and show `<VerifyPicker />` or `<LearnCards />`.
 
 ### `app/api/analyze/route.ts`: the AI layer (server only)
-This is the only place the Anthropic API key is used, so it never reaches the browser. Step by step:
-1. **No key?** Answer `not_configured`, and the browser falls back to the rules result.
+This is the only place the API keys are used, so they never reach the browser. Step by step:
+1. **Pick a provider:** Claude if `ANTHROPIC_API_KEY` is set, otherwise Gemini if `GEMINI_API_KEY` is set. **No key at all?** Answer `not_configured`, and the browser falls back to the rules result.
 2. **Rate limit:** at most 10 checks per minute per visitor (`lib/rateLimit.ts`).
 3. **Validate input with zod:** text up to 4,000 characters, an optional PNG/JPG under ~3 MB, and a language code. Bad input gets `bad_request`.
-4. **Build the message for Claude:** the screenshot (if any), then "Answer in Punjabi" (or another language), then the message text.
-5. **Call Claude** with a **system prompt** describing CA-14 scams and the rules for answering, and **structured output**: Claude must return JSON matching `AiOutputSchema`. `effort: "low"` keeps it fast.
-6. **Check the answer twice:** if Claude refused or got cut off (`stop_reason` isn't `end_turn`), it counts as a failure. Then zod checks the JSON again (`AiAnalysisSchema`: at least 1 next step, at most 5).
+4. **Ask the AI** through `lib/ai/claude.ts` or `lib/ai/gemini.ts` (see below).
+5. **Check the answer again** with the stricter zod schema (`AiAnalysisSchema`: at least 1 next step, at most 5).
 7. Any error sends back `ai_failed`. We log only the error *type*, never the user's message.
 
 ### `app/globals.css`
@@ -67,6 +66,14 @@ See `RULES_GUIDE.md` for the approach.
 
 ### `lib/redFlags.test.ts`: the rules engine's spec
 18 real-looking messages across 6 languages, each with the risk it should get and the categories it must find, plus 4 sanity checks (empty text, score stays 0–100, UPPERCASE gives the same result, scam scores above safe). Written *before* the logic, which is called test-driven development. `npm test` shows how many pass.
+
+### `lib/ai/`: the two AI providers
+- `prompt.ts`: the **system prompt** both providers get (describes CA-14 scams and how to answer), `buildUserText()` ("Answer in Punjabi" + the message), and the 8-second limit.
+- `claude.ts`: sends the screenshot + text to Claude with **structured output** (it must return JSON matching `AiOutputSchema`) and `effort: "low"` for speed. A refusal or cut-off answer (`stop_reason` isn't `end_turn`) returns `null`.
+- `gemini.ts`: the same job with Google's Gemini (free tier). `z.toJSONSchema()` turns our zod schema into the JSON Schema Gemini needs, so both providers follow **one** definition. Gemini returns JSON as text, so we `JSON.parse` it and check it with zod. `store: false` asks Google not to keep the request for later retrieval.
+- Both use no retries and an 8-second timeout, so the browser can fall back in time.
+
+Why two providers? Gemini has a free tier, so the app can run at no cost, and the design shows the AI is swappable: the rest of the app doesn't care which one answered.
 
 ### `lib/risk.ts`
 `RiskLevel` = `"low" | "medium" | "high"`, and `higherRisk(a, b)`, which returns the more dangerous of the two. It works by ranking them in an array: low = 0, medium = 1, high = 2.
@@ -143,6 +150,6 @@ A **service worker** is a small script the browser keeps running for your site. 
 
 - **Why not just use the AI?** It can be slow, cost money, need internet, or make mistakes. The rules engine is instant, free, private, offline and explainable, and it catches the AI if the AI under-rates a message.
 - **Why "higher of the two"?** For a scam checker, a false "safe" is far worse than a false "be careful".
-- **How do you protect privacy?** No database, no accounts, no logging of messages, and the API key stays on the server.
+- **How do you protect privacy?** No database, no accounts, no logging of messages, and the API keys stay on the server. The app tells users the text goes to an AI service. On Gemini's free tier Google may use submitted content to improve its products, so a real launch would use a paid tier or Claude.
 - **How do you know the links are real?** Every link is a `.gov` site, a test enforces that, and each one was opened in a browser on 2026-10-26.
 - **What did AI write?** See `AI_USAGE.md`.

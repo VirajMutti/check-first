@@ -19,6 +19,9 @@ const RISK_STYLE: Record<RiskLevel, string> = {
   low: "bg-risk-low-bg text-risk-low border-risk-low",
 };
 
+// Shown next to the AI check's verdict so it's clear which AI answered.
+const PROVIDER_NAMES = { claude: "Claude", gemini: "Gemini" } as const;
+
 export function ResultCard({ result, onReset }: { result: CheckResult; onReset: () => void }) {
   const { t, tList } = useI18n();
   const { rules, ai, finalRisk, scamType } = result;
@@ -108,7 +111,12 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
         <h3 className="card-title">{t("result.howDecided")}</h3>
         <div className="grid gap-3 sm:grid-cols-2">
           <LayerBox title={t("result.rulesLayer")} hint={t("result.rulesLayerHint")} risk={rules.risk} detail={`${rules.score}/100`} />
-          <LayerBox title={t("result.aiLayer")} hint={t("result.aiLayerHint")} risk={ai?.risk ?? null} />
+          <LayerBox
+            title={t("result.aiLayer")}
+            hint={t("result.aiLayerHint")}
+            risk={ai?.risk ?? null}
+            detail={result.aiProvider ? PROVIDER_NAMES[result.aiProvider] : undefined}
+          />
         </div>
         <p className="mt-3 text-ink-muted">
           {flaggedText} {t("result.finalNote")}

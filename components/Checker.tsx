@@ -3,12 +3,12 @@
 // The main "check a message" flow on the home page.
 //
 // 1. Rules engine runs instantly in the browser (works offline).
-// 2. In parallel we ask /api/analyze (Claude). If that fails or takes more
+// 2. In parallel we ask /api/analyze (Claude or Gemini). If that fails or takes more
 //    than 8 seconds, we keep the rules result and show a small notice.
 // 3. The two results are combined and shown in <ResultCard>.
 
 import { useRef, useState } from "react";
-import { MAX_TEXT_LENGTH, type AiAnalysis, type AnalyzeResponse } from "@/lib/analysis";
+import { MAX_TEXT_LENGTH, type AiAnalysis, type AiProvider, type AnalyzeResponse } from "@/lib/analysis";
 import { combineResults, type AiSkipReason, type CheckResult } from "@/lib/combine";
 import { useI18n } from "@/lib/i18n";
 import { prepareImage, type PreparedImage } from "@/lib/image";
@@ -24,7 +24,7 @@ async function askAi(
   text: string,
   image: PreparedImage | null,
   language: string,
-): Promise<{ analysis: AiAnalysis } | { reason: AiSkipReason }> {
+): Promise<{ analysis: AiAnalysis; provider: AiProvider } | { reason: AiSkipReason }> {
   if (typeof navigator !== "undefined" && !navigator.onLine) return { reason: "offline" };
 
   const controller = new AbortController();
@@ -41,7 +41,7 @@ async function askAi(
       signal: controller.signal,
     });
     const body = (await res.json()) as AnalyzeResponse;
-    return body.ok ? { analysis: body.analysis } : { reason: body.reason };
+    return body.ok ? { analysis: body.analysis, provider: body.provider } : { reason: body.reason };
   } catch {
     // Timeout, network error, or a non-JSON reply.
     return { reason: "ai_failed" };
@@ -93,14 +93,15 @@ export function Checker() {
     // Layer 2: AI — may fail; that's OK.
     const ai = await askAi(message, screenshot, lang);
     const analysis = "analysis" in ai ? ai.analysis : null;
+    const provider = "provider" in ai ? ai.provider : null;
 
-    // Screenshot only? Let the rules engine also read the text Claude extracted.
+    // Screenshot only? Let the rules engine also read the text the AI extracted.
     if (!message.trim() && analysis?.extractedText) {
       rules = analyzeWithRules(analysis.extractedText);
     }
     const imageUnread = !message.trim() && !analysis;
 
-    setResult(combineResults(rules, analysis, "reason" in ai ? ai.reason : null, imageUnread));
+    setResult(combineResults(rules, analysis, provider, "reason" in ai ? ai.reason : null, imageUnread));
     setChecking(false);
   }
 

@@ -6,7 +6,8 @@ disclosed, so this file records what the AI generated and what Viraj wrote.
 It's updated as the project goes.
 
 The app itself also *uses* AI at runtime: the server route calls Claude
-(`claude-sonnet-5-5` by default) to analyze messages. That is part of the
+(`claude-sonnet-5-5` by default) or, if only a Gemini key is set, Google Gemini
+(`gemini-3.8-flash`) to analyze messages. That is part of the
 product, separate from how the code was written.
 
 ## Written by Viraj
@@ -87,6 +88,17 @@ Lighthouse accessibility (mobile, 2026-10-26): Home 100, Verify 100, Learn 100.
 | `AI_USAGE.md` | This file |
 
 Viraj should review and edit the docs in his own words before submitting.
+
+### Gemini provider (added after Phase 5)
+| File | What it does |
+|---|---|
+| `lib/ai/prompt.ts` | Shared prompt + timeout, moved out of the route |
+| `lib/ai/claude.ts` | Claude call, moved out of the route |
+| `lib/ai/gemini.ts` | New: Gemini call (free tier), same zod schema |
+| `app/api/analyze/route.ts` | Picks Claude or Gemini based on which key is set |
+| `locales/*.json` | Privacy line now says text is sent to an AI service; AI hint no longer names Claude |
+
+Viraj chose Gemini so the AI layer can run on a free tier.
 
 ## Non-English text to proofread
 

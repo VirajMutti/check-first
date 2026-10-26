@@ -2,7 +2,7 @@
   "app": {
     "name": "Check First",
     "tagline": "¿Recibió un mensaje que le pide dinero o documentos? Revíselo aquí antes de pagarle a nadie.",
-    "privacy": "Nunca guardamos sus mensajes."
+    "privacy": "Nunca guardamos sus mensajes. Para revisarlos, el texto se envía a un servicio de inteligencia artificial."
   },
   "nav": {
     "check": "Revisar un mensaje",
@@ -40,7 +40,7 @@
     "rulesLayer": "Revisión por reglas",
     "rulesLayerHint": "Funciona en su teléfono. No necesita internet.",
     "aiLayer": "Revisión con IA",
-    "aiLayerHint": "Lee todo el mensaje con la IA Claude.",
+    "aiLayerHint": "Lee todo el mensaje con inteligencia artificial.",
     "finalNote": "Mostramos el resultado más alto de los dos para protegerlo.",
     "flaggedBy": "Detectado por: {layers}.",
     "flaggedByNone": "Ninguna revisión encontró señales de alerta.",

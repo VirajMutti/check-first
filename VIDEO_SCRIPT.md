@@ -48,7 +48,7 @@ and a sample screenshot saved in your photos before you start.
 ### 1:40 – 2:10 · How it works
 **[Show the architecture diagram from the README.]**
 
-> "Check First uses two layers. First, a rules engine I wrote in TypeScript. It runs on the phone, works offline, and scores warning signs in all six languages. Second, a server route sends the message to Claude, which must answer in strict JSON that I validate with zod. The app shows the higher of the two risks, because a false 'safe' is the worst mistake a scam checker can make."
+> "Check First uses two layers. First, a rules engine I wrote in TypeScript. It runs on the phone, works offline, and scores warning signs in all six languages. Second, a server route sends the message to an AI model, Gemini or Claude depending on which key is set, and it must answer in strict JSON that I validate with zod. The app shows the higher of the two risks, because a false 'safe' is the worst mistake a scam checker can make."
 
 ### 2:10 – 2:30 · The hard part
 **[Show the "AI check didn't finish" notice, then the test results in the terminal.]**
@@ -63,7 +63,7 @@ and a sample screenshot saved in your photos before you start.
 ---
 
 ## Recording checklist
-- [ ] `ANTHROPIC_API_KEY` set on Vercel, and one real check done before recording (so the AI layer shows).
+- [ ] `GEMINI_API_KEY` (or `ANTHROPIC_API_KEY`) set on Vercel, and one real check done before recording (so the AI layer shows).
 - [ ] Rules engine finished, so "Rules check" shows real matches.
 - [ ] A screenshot of a scam text saved in your photos.
 - [ ] WhatsApp installed (or WhatsApp Web open) for the share step.

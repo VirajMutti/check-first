@@ -2,7 +2,7 @@
   "app": {
     "name": "Check First",
     "tagline": "收到要钱或要证件的信息？付钱给任何人之前，先在这里查一查。",
-    "privacy": "我们从不保存您的信息。"
+    "privacy": "我们从不保存您的信息。为了检查，文字会发送给一个 AI 服务。"
   },
   "nav": {
     "check": "检查信息",
@@ -40,7 +40,7 @@
     "rulesLayer": "规则检查",
     "rulesLayerHint": "在您的手机上运行，没有网络也能用。",
     "aiLayer": "AI 检查",
-    "aiLayerHint": "用 Claude AI 阅读整条信息。",
+    "aiLayerHint": "用 AI 阅读整条信息。",
     "finalNote": "为了保护您，我们显示两者中风险较高的结果。",
     "flaggedBy": "发现问题的检查：{layers}。",
     "flaggedByNone": "两项检查都没有发现危险信号。",
