@@ -13,6 +13,7 @@ import { combineResults, type AiSkipReason, type CheckResult } from "@/lib/combi
 import { useI18n } from "@/lib/i18n";
 import { prepareImage, type PreparedImage } from "@/lib/image";
 import { analyzeWithRules } from "@/lib/redFlags";
+import { Hero, SAMPLES } from "./Hero";
 import { ResultCard } from "./ResultCard";
 import { UploadIcon } from "./Icons";
 
@@ -75,10 +76,10 @@ export function Checker() {
     }
   }
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const message = text.slice(0, MAX_TEXT_LENGTH);
-    if (!message.trim() && !image) {
+  /** Runs both detection layers and shows the combined result. */
+  async function runCheck(rawText: string, screenshot: PreparedImage | null) {
+    const message = rawText.slice(0, MAX_TEXT_LENGTH);
+    if (!message.trim() && !screenshot) {
       setError(t("form.empty"));
       textArea.current?.focus();
       return;
@@ -90,7 +91,7 @@ export function Checker() {
     let rules = analyzeWithRules(message);
 
     // Layer 2: AI — may fail; that's OK.
-    const ai = await askAi(message, image, lang);
+    const ai = await askAi(message, screenshot, lang);
     const analysis = "analysis" in ai ? ai.analysis : null;
 
     // Screenshot only? Let the rules engine also read the text Claude extracted.
@@ -101,6 +102,20 @@ export function Checker() {
 
     setResult(combineResults(rules, analysis, "reason" in ai ? ai.reason : null, imageUnread));
     setChecking(false);
+  }
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    void runCheck(text, image);
+  }
+
+  /** "Try an example": put the sample in the box and check it right away. */
+  function onSample(id: string) {
+    const sample = SAMPLES.find((s) => s.id === id);
+    if (!sample) return;
+    setText(sample.text);
+    setImage(null);
+    void runCheck(sample.text, null);
   }
 
   function reset() {
@@ -114,74 +129,81 @@ export function Checker() {
   if (result) return <ResultCard result={result} onReset={reset} />;
 
   return (
-    <form onSubmit={onSubmit} className="card space-y-5" noValidate aria-busy={checking}>
-      <div>
-        <label htmlFor="message" className="mb-2 block text-xl font-semibold">
-          {t("form.messageLabel")}
-        </label>
-        <textarea
-          id="message"
-          ref={textArea}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={6}
-          // "auto" lets typed text pick its own direction; empty follows the page.
-          dir={text ? "auto" : undefined}
-          placeholder={t("form.messagePlaceholder")}
-          className="input min-h-40 w-full resize-y"
-          aria-describedby={error ? "form-error" : undefined}
-        />
-        {text.length > MAX_TEXT_LENGTH && (
-          <p className="mt-1 text-sm text-ink-muted">{t("form.tooLong", { max: MAX_TEXT_LENGTH })}</p>
-        )}
-      </div>
+    <div className="space-y-6">
+      <Hero onSample={onSample} disabled={checking} />
+      <form onSubmit={onSubmit} className="card space-y-5" noValidate aria-busy={checking}>
+        <div>
+          <label htmlFor="message" className="mb-2 block text-xl font-semibold">
+            {t("form.messageLabel")}
+          </label>
+          <textarea
+            id="message"
+            ref={textArea}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={6}
+            // "auto" lets typed text pick its own direction; empty follows the page.
+            dir={text ? "auto" : undefined}
+            placeholder={t("form.messagePlaceholder")}
+            className="input min-h-40 w-full resize-y"
+            aria-describedby={error ? "form-error" : undefined}
+          />
+          {text.length > MAX_TEXT_LENGTH && (
+            <p className="mt-1 text-sm text-ink-muted">{t("form.tooLong", { max: MAX_TEXT_LENGTH })}</p>
+          )}
+        </div>
 
-      <div>
-        <p className="mb-2 font-semibold">
-          {t("form.screenshotLabel")} <span className="font-normal text-ink-muted">({t("form.screenshotHint")})</span>
-        </p>
-        <input
-          ref={fileInput}
-          id="screenshot"
-          type="file"
-          accept="image/png,image/jpeg"
-          onChange={onFileChosen}
-          className="hidden"
-          tabIndex={-1}
-          aria-hidden="true"
-        />
-        {image ? (
-          <div className="flex items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element -- local data URL preview */}
-            <img src={image.previewUrl} alt={t("form.screenshotAlt")} className="h-24 w-auto rounded-lg border border-line" />
-            <button type="button" onClick={() => setImage(null)} className="btn btn-secondary">
-              {t("form.removeScreenshot")}
+        <div>
+          <p className="mb-2 font-semibold">
+            {t("form.screenshotLabel")} <span className="font-normal text-ink-muted">({t("form.screenshotHint")})</span>
+          </p>
+          <input
+            ref={fileInput}
+            id="screenshot"
+            type="file"
+            accept="image/png,image/jpeg"
+            onChange={onFileChosen}
+            className="hidden"
+            tabIndex={-1}
+            aria-hidden="true"
+          />
+          {image ? (
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element -- local data URL preview */}
+              <img
+                src={image.previewUrl}
+                alt={t("form.screenshotAlt")}
+                className="h-24 w-auto rounded-lg border border-line"
+              />
+              <button type="button" onClick={() => setImage(null)} className="btn btn-secondary">
+                {t("form.removeScreenshot")}
+              </button>
+            </div>
+          ) : (
+            // A real button (keyboard-friendly) that opens the hidden file picker.
+            <button type="button" onClick={() => fileInput.current?.click()} className="btn btn-secondary">
+              <UploadIcon /> {t("form.screenshotButton")}
             </button>
-          </div>
-        ) : (
-          // A real button (keyboard-friendly) that opens the hidden file picker.
-          <button type="button" onClick={() => fileInput.current?.click()} className="btn btn-secondary">
-            <UploadIcon /> {t("form.screenshotButton")}
-          </button>
-        )}
-      </div>
+          )}
+        </div>
 
-      {error && (
-        <p id="form-error" role="alert" className="font-semibold text-risk-high">
-          {error}
-        </p>
-      )}
-
-      <button type="submit" disabled={checking} className="btn btn-primary w-full text-xl">
-        {checking ? (
-          <>
-            <span className="spinner" aria-hidden="true" /> {t("form.checking")}
-          </>
-        ) : (
-          t("form.submit")
+        {error && (
+          <p id="form-error" role="alert" className="font-semibold text-risk-high">
+            {error}
+          </p>
         )}
-      </button>
-      <p className="text-center text-ink-muted">{t("app.privacy")}</p>
-    </form>
+
+        <button type="submit" disabled={checking} className="btn btn-primary w-full text-xl">
+          {checking ? (
+            <>
+              <span className="spinner" aria-hidden="true" /> {t("form.checking")}
+            </>
+          ) : (
+            t("form.submit")
+          )}
+        </button>
+        <p className="text-center text-ink-muted">{t("app.privacy")}</p>
+      </form>
+    </div>
   );
 }

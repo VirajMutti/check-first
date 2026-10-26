@@ -20,7 +20,6 @@
     "screenshotAlt": "Screenshot you added",
     "submit": "Check it",
     "checking": "Checking…",
-    "tryExample": "Try an example",
     "empty": "Paste a message or add a screenshot first.",
     "badImage": "That file isn't a PNG or JPG picture.",
     "tooLong": "That message is very long. Only the first {max} characters will be checked."
@@ -293,5 +292,17 @@
         "action": "Don't click the link. Check your account on the official website or app you already use, then delete the text."
       }
     }
+  },
+  "hero": {
+    "sub": "Paste a text, WhatsApp forward or screenshot. We'll tell you how risky it is, in your language, and how to check it yourself.",
+    "tryExample": "Try an example",
+    "moreExamples": "More examples:"
+  },
+  "samples": {
+    "pa_visa_agent": "Punjabi visa agent",
+    "es_notario": "Spanish notario offer",
+    "en_uscis_call": "Fake USCIS call",
+    "fa_deportation": "Dari deportation threat",
+    "en_safe": "A safe message"
   }
 }

@@ -20,7 +20,6 @@
     "screenshotAlt": "您添加的截图",
     "submit": "检查",
     "checking": "正在检查……",
-    "tryExample": "试一个例子",
     "empty": "请先粘贴信息或添加截图。",
     "badImage": "这个文件不是 PNG 或 JPG 图片。",
     "tooLong": "信息太长了。只会检查前 {max} 个字。"
@@ -293,5 +292,17 @@
         "action": "不要点链接。到您平时使用的官方网站或 App 查看账户，然后删除短信。"
       }
     }
+  },
+  "hero": {
+    "sub": "粘贴短信、WhatsApp 转发或截图。我们会用您的语言告诉您风险有多大，以及如何自己核实。",
+    "tryExample": "试一个例子",
+    "moreExamples": "更多例子："
+  },
+  "samples": {
+    "pa_visa_agent": "旁遮普语签证中介",
+    "es_notario": "西班牙语公证人广告",
+    "en_uscis_call": "假冒 USCIS 来电",
+    "fa_deportation": "达里语驱逐威胁",
+    "en_safe": "一条安全的信息"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "_note": "Made-up demo messages modeled on real scams. Phone numbers use the fictional 555 range. Non-English samples need a native speaker to proofread (see AI_USAGE.md).",
+  "samples": [
+    {
+      "id": "pa_visa_agent",
+      "language": "pa",
+      "needsProofread": true,
+      "text": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ! 🇨🇦🇺🇸 ਕੈਨੇਡਾ ਅਤੇ ਅਮਰੀਕਾ ਦਾ ਵਰਕ ਵੀਜ਼ਾ 100% ਗਾਰੰਟੀ ਨਾਲ। ਕੋਈ IELTS ਨਹੀਂ ਚਾਹੀਦਾ। ਸਿਰਫ਼ 15 ਸੀਟਾਂ ਬਾਕੀ ਹਨ! ਅੱਜ ਹੀ $1,500 ਫ਼ਾਈਲ ਫ਼ੀਸ Zelle ਕਰੋ। ਇਹ ਗੱਲ ਕਿਸੇ ਨੂੰ ਨਾ ਦੱਸਣਾ, ਨਹੀਂ ਤਾਂ ਸੀਟ ਚਲੀ ਜਾਵੇਗੀ। ਸੰਪਰਕ: wa.me/15105550142"
+    },
+    {
+      "id": "es_notario",
+      "language": "es",
+      "needsProofread": true,
+      "text": "Hola, soy notario público y le ayudo con su caso de inmigración sin necesidad de abogado. Le garantizo su permiso de trabajo en 30 días. Solo necesito $1,800 por adelantado en efectivo y su pasaporte original. Llámeme hoy al (510) 555-0163."
+    },
+    {
+      "id": "en_uscis_call",
+      "language": "en",
+      "needsProofread": false,
+      "text": "Voicemail: This is Officer James Miller from USCIS. There is a problem with your immigration file and a warrant has been issued. To avoid deportation you must pay a $950 fee today using Target gift cards. Do not discuss this with anyone. Call back immediately at (510) 555-0187."
+    },
+    {
+      "id": "fa_deportation",
+      "language": "fa-AF",
+      "needsProofread": true,
+      "text": "از طرف اداره مهاجرت امریکا: پرونده شما مشکل دارد و تا ۲۴ ساعت دیگر دیپورت می‌شوید. برای لغو این دستور، فوراً ۵۰۰ دالر با کارت تحفه بپردازید. به هیچ کس نگویید. http://uscis-case-help.top"
+    },
+    {
+      "id": "en_safe",
+      "language": "en",
+      "needsProofread": false,
+      "text": "Hi Auntie! Reminder that Priya's birthday dinner is Saturday at 6 at our house in Union City. Bring your famous chole if you can 😊"
+    }
+  ]
+}

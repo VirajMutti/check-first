@@ -20,7 +20,6 @@
     "screenshotAlt": "Captura de pantalla que agregó",
     "submit": "Revisar",
     "checking": "Revisando…",
-    "tryExample": "Ver un ejemplo",
     "empty": "Primero pegue un mensaje o agregue una captura de pantalla.",
     "badImage": "Ese archivo no es una imagen PNG o JPG.",
     "tooLong": "El mensaje es muy largo. Solo se revisarán los primeros {max} caracteres."
@@ -293,5 +292,17 @@
         "action": "No haga clic en el enlace. Revise su cuenta en el sitio o la app oficial que ya usa y luego borre el mensaje."
       }
     }
+  },
+  "hero": {
+    "sub": "Pegue un texto, un reenvío de WhatsApp o una captura. Le diremos en su idioma qué tan riesgoso es y cómo verificarlo usted mismo.",
+    "tryExample": "Ver un ejemplo",
+    "moreExamples": "Más ejemplos:"
+  },
+  "samples": {
+    "pa_visa_agent": "Agente de visas (punjabi)",
+    "es_notario": "Oferta de notario",
+    "en_uscis_call": "Llamada falsa de USCIS",
+    "fa_deportation": "Amenaza de deportación (dari)",
+    "en_safe": "Un mensaje seguro"
   }
 }

@@ -69,13 +69,22 @@ real browser and loaded. Fixes made along the way:
 - Four links were updated to the address they redirect to.
 - `travel.state.gov/.../fraud.html` sits behind a bot-check page and couldn't be verified, so it was replaced with FTC and USCIS pages.
 
+### Phase 4: polish
+| File | What it does |
+|---|---|
+| `data/samples.json` | 5 made-up demo messages (Punjabi visa agent, Spanish notario, English fake USCIS, Dari deportation threat, one safe message) |
+| `components/Hero.tsx` | Landing hero with one-click "Try an example" and more sample buttons |
+| `components/Checker.tsx` (refactor) | `runCheck()` shared by the form and the example buttons |
+
+Lighthouse accessibility (mobile, 2026-10-26): Home 100, Verify 100, Learn 100.
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:
 
 - [ ] Test messages in `lib/redFlags.test.ts` (Punjabi, Hindi, Spanish, Chinese, Dari)
 - [ ] `locales/*.json`: Punjabi, Hindi, Spanish, Chinese, Dari UI text
-- [ ] `data/samples.json` (added in Phase 4)
+- [ ] `data/samples.json`: Punjabi, Spanish and Dari samples (marked `needsProofread: true`)
 
 ## Design decisions made with AI help
 
