@@ -125,7 +125,8 @@ export function Checker() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={6}
-          dir="auto"
+          // "auto" lets typed text pick its own direction; empty follows the page.
+          dir={text ? "auto" : undefined}
           placeholder={t("form.messagePlaceholder")}
           className="input min-h-40 w-full resize-y"
           aria-describedby={error ? "form-error" : undefined}

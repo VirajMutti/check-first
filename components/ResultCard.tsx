@@ -9,6 +9,7 @@ import { useI18n } from "@/lib/i18n";
 import type { RedFlagCategory } from "@/lib/redFlags";
 import type { RiskLevel } from "@/lib/risk";
 import { CopyIcon, ExternalIcon, RiskIcon, WhatsAppIcon } from "./Icons";
+import { ReadAloud } from "./ReadAloud";
 
 // Tailwind classes for each risk level. Color is always paired with an icon + label.
 const RISK_STYLE: Record<RiskLevel, string> = {
@@ -45,6 +46,16 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
       ? t("result.flaggedBy", { layers: result.flaggedBy.map(layerName).join(" + ") })
       : t("result.flaggedByNone");
 
+  // What "Read aloud" says: the verdict, the red flags, then the steps.
+  const spokenText = [
+    t(`risk.${finalRisk}`),
+    summary,
+    ...(ai?.redFlags.map((f) => `${f.flag}. ${f.explanation}`) ?? []),
+    ...ruleCategories.map((c) => `${t(`categories.${c}.title`)}. ${t(`categories.${c}.explanation`)}`),
+    t("result.nextSteps"),
+    ...steps,
+  ].join(". ");
+
   const siteUrl = typeof window !== "undefined" ? window.location.origin : "";
   const shareText = t("shareText", { risk: t(`risk.${finalRisk}`), url: siteUrl });
 
@@ -74,6 +85,9 @@ export function ResultCard({ result, onReset }: { result: CheckResult; onReset: 
           </div>
         </div>
         <p className="mt-3 text-lg text-ink">{summary}</p>
+        <div className="mt-3">
+          <ReadAloud text={spokenText} />
+        </div>
       </div>
 
       {/* Fallback notices: shown when the AI layer didn't run */}

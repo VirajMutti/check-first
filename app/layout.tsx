@@ -12,7 +12,9 @@ import "./globals.css";
 
 // One Noto family per script, so every language renders properly.
 // The browser only downloads a font file when that script appears on screen.
-const notoLatin = Noto_Sans({ subsets: ["latin", "latin-ext"], variable: "--font-latin" });
+// adjustFontFallback: false stops Next adding an Arial fallback in front of the
+// script fonts (Arial has Arabic letters, so Dari would render in Arial).
+const notoLatin = Noto_Sans({ subsets: ["latin", "latin-ext"], variable: "--font-latin", adjustFontFallback: false });
 const notoGurmukhi = Noto_Sans_Gurmukhi({ subsets: ["gurmukhi"], variable: "--font-gurmukhi", preload: false });
 const notoDevanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], variable: "--font-devanagari", preload: false });
 const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", preload: false });

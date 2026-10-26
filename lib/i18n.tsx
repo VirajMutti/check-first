@@ -6,12 +6,18 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import en from "@/locales/en.json";
+import es from "@/locales/es.json";
+import faAF from "@/locales/fa-AF.json";
+import hi from "@/locales/hi.json";
+import pa from "@/locales/pa.json";
+import zh from "@/locales/zh.json";
 import { getLanguage, LANG_CODES, type LangCode } from "./languages";
 
 type Messages = typeof en;
 
-// Each language file is loaded here. Missing keys fall back to English.
-const MESSAGES: Partial<Record<LangCode, Messages>> = { en };
+// Every language file is bundled, so switching language works offline.
+// Missing keys fall back to English (lib/locales.test.ts checks none are missing).
+const MESSAGES: Record<LangCode, Messages> = { en, pa, hi, es, zh, "fa-AF": faAF };
 
 /** Finds "a.b.c" inside a nested object, or returns undefined. */
 function lookup(obj: unknown, key: string): unknown {

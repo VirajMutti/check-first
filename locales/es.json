@@ -1,0 +1,133 @@
+{
+  "app": {
+    "name": "Check First",
+    "tagline": "¿Recibió un mensaje que le pide dinero o documentos? Revíselo aquí antes de pagarle a nadie.",
+    "privacy": "Nunca guardamos sus mensajes."
+  },
+  "nav": { "check": "Revisar un mensaje", "verify": "Verificar a alguien", "learn": "Conozca las estafas" },
+  "form": {
+    "language": "Idioma",
+    "messageLabel": "Pegue el mensaje",
+    "messagePlaceholder": "Pegue un texto, un mensaje de WhatsApp, o escriba lo que dijo la persona que llamó…",
+    "screenshotLabel": "O agregue una captura de pantalla",
+    "screenshotButton": "Elegir captura",
+    "screenshotHint": "PNG o JPG",
+    "removeScreenshot": "Quitar captura",
+    "screenshotAlt": "Captura de pantalla que agregó",
+    "submit": "Revisar",
+    "checking": "Revisando…",
+    "tryExample": "Ver un ejemplo",
+    "empty": "Primero pegue un mensaje o agregue una captura de pantalla.",
+    "badImage": "Ese archivo no es una imagen PNG o JPG.",
+    "tooLong": "El mensaje es muy largo. Solo se revisarán los primeros {max} caracteres."
+  },
+  "risk": {
+    "low": "Riesgo bajo",
+    "medium": "Riesgo medio",
+    "high": "Riesgo alto",
+    "summary": {
+      "low": "No encontramos señales comunes de estafa. Aun así, no pague ni comparta documentos hasta estar seguro de con quién está tratando.",
+      "medium": "Este mensaje tiene algunas señales de alerta. No pague ni comparta información personal hasta verificarlo.",
+      "high": "Esto parece una estafa. No pague, no responda y no comparta ninguna información personal."
+    }
+  },
+  "result": {
+    "heading": "Resultado",
+    "howDecided": "Cómo lo decidimos",
+    "rulesLayer": "Revisión por reglas",
+    "rulesLayerHint": "Funciona en su teléfono. No necesita internet.",
+    "aiLayer": "Revisión con IA",
+    "aiLayerHint": "Lee todo el mensaje con la IA Claude.",
+    "finalNote": "Mostramos el resultado más alto de los dos para protegerlo.",
+    "flaggedBy": "Detectado por: {layers}.",
+    "flaggedByNone": "Ninguna revisión encontró señales de alerta.",
+    "notRun": "No disponible",
+    "redFlags": "Señales de alerta encontradas",
+    "noRedFlags": "No se encontraron señales de alerta.",
+    "matched": "Coincidencia",
+    "nextSteps": "Qué hacer ahora",
+    "verify": "Verifíquelo usted mismo",
+    "verifyHint": "Use estos sitios oficiales. Nunca use un número de teléfono o enlace que venga en el mensaje.",
+    "share": "Compartir con la familia",
+    "shareWhatsApp": "Compartir por WhatsApp",
+    "copy": "Copiar aviso",
+    "copied": "¡Copiado!",
+    "readAloud": "Leer en voz alta",
+    "stopReading": "Dejar de leer",
+    "checkAnother": "Revisar otro mensaje"
+  },
+  "fallback": {
+    "offline": "No tiene conexión, así que solo se hizo la revisión por reglas.",
+    "ai_failed": "La revisión con IA no terminó a tiempo, así que este resultado usa solo la revisión por reglas.",
+    "not_configured": "La revisión con IA no está activada en este servidor, así que este resultado usa solo la revisión por reglas.",
+    "rate_limited": "Demasiadas revisiones en un minuto. Este resultado usa solo la revisión por reglas.",
+    "bad_request": "La revisión con IA no pudo leer esto, así que este resultado usa solo la revisión por reglas.",
+    "imageOnly": "No pudimos leer la captura sin la revisión con IA. Por favor, pegue también el texto del mensaje."
+  },
+  "categories": {
+    "urgency": { "title": "Amenazas o prisa", "explanation": "Los estafadores amenazan con arresto, deportación o cerrar su cuenta para que actúe sin pensar." },
+    "payment": { "title": "Forma de pago extraña", "explanation": "Las agencias reales nunca piden tarjetas de regalo, criptomonedas, giros, Zelle ni Western Union." },
+    "government": { "title": "Dice ser del gobierno", "explanation": "USCIS, el IRS, el Seguro Social, ICE y la policía no llaman ni envían mensajes para exigir dinero." },
+    "guarantee": { "title": "Visa o trabajo \"garantizado\"", "explanation": "Nadie puede garantizar una visa, una green card o un trabajo en el extranjero; solo el gobierno decide." },
+    "upfront_fee": { "title": "Pagar primero", "explanation": "Pedir un pago antes de recibir algo es un truco clásico de estafa." },
+    "secrecy": { "title": "Mantenerlo en secreto", "explanation": "Si le dicen que no le cuente a nadie, alguien quiere impedir que usted pida ayuda." },
+    "notario": { "title": "Notario o consultor", "explanation": "En Estados Unidos, un notario no puede dar consejos legales ni presentar casos de inmigración por usted." },
+    "prize": { "title": "Premio o lotería", "explanation": "No puede ganar un concurso en el que nunca participó, y los premios reales no cuestan dinero." },
+    "link": { "title": "Enlace sospechoso", "explanation": "Los enlaces en mensajes inesperados a menudo llevan a sitios falsos que roban dinero o contraseñas." }
+  },
+  "defaultSteps": {
+    "low": [
+      "Si más adelante le piden dinero o documentos, revíselo de nuevo antes de actuar.",
+      "Comuníquese con la persona o empresa usando un número que usted ya conozca."
+    ],
+    "medium": [
+      "No pague y todavía no comparta información personal.",
+      "Comuníquese usted mismo con la agencia o empresa usando el sitio oficial de abajo.",
+      "Hable con un familiar de confianza antes de hacer cualquier cosa."
+    ],
+    "high": [
+      "No pague, sobre todo con tarjetas de regalo, criptomonedas, giros o Zelle.",
+      "No responda, no devuelva la llamada y no haga clic en ningún enlace del mensaje.",
+      "Comuníquese con la agencia real usando el sitio oficial de abajo.",
+      "Repórtelo en ReportFraud.ftc.gov.",
+      "Avise a su familia para que no caiga en la trampa."
+    ]
+  },
+  "shareText": "⚠️ Aviso de estafa de Check First: un mensaje como este fue calificado como {risk}. No pague ni comparta información personal. Revise sus mensajes en {url}",
+  "scamTypes": {
+    "immigration": "Estafa de inmigración",
+    "government_impersonation": "Llamada falsa del gobierno",
+    "visa_job_abroad": "Oferta falsa de visa o trabajo en el extranjero",
+    "prize_lottery": "Estafa de premio o lotería",
+    "family_emergency": "Estafa de emergencia familiar",
+    "delivery_toll": "Mensaje falso de peaje o paquete",
+    "online_shopping": "Estafa de compras en línea",
+    "other": "Posible estafa",
+    "none": "No se detectó estafa"
+  },
+  "links": {
+    "uscis_scams": "USCIS: Evite estafas de inmigración",
+    "uscis_legal_help": "USCIS: Encuentre ayuda legal real",
+    "eoir_roster": "Departamento de Justicia: Lista de representantes acreditados",
+    "calbar_search": "Colegio de Abogados de California: Verifique a un abogado",
+    "ftc_report": "FTC: Reporte un fraude",
+    "ca_ag_complaint": "Fiscal General de California: Presente una queja",
+    "irs_scams": "IRS: Alertas de estafas de impuestos",
+    "tigta_report": "TIGTA: Reporte a quien se haga pasar por el IRS",
+    "ssa_scams": "Seguro Social: Información sobre estafas",
+    "state_visa_fraud": "Departamento de Estado: Fraude de visas",
+    "uspis_smishing": "Servicio de Inspección Postal: Estafas por mensaje de texto",
+    "ic3": "FBI: Reporte delitos por internet",
+    "cslb_check": "CSLB: Verifique la licencia de un contratista"
+  },
+  "footer": {
+    "notLegal": "Esto no es asesoría legal. Nunca guardamos sus mensajes.",
+    "emergency": "En una emergencia, llame al",
+    "madeFor": "Hecho para familias de Fremont, Union City, Hayward y todo el distrito CA-14."
+  },
+  "a11y": {
+    "largeText": "Letra grande",
+    "highContrast": "Alto contraste",
+    "skip": "Ir al contenido principal"
+  }
+}

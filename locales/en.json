@@ -4,7 +4,11 @@
     "tagline": "Got a message asking for money or papers? Check it here before you pay anyone.",
     "privacy": "We never save your messages."
   },
-  "nav": { "check": "Check a message", "verify": "Verify someone", "learn": "Learn the scams" },
+  "nav": {
+    "check": "Check a message",
+    "verify": "Verify someone",
+    "learn": "Learn the scams"
+  },
   "form": {
     "language": "Language",
     "messageLabel": "Paste the message",
@@ -39,7 +43,7 @@
     "aiLayer": "AI check",
     "aiLayerHint": "Reads the whole message with Claude AI.",
     "finalNote": "We show the higher of the two results to keep you safe.",
-    "flaggedBy": "Flagged by: {layers}",
+    "flaggedBy": "Flagged by: {layers}.",
     "flaggedByNone": "Neither check found warning signs.",
     "notRun": "Not available",
     "redFlags": "Red flags found",
@@ -65,15 +69,42 @@
     "imageOnly": "We couldn't read the screenshot without the AI check. Please paste the message text too."
   },
   "categories": {
-    "urgency": { "title": "Threats or a rush", "explanation": "Scammers threaten arrest, deportation or a closed account so you act before you think." },
-    "payment": { "title": "Strange way to pay", "explanation": "Real agencies never ask for gift cards, crypto, wire transfers, Zelle or Western Union." },
-    "government": { "title": "Says it's the government", "explanation": "USCIS, IRS, SSA, ICE and police do not call or text to demand money." },
-    "guarantee": { "title": "\"Guaranteed\" visa or job", "explanation": "No one can guarantee a visa, green card or job abroad — only the government decides." },
-    "upfront_fee": { "title": "Pay first", "explanation": "Asking for a fee before you receive anything is a classic scam trick." },
-    "secrecy": { "title": "Keep it secret", "explanation": "Being told not to tell anyone is a sign someone wants to stop you from getting help." },
-    "notario": { "title": "Notario or consultant", "explanation": "In the US, a notario cannot give legal advice or file immigration cases for you." },
-    "prize": { "title": "Prize or lottery", "explanation": "You can't win a contest you never entered, and real prizes don't cost money." },
-    "link": { "title": "Suspicious link", "explanation": "Links in surprise messages often lead to fake sites that steal money or passwords." }
+    "urgency": {
+      "title": "Threats or a rush",
+      "explanation": "Scammers threaten arrest, deportation or a closed account so you act before you think."
+    },
+    "payment": {
+      "title": "Strange way to pay",
+      "explanation": "Real agencies never ask for gift cards, crypto, wire transfers, Zelle or Western Union."
+    },
+    "government": {
+      "title": "Says it's the government",
+      "explanation": "USCIS, IRS, SSA, ICE and police do not call or text to demand money."
+    },
+    "guarantee": {
+      "title": "\"Guaranteed\" visa or job",
+      "explanation": "No one can guarantee a visa, green card or job abroad — only the government decides."
+    },
+    "upfront_fee": {
+      "title": "Pay first",
+      "explanation": "Asking for a fee before you receive anything is a classic scam trick."
+    },
+    "secrecy": {
+      "title": "Keep it secret",
+      "explanation": "Being told not to tell anyone is a sign someone wants to stop you from getting help."
+    },
+    "notario": {
+      "title": "Notario or consultant",
+      "explanation": "In the US, a notario cannot give legal advice or file immigration cases for you."
+    },
+    "prize": {
+      "title": "Prize or lottery",
+      "explanation": "You can't win a contest you never entered, and real prizes don't cost money."
+    },
+    "link": {
+      "title": "Suspicious link",
+      "explanation": "Links in surprise messages often lead to fake sites that steal money or passwords."
+    }
   },
   "defaultSteps": {
     "low": [
@@ -122,7 +153,7 @@
   },
   "footer": {
     "notLegal": "Not legal advice. We never save your messages.",
-    "emergency": "In an emergency, call 911.",
+    "emergency": "In an emergency, call",
     "madeFor": "Made for families in Fremont, Union City, Hayward and all of CA-14."
   },
   "a11y": {

@@ -41,12 +41,21 @@ product, separate from how the code was written.
 
 Scaffolding (`create-next-app`) generated the standard Next.js config files.
 
+### Phase 2: languages + accessibility
+| File | What it does |
+|---|---|
+| `locales/pa.json`, `hi.json`, `es.json`, `zh.json`, `fa-AF.json` | AI-written translations of every UI string. **Need native-speaker proofreading.** |
+| `lib/locales.test.ts` | Fails if any language is missing a key or a `{placeholder}` |
+| `components/DisplayToggles.tsx` | Large text and high contrast switches |
+| `components/ReadAloud.tsx` | Read-aloud button, shown only if the device has a voice for that language |
+| `app/globals.css` (additions) | High-contrast colors, large-text size, a script font per language, RTL line height |
+
 ## Non-English text to proofread
 
 AI-written translations need a native speaker's check before the demo:
 
 - [ ] Test messages in `lib/redFlags.test.ts` (Punjabi, Hindi, Spanish, Chinese, Dari)
-- [ ] `locales/*.json` (added in Phase 2)
+- [ ] `locales/*.json`: Punjabi, Hindi, Spanish, Chinese, Dari UI text
 - [ ] `data/samples.json` (added in Phase 4)
 
 ## Design decisions made with AI help

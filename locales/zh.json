@@ -1,0 +1,133 @@
+{
+  "app": {
+    "name": "Check First",
+    "tagline": "收到要钱或要证件的信息？付钱给任何人之前，先在这里查一查。",
+    "privacy": "我们从不保存您的信息。"
+  },
+  "nav": { "check": "检查信息", "verify": "核实对方身份", "learn": "了解常见骗局" },
+  "form": {
+    "language": "语言",
+    "messageLabel": "粘贴信息",
+    "messagePlaceholder": "粘贴短信、微信或 WhatsApp 信息，或写下来电者说的话……",
+    "screenshotLabel": "或添加截图",
+    "screenshotButton": "选择截图",
+    "screenshotHint": "PNG 或 JPG",
+    "removeScreenshot": "删除截图",
+    "screenshotAlt": "您添加的截图",
+    "submit": "检查",
+    "checking": "正在检查……",
+    "tryExample": "试一个例子",
+    "empty": "请先粘贴信息或添加截图。",
+    "badImage": "这个文件不是 PNG 或 JPG 图片。",
+    "tooLong": "信息太长了。只会检查前 {max} 个字。"
+  },
+  "risk": {
+    "low": "低风险",
+    "medium": "中等风险",
+    "high": "高风险",
+    "summary": {
+      "low": "我们没有发现常见的诈骗迹象。不过，在确认对方身份之前，请不要付钱或提供证件。",
+      "medium": "这条信息有一些危险信号。在核实之前，请不要付钱，也不要提供个人信息。",
+      "high": "这看起来是诈骗。请不要付钱、不要回复，也不要提供任何个人信息。"
+    }
+  },
+  "result": {
+    "heading": "结果",
+    "howDecided": "我们如何判断",
+    "rulesLayer": "规则检查",
+    "rulesLayerHint": "在您的手机上运行，没有网络也能用。",
+    "aiLayer": "AI 检查",
+    "aiLayerHint": "用 Claude AI 阅读整条信息。",
+    "finalNote": "为了保护您，我们显示两者中风险较高的结果。",
+    "flaggedBy": "发现问题的检查：{layers}。",
+    "flaggedByNone": "两项检查都没有发现危险信号。",
+    "notRun": "不可用",
+    "redFlags": "发现的危险信号",
+    "noRedFlags": "没有发现危险信号。",
+    "matched": "匹配内容",
+    "nextSteps": "现在该怎么做",
+    "verify": "自己核实",
+    "verifyHint": "请使用这些官方网站。绝对不要使用信息里提供的电话号码或链接。",
+    "share": "分享给家人",
+    "shareWhatsApp": "通过 WhatsApp 分享",
+    "copy": "复制提醒",
+    "copied": "已复制！",
+    "readAloud": "朗读",
+    "stopReading": "停止朗读",
+    "checkAnother": "检查另一条信息"
+  },
+  "fallback": {
+    "offline": "您目前没有网络，所以只进行了规则检查。",
+    "ai_failed": "AI 检查没有及时完成，所以这个结果只基于规则检查。",
+    "not_configured": "此服务器未开启 AI 检查，所以这个结果只基于规则检查。",
+    "rate_limited": "一分钟内检查次数太多。这个结果只基于规则检查。",
+    "bad_request": "AI 检查无法读取这项内容，所以这个结果只基于规则检查。",
+    "imageOnly": "没有 AI 检查，我们无法读取截图。请同时粘贴信息的文字。"
+  },
+  "categories": {
+    "urgency": { "title": "威胁或催促", "explanation": "骗子用逮捕、驱逐出境或关闭账户来威胁您，让您来不及思考就行动。" },
+    "payment": { "title": "奇怪的付款方式", "explanation": "真正的政府机构绝不会要求用礼品卡、加密货币、电汇、Zelle 或西联汇款付款。" },
+    "government": { "title": "自称政府人员", "explanation": "USCIS、IRS、社会安全局、ICE 和警察不会打电话或发短信向您要钱。" },
+    "guarantee": { "title": "\"保证\"拿到签证或工作", "explanation": "没有人能保证您拿到签证、绿卡或海外工作，只有政府才能决定。" },
+    "upfront_fee": { "title": "先付钱", "explanation": "在您收到任何东西之前就要求付费，是典型的诈骗手法。" },
+    "secrecy": { "title": "要求保密", "explanation": "叫您不要告诉任何人，是为了阻止您向别人求助。" },
+    "notario": { "title": "公证人或移民顾问", "explanation": "在美国，公证人（notario）不能提供法律建议，也不能替您办理移民案件。" },
+    "prize": { "title": "中奖或彩票", "explanation": "您不可能赢得从未参加过的抽奖，真正的奖品也不需要付钱领取。" },
+    "link": { "title": "可疑链接", "explanation": "陌生信息里的链接常常通向假网站，用来骗取钱财或密码。" }
+  },
+  "defaultSteps": {
+    "low": [
+      "如果之后对方要钱或要证件，请先再检查一次。",
+      "用您本来就知道的电话号码联系对方或公司。"
+    ],
+    "medium": [
+      "先不要付钱，也不要提供个人信息。",
+      "通过下面的官方网站，自己联系该机构或公司。",
+      "做任何事之前，先和信任的家人商量。"
+    ],
+    "high": [
+      "不要付钱，尤其不要用礼品卡、加密货币、电汇或 Zelle 付款。",
+      "不要回复、不要回电，也不要点击信息里的任何链接。",
+      "通过下面的官方网站联系真正的机构。",
+      "到 ReportFraud.ftc.gov 举报。",
+      "提醒家人，以免他们上当。"
+    ]
+  },
+  "shareText": "⚠️ Check First 防骗提醒：一条类似的信息被评为{risk}。请不要付钱，也不要提供个人信息。在这里检查您的信息：{url}",
+  "scamTypes": {
+    "immigration": "移民诈骗",
+    "government_impersonation": "假冒政府来电",
+    "visa_job_abroad": "虚假签证或海外工作机会",
+    "prize_lottery": "中奖或彩票诈骗",
+    "family_emergency": "家人紧急情况诈骗",
+    "delivery_toll": "虚假过路费或包裹短信",
+    "online_shopping": "网购诈骗",
+    "other": "可能是诈骗",
+    "none": "未发现诈骗"
+  },
+  "links": {
+    "uscis_scams": "USCIS：防范移民诈骗",
+    "uscis_legal_help": "USCIS：寻找正规法律帮助",
+    "eoir_roster": "美国司法部：认可代表名单",
+    "calbar_search": "加州律师协会：查询律师",
+    "ftc_report": "FTC：举报诈骗",
+    "ca_ag_complaint": "加州总检察长：提交投诉",
+    "irs_scams": "IRS：税务诈骗警示",
+    "tigta_report": "TIGTA：举报冒充 IRS 的人",
+    "ssa_scams": "社会安全局：诈骗信息",
+    "state_visa_fraud": "美国国务院：签证欺诈",
+    "uspis_smishing": "美国邮政检查局：短信诈骗",
+    "ic3": "FBI：举报网络犯罪",
+    "cslb_check": "CSLB：查询承包商执照"
+  },
+  "footer": {
+    "notLegal": "本网站不提供法律建议。我们从不保存您的信息。",
+    "emergency": "紧急情况请拨打",
+    "madeFor": "为弗里蒙特、联合市、海沃德及整个 CA-14 选区的家庭而做。"
+  },
+  "a11y": {
+    "largeText": "大字体",
+    "highContrast": "高对比度",
+    "skip": "跳到主要内容"
+  }
+}

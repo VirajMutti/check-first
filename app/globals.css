@@ -74,7 +74,13 @@ body {
   line-height: 1.55;
 }
 
-/* Arabic script reads better a little larger and with more line height */
+/* Put the current language's own script font first */
+:root[lang="pa"] body { font-family: var(--font-gurmukhi), var(--font-sans); }
+:root[lang="hi"] body { font-family: var(--font-devanagari), var(--font-sans); }
+:root[lang="fa-AF"] body { font-family: var(--font-arabic), var(--font-sans); }
+:root[lang="zh"] body { font-family: "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", var(--font-sans); }
+
+/* Arabic script reads better with more line height */
 :root[dir="rtl"] body {
   line-height: 1.8;
 }

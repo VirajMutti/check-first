@@ -1,10 +1,11 @@
 "use client";
 
-// Top bar: logo, app name and the language picker.
+// Top bar: logo, app name, language picker and display settings.
 
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import { LANGUAGES, type LangCode } from "@/lib/languages";
+import { DisplayToggles } from "./DisplayToggles";
 import { ShieldLogo } from "./Icons";
 
 export function Header() {
@@ -39,6 +40,9 @@ export function Header() {
             ))}
           </select>
         </label>
+        <div className="w-full">
+          <DisplayToggles />
+        </div>
       </div>
     </header>
   );
